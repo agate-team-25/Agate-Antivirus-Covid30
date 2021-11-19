@@ -17,15 +17,22 @@ public class Enemy : MonoBehaviour
     // NOTE: change all PlayerControllerTest to PlayerController later
     public PlayerController player;
 
-    [Header("Stats")]
+    [Header("Enemy Data")]
+    // Enemy type
+    public EnemyType type;
     // Enemy maximum health
     public int maxHealth = 1;
-    // Enemy speed
+    // Enemy speed (not used for Enemy A)
     public int speed = 300;
     // Enemy current health
     private int health;
     // Status if enemy is still alive, might be used for something
     private bool isAlive;
+
+    [Header("Player Detection Component")]
+    // detection range of enemies to check player (range x and y)
+    public float detectRangeX = 7;
+    public float detectRangeY = 3;
     #endregion
 
     // Awake is called before Start
@@ -49,7 +56,7 @@ public class Enemy : MonoBehaviour
         // If player is singleton, can get the object automatically using code below
         if (player == null)
         {
-            Debug.Log("Player instance assigned manually");
+            // Debug.Log("Player instance assigned automatically");
             player = PlayerController.Instance;
         }
 
@@ -93,6 +100,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // method to check if player are nearby, return bool value
+    public bool CheckIfPlayerNearby()
+    {
+        // get player position and enemy position
+        Vector2 playerPos = GetPlayerPosition();
+        Vector2 enemyPos = gameObject.transform.position;
+
+        // get x range of player and enemies
+        float playerRangeX = Mathf.Abs(playerPos.x - enemyPos.x);
+        float playerRangeY = Mathf.Abs(playerPos.y - enemyPos.y);
+
+        // check if player is within enemy detection range
+        if (playerRangeX <= detectRangeX && playerRangeY <= detectRangeY)
+        {
+            // if true, then player is nearby
+            return true;
+        }
+        return false;
+    }
+
     // just to get player position
     public Vector2 GetPlayerPosition()
     {
@@ -114,4 +141,19 @@ public class Enemy : MonoBehaviour
         // Destroy game object in the end
         Destroy(this.gameObject);
     }
+
+    // to draw debug line
+    public virtual void OnDrawGizmos()
+    {
+        // draw enemy detection range debug line
+        Debug.DrawLine(transform.position, transform.position + (Vector3.left * detectRangeX), Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + (Vector3.right * detectRangeX), Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + (Vector3.up * detectRangeY), Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + (Vector3.down * detectRangeY), Color.yellow);
+    }
+}
+
+public enum EnemyType
+{
+    EnemyA, EnemyB, EnemyC, EnemyBoss
 }

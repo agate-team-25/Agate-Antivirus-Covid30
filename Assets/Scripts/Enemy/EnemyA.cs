@@ -5,27 +5,23 @@ using UnityEngine;
 public class EnemyA : Enemy
 {
     #region variables
-    [Header("Player Detection Component")]
-    // detection range of enemies to check player (based on x range only)
-    public float detectRangeX = 5;
-
     [Header("Jump Component")]
     // jump force (x, y) for enemy when jumping
-    public float jumpForceX = 100;
-    public float jumpForceY = 100;
+    public float jumpForceX = 250;
+    public float jumpForceY = 400;
     // jump delay after landing on the ground
-    public float jumpDelay = 0;
+    public float jumpDelay = 1;
 
     [Header("Raycast Component")]
     // for raycast distance to the ground and ground layer to detect
-    public float groundRaycastDistance = 10;
-    public LayerMask groundLayer;
+    public float groundRaycastDistance = 0.48f;
+    public LayerMask environmentLayer;
 
     [Header("Explosion Component")]
     // radius of explosion
-    public float explosionRadius = 10;
+    public float explosionRadius = 3;
     // force of explosion
-    public float explosionForce = 100;
+    public float explosionForce = 200;
     // delay before explosion
     public float explosionDelay = 3;
 
@@ -62,7 +58,7 @@ public class EnemyA : Enemy
         base.Update();
 
         // call function to check if player is nearby
-        CheckIfPlayerNearby();
+        playerNearby = CheckIfPlayerNearby();
     }
 
     private void FixedUpdate()
@@ -79,32 +75,10 @@ public class EnemyA : Enemy
         }
     }
 
-    private void CheckIfPlayerNearby()
-    {
-        // get player position and enemy position
-        Vector2 playerPos = GetPlayerPosition();
-        Vector2 enemyPos = gameObject.transform.position;
-
-        // get x range of player and enemies
-        float playerRangeX = Mathf.Abs(playerPos.x - enemyPos.x);
-
-        // check if player is within enemy detection range
-        if (playerRangeX < detectRangeX)
-        {
-            // if true, then player is nearby
-            playerNearby = true;
-        }
-
-        else
-        {
-            playerNearby = false;
-        }
-    }
-
     private void CheckOnGroud()
     {
         // raycasting below to check if enemy is on ground
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, environmentLayer);
 
         // if the raycast hit the ground and enemy already stay still, then the enemy is on the ground
         if (hit && EnemyRigidBody.velocity.x == 0 && EnemyRigidBody.velocity.y == 0)
@@ -204,9 +178,11 @@ public class EnemyA : Enemy
         // for loop each objects inside radius
         foreach (Collider2D obj in objects)
         {
-            // aaaaaaaaaaaaaaaa
-            // for now player is the only affected object
-            if (obj.gameObject.tag == "Player")
+            // get rigidbody of object
+            Rigidbody2D objRigid =  obj.GetComponent<Rigidbody2D>();
+            
+            // only object who has rigidbody will be affected, except enemy
+            if (objRigid != null && obj.gameObject.tag != "Enemy")
             {
                 // get impact direction from player and enemy position
                 Vector2 impactDirection = obj.transform.position - transform.position;
@@ -225,8 +201,12 @@ public class EnemyA : Enemy
 
                 obj.GetComponent<Rigidbody2D>().AddForce(impactDirection * forceCalculation * explosionForce);
 
-                // also add damage to player here later
-                // --ADD DAMAGE TO PLAYER--
+                // check if object is player
+                if (obj.gameObject.tag == "Player")
+                {
+                    // also add damage to player here later
+                    // --ADD DAMAGE TO PLAYER--
+                }
 
             }
         }
@@ -236,18 +216,17 @@ public class EnemyA : Enemy
         onCompleted?.Invoke();
     }
 
-    // to draw debug line
-    private void OnDrawGizmos()
+    // to draw debug line specific for Enemy A
+    public override void OnDrawGizmos()
     {
-        // draw enemy detection range debug line
-        Debug.DrawLine(transform.position, transform.position + (Vector3.left * detectRangeX), Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.right * detectRangeX), Color.yellow);
-
-        // draw ground raycast debug line
-        Debug.DrawLine(transform.position, transform.position + (Vector3.down * groundRaycastDistance), Color.white);
-
         // draw explosion area based on radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+
+        // call base function to draw detection range
+        base.OnDrawGizmos();
+
+        // draw ground raycast debug line
+        Debug.DrawLine(transform.position, transform.position + (Vector3.down * groundRaycastDistance), Color.blue);
     }
 }
