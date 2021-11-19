@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     // Enemy maximum health
     public int maxHealth = 1;
     // Enemy speed (not used for Enemy A)
-    public int speed = 300;
+    public int speed = 3;
     // Enemy current health
     private int health;
     // Status if enemy is still alive, might be used for something
@@ -148,8 +148,10 @@ public class Enemy : MonoBehaviour
         // draw enemy detection range debug line
         Debug.DrawLine(transform.position, transform.position + (Vector3.left * detectRangeX), Color.yellow);
         Debug.DrawLine(transform.position, transform.position + (Vector3.right * detectRangeX), Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.up * detectRangeY), Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.down * detectRangeY), Color.yellow);
+        Debug.DrawLine(transform.position - (Vector3.left * detectRangeX), transform.position - (Vector3.left * detectRangeX) + (Vector3.up * detectRangeY), Color.yellow);
+        Debug.DrawLine(transform.position - (Vector3.left * detectRangeX), transform.position - (Vector3.left * detectRangeX) + (Vector3.down * detectRangeY), Color.yellow);
+        Debug.DrawLine(transform.position + (Vector3.left * detectRangeX), transform.position + (Vector3.left * detectRangeX) + (Vector3.up * detectRangeY), Color.yellow);
+        Debug.DrawLine(transform.position + (Vector3.left * detectRangeX), transform.position + (Vector3.left * detectRangeX) + (Vector3.down * detectRangeY), Color.yellow);
     }
 }
 

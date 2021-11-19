@@ -43,13 +43,13 @@ public class EnemyA : Enemy
     {
         // set to false initially so the enemy doesnt move
         playerNearby = false;
+
         onGround = true;
         hasExploded = false;
 
         // delay counter 0 initially so enemy immediately jump if player nearby
         delayCounter = 0;
-
-}
+    }
 
     // Update is called once per frame
     public override void Update()
