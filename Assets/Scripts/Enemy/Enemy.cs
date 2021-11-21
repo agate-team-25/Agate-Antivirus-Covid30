@@ -29,6 +29,10 @@ public class Enemy : MonoBehaviour
     // Status if enemy is still alive, might be used for something
     private bool isAlive;
 
+    [Header("Direction")]
+    // status is enemy is facing left, if false then enemy is facing right
+    public bool facingLeft = true;
+
     [Header("Player Detection Component")]
     // detection range of enemies to check player (range x and y)
     public float detectRangeX = 7;
@@ -62,11 +66,24 @@ public class Enemy : MonoBehaviour
 
         health = maxHealth;
         isAlive = true;
+
+        //check if enemy facing left or right. If facing right then flip horizontally
+        if (!facingLeft)
+        {
+            transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        // checking is the enemy still alive moved to ReduceHealth() method so it wont get called multiple times
+    }
+
+    public void ReduceHealth(int damage)
+    {
+        health -= damage;
+
         // if health is reduced to 0, call OnDeath() method
         if (health <= 0)
         {
@@ -74,16 +91,11 @@ public class Enemy : MonoBehaviour
             isAlive = false;
 
             //Debug.Log("the enemy is dead");
-
             OnDeath();
         }
     }
 
-    private void ReduceHealth(int damage)
-    {
-        health -= damage;
-    }
-
+    // NOTES: Only for testing, better to just call ReduceHealth from the bullet object instead, remove when finished
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // check if enemy collide with a bullet / projectile
@@ -135,11 +147,20 @@ public class Enemy : MonoBehaviour
     // Called if enemy got killed. Need to be overridden for certain enemy types
     public virtual void OnDeath()
     {
-        // Add death animation and sound effect here later (or maybe in the subclass override method)
+        // Add death animation and sound effect here, or in the subclass override method
         // --DEATH ANIMATION AND SFX--
 
         // Destroy game object in the end
         Destroy(this.gameObject);
+    }
+
+    // To flip enemy object horizontally
+    public void FlipY()
+    {
+        facingLeft = !facingLeft;
+        transform.Rotate(0f, 180f, 0f);
+
+        // source: https://youtu.be/wkKsl1Mfp5M
     }
 
     // to draw debug line

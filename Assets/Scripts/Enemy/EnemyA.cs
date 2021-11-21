@@ -52,7 +52,7 @@ public class EnemyA : Enemy
     }
 
     // Update is called once per frame
-    public override void Update()
+    public void Update()
     {
         // call superclass Update method
         base.Update();
@@ -63,7 +63,7 @@ public class EnemyA : Enemy
 
     private void FixedUpdate()
     {
-
+        // check if there is player nearby and enemy still alive
         if (playerNearby && CheckIsAlive())
         {
             // call function to check if enemy is on ground
@@ -75,6 +75,7 @@ public class EnemyA : Enemy
         }
     }
 
+    // method to check if enemy on the ground or air
     private void CheckOnGroud()
     {
         // raycasting below to check if enemy is on ground
@@ -98,6 +99,7 @@ public class EnemyA : Enemy
         }
     }
 
+    // method to jump
     private void Jump()
     {
         if (delayCounter > 0)
@@ -119,16 +121,22 @@ public class EnemyA : Enemy
             // if player is on the left, then change direction to -1
             direction = -1;
 
-            // undo flip sprite horizontally in case the enemy facing right
-            EnemySprite.flipX = false;
+            // flip horizontally if enemy currently facing right
+            if (!facingLeft)
+            {
+                FlipY();
+            }
         }
         else
         {
             // if player is on the right, then change direction to 1
             direction = 1;
 
-            // flip sprite horizontally since the enemy originally facing left
-            EnemySprite.flipX = true;
+            // flip horizontally if enemy currently facing left
+            if (facingLeft)
+            {
+                FlipY();
+            }
         }
 
         Vector2 jumpForce = new Vector2();
@@ -145,6 +153,7 @@ public class EnemyA : Enemy
         delayCounter = jumpDelay;
     }
 
+    // override superclass OnDeath() method to explode before dying
     public override void OnDeath()
     {
         // Add death animation and sound effect (before exploding) here later
@@ -162,6 +171,7 @@ public class EnemyA : Enemy
         //StopCoroutine("Explode");
     }
 
+    // coroutine method to explode
     private IEnumerator Explode(float time, System.Action onCompleted)
     {
         //Debug.Log("Explode Coroutine called");
