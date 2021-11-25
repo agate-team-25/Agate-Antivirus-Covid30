@@ -9,11 +9,6 @@ public class EnemyC : Enemy
     // monster travelling range (counted from bottom to upper)
     public float travelRange = 5;
 
-    [Header("Raycast Component")]
-    // for raycast distance to detect object above and below
-    public float raycastDistance = 0.75f;
-    public LayerMask environmentLayer;
-
     [Header("Shooting Component")]
     // shooting component
     public float shootDelay = 2;
@@ -22,20 +17,23 @@ public class EnemyC : Enemy
     public GameObject bulletPrefab;
     public Transform firePoint;
     // max y distance of player and enemy for enemy to shoot
-    public float shootYDistance = 0.5f;
+    public float shootYDistance = 0.3f;
 
     // status if player is nearby or not
     private bool playerNearby;
+
+    // status if player is still alive or not
+    private bool playerAlive;
 
     // status is enemy is going up, if false then enemy is going down
     private bool goingUp;
 
     // to save the original y position of enemy before going up and down
     private float originalY;
-    #endregion
 
     // counter until enemy can shoot another bullet
     private float shootCounter;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +60,9 @@ public class EnemyC : Enemy
 
         // call function to check if player is nearby
         playerNearby = CheckIfPlayerNearby();
+
+        // call function to check if player is alive
+        playerAlive = CheckPlayerIsAlive();
     }
 
     private void FixedUpdate()
@@ -73,56 +74,67 @@ public class EnemyC : Enemy
         shootCounter -= Time.deltaTime;
 
         // check if there is player nearby and enemy still alive
-        if (playerNearby && CheckIsAlive())
+        if (playerNearby && playerAlive && CheckIsAlive())
         {
             // call function to shoot at enemy
             Shoot();
         }
+
+        // Call function to move constantly to maintain speed
+        MovingUpOrDown();
     }
 
     // method to check if enemy need to change direction or not, and if it need to then change direction automatically
     private void CheckDirection()
     {
         // get current y position
-
         float currentY = transform.position.y;
 
         if (goingUp)
         {
-            // raycasting above to check if enemy hit ceilling
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, raycastDistance, environmentLayer);
-
             // to get distance travelled from original y in the bottom to current y
             float distanceTravelled = currentY - originalY;
 
-            // check if collide with ceiling or distance travelled already surpassing travel range
-            if (hit || distanceTravelled >= travelRange)
+            // check if distance travelled already surpassing travel range
+            if (distanceTravelled >= travelRange)
             {
                 //Debug.Log("change direction from up to down");
 
                 // if true, change direction to down
                 goingUp = false;
-                MovingUpOrDown();
             }
         }
 
         else
         {
-            // raycasting below to check if enemy hit floor
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, environmentLayer);
-
-            // check if collide with floor or current y position already below original y position
-            if (hit || currentY <= originalY)
+            // check if current y position already below original y position
+            if (currentY <= originalY)
             {
                 //Debug.Log("change direction from down to up");
 
                 // if true, change direction to down
                 goingUp = true;
-                MovingUpOrDown();
             }
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if collide with environment, then change direction (layer 6 currently refer to Environment layer)
+        if (goingUp && (collision.gameObject.tag == "Obstacle" || collision.gameObject.layer == 6))
+        {
+            goingUp = false;
+            //Debug.Log("goingUp :" + goingUp);
+        }
+
+        // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
+        {
+            // Call reduce damage
+            ReduceHealth(1);
+        }
+    }
+
     // method to move enemy up or down based on goingDown status
     private void MovingUpOrDown()
     {
@@ -158,9 +170,5 @@ public class EnemyC : Enemy
 
         // draw line trajectory of enemy path based on travel range
         Debug.DrawLine(transform.position, transform.position + (Vector3.up * travelRange), Color.cyan);
-
-        // draw object raycast debug line to above and below
-        Debug.DrawLine(transform.position, transform.position + (Vector3.up * raycastDistance), Color.blue);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.down * raycastDistance), Color.blue);
     }
 }

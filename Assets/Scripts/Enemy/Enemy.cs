@@ -24,10 +24,6 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 1;
     // Enemy speed (not used for Enemy A)
     public int speed = 3;
-    // Enemy current health
-    private int health;
-    // Status if enemy is still alive, might be used for something
-    private bool isAlive;
 
     [Header("Direction")]
     // status is enemy is facing left, if false then enemy is facing right
@@ -37,6 +33,15 @@ public class Enemy : MonoBehaviour
     // detection range of enemies to check player (range x and y)
     public float detectRangeX = 7;
     public float detectRangeY = 3;
+
+    [Header("Animation Component")]
+    public Animator animator;
+
+    // Enemy current health
+    private int health;
+
+    // Status if enemy is still alive, might be used for something
+    private bool isAlive;
     #endregion
 
     // Awake is called before Start
@@ -55,6 +60,11 @@ public class Enemy : MonoBehaviour
         if (EnemySprite == null)
         {
             EnemySprite = GetComponent<SpriteRenderer>();
+        }
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
         }
 
         // If player is singleton, can get the object automatically using code below
@@ -84,6 +94,9 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
 
+        // Add taking damage animation and sound effect here, if there any
+        // --TAKING DAMAGE ANIMATION AND SFX--
+
         // if health is reduced to 0, call OnDeath() method
         if (health <= 0)
         {
@@ -92,23 +105,6 @@ public class Enemy : MonoBehaviour
 
             //Debug.Log("the enemy is dead");
             OnDeath();
-        }
-    }
-
-    // NOTES: Only for testing, better to just call ReduceHealth from the bullet object instead, remove when finished
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // check if enemy collide with a bullet / projectile
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
-        {
-            // Add taking damage animation and sound effect here, if there any
-            // --TAKING DAMAGE ANIMATION AND SFX--
-
-            // if the bullet have damage, get it here
-            int damage = 1;
-
-            // Call reduce damage
-            ReduceHealth(damage);
         }
     }
 
@@ -135,7 +131,26 @@ public class Enemy : MonoBehaviour
     // just to get player position
     public Vector2 GetPlayerPosition()
     {
-        return player.transform.position;
+        if (player != null)
+        {
+            return player.transform.position;
+        }
+
+        // return enemy own position if player is destroyed so no error occured
+        return transform.position;
+    }
+
+    // to check if player is still alive
+    public bool CheckPlayerIsAlive()
+    {
+        if (player != null)
+        {
+            // if player still exist, return status is player active or not
+            return player.gameObject.activeSelf;
+        }
+
+        // if player is null, then player is already destroyed (dead)
+        return false;
     }
 
     // just to check if the enemy is still alive

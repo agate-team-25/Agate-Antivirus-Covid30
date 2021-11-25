@@ -31,6 +31,9 @@ public class EnemyA : Enemy
     // status if player is nearby or not
     private bool playerNearby;
 
+    // status if player is still alive or not
+    private bool playerAlive;
+
     // status if enemy is on the ground or not
     private bool onGround;
     #endregion
@@ -52,13 +55,16 @@ public class EnemyA : Enemy
     }
 
     // Update is called once per frame
-    public void Update()
+    public override void Update()
     {
         // call superclass Update method
         base.Update();
 
         // call function to check if player is nearby
         playerNearby = CheckIfPlayerNearby();
+
+        // call function to check if player is alive
+        playerAlive = CheckPlayerIsAlive();
     }
 
     private void FixedUpdate()
@@ -69,8 +75,8 @@ public class EnemyA : Enemy
             // call function to check if enemy is on ground
             CheckOnGroud();
 
-            // if player nearby and enemy currently on ground, enemy will move to the player direction by jumping
-            if (onGround)
+            // if player nearby and enemy currently on ground, enemy will move to the player direction by jumping if player is alive
+            if (onGround && playerAlive)
                 Jump();
         }
     }
@@ -224,6 +230,17 @@ public class EnemyA : Enemy
 
         // invoke onCompleted to execute superclass onDeath()
         onCompleted?.Invoke();
+    }
+
+    // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // check if enemy collide with a bullet / projectile
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
+        {
+            // Call reduce damage
+            ReduceHealth(1);
+        }
     }
 
     // to draw debug line specific for Enemy A

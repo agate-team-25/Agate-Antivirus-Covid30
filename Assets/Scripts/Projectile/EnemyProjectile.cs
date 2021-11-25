@@ -15,6 +15,12 @@ public class EnemyProjectile : MonoBehaviour
 
     // enemy type which shoots the projectile
     private EnemyType enemyType;
+
+    // counter for projectile lifespan
+    private float counter;
+
+    // status if projectile is launched
+    private bool isLaunched;
     #endregion
 
     // Start is called before the first frame update
@@ -26,9 +32,24 @@ public class EnemyProjectile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{}
+    void FixedUpdate()
+    {
+        //Debug.Log("uopdaeeee"+isLaunched);
+        // check if the projectile already launched
+        if (isLaunched)
+        {
+            // decrease counter
+            counter -= Time.deltaTime;
+
+            //Debug.Log("" + counter);
+            
+            if (counter <= 0)
+            {
+                // destroy object if counter reach zero
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
     // to set up projectile attributes and immediately launch projectile
     public void LaunchProjectile(float time, float speed, EnemyType type)
@@ -38,7 +59,11 @@ public class EnemyProjectile : MonoBehaviour
         projectileSpeed = speed;
         enemyType = type;
 
+        // launch projectile
         projectileRigidBody.velocity = transform.right * projectileSpeed;
+        // set counter and status after launch
+        counter = projectileTime;
+        isLaunched = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
