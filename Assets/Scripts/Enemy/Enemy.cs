@@ -193,11 +193,11 @@ public class Enemy : MonoBehaviour
         }
 
         // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
-        {
-            // Call reduce damage
-            ReduceHealth(1);
-        }
+        //if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
+        //{
+        //    // Call reduce damage
+        //    ReduceHealth(1);
+        //}
     }
 
     // to draw debug line
