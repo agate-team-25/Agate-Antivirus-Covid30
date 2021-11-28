@@ -170,12 +170,13 @@ MonoBehaviour:
   EnemyCollider: {fileID: 0}
   EnemySprite: {fileID: 0}
   player: {fileID: 0}
-  type: 0
+  type: 1
   maxHealth: 1
   speed: 3
   facingLeft: 1
   detectRangeX: 7
   detectRangeY: 1
+  animator: {fileID: 0}
   travelRange: 10
   raycastDistance: 0.75
   raycastWidth: 0.7

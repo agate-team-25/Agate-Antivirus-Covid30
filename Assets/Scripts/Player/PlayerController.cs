@@ -222,6 +222,7 @@ public class PlayerController : MonoBehaviour
 
     public void Fever()
     {
+        //Debug.Log("Player got fever status");
         speed = 3;
     }
 
