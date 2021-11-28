@@ -9,6 +9,10 @@ public class EnemyProjectile : MonoBehaviour
     // rigidbody of bullet
     public Rigidbody2D projectileRigidBody;
 
+    [Header("Player Reference")]
+    // Player singleton object, assign manually only if player is not singleton
+    public PlayerController player;
+
     // projectile time before despawning and projectile speed
     private float projectileTime;
     private float projectileSpeed;
@@ -29,6 +33,13 @@ public class EnemyProjectile : MonoBehaviour
         if (projectileRigidBody == null)
         {
             projectileRigidBody = GetComponent<Rigidbody2D>();
+        }
+
+        // If player is singleton, can get the object automatically using code below
+        if (player == null)
+        {
+            // Debug.Log("Player instance assigned automatically");
+            player = PlayerController.instance;
         }
     }
 
@@ -82,6 +93,7 @@ public class EnemyProjectile : MonoBehaviour
             if (player != null)
             {
                 // Call PlayerController method to give damage to player here
+                player.GetDamage(1, enemyType);
             }
         }
         

@@ -118,20 +118,15 @@ public class EnemyC : Enemy
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
+
         // if collide with environment, then change direction (layer 6 currently refer to Environment layer)
         if (goingUp && (collision.gameObject.tag == "Obstacle" || collision.gameObject.layer == 6))
         {
             goingUp = false;
             //Debug.Log("goingUp :" + goingUp);
-        }
-
-        // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
-        {
-            // Call reduce damage
-            ReduceHealth(1);
         }
     }
 

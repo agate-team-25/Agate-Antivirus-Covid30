@@ -16,5 +16,14 @@ public class SuntikanBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.ReduceHealth(1);
+            }
+        }
     }
 }

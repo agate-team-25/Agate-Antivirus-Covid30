@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region variables
+    [Header("Health")]
+    public float maxHealth;
+
     [Header("Movement")]
     public float speed;
 
@@ -39,11 +42,14 @@ public class PlayerController : MonoBehaviour
     public ItemType itemType;
 
     //boolean field
+    private float health;
     private bool isJumping;
     private bool canJump = true;
     private bool isOnGround;
     private bool isFalling;
     private bool isfacingRight = true;
+    private GameObject weapon_1;
+    private GameObject weapon_2;
 
     private float faceDirectionX = 0f;
 
@@ -64,6 +70,18 @@ public class PlayerController : MonoBehaviour
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody2D>();
         maxVelocity = playerRigidbody.velocity.y + jumpAccel;
+
+        //Assign health
+        health = maxHealth;
+
+        weapon_1 = Instantiate(weapon1, weaponPoint.position, weaponPoint.rotation);
+        weapon_1.transform.parent = gameObject.transform;
+
+        weapon_2 = Instantiate(weapon2, weaponPoint.position, weaponPoint.rotation);
+        weapon_2.transform.parent = gameObject.transform;
+
+        weapon_1.SetActive(false);
+        weapon_2.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -135,6 +153,51 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
     }
 
+    public void GetDamage(float damage, EnemyType type)
+    {
+        //Debug.Log("Player taken hit from " + type);
+
+        if (powerUpLevel <= 0)
+        {
+            health -= damage;
+        }
+
+        else
+        {
+            PowerDown();
+        }
+
+        if (type == EnemyType.EnemyB || type == EnemyType.EnemyC) {
+            Fever();
+        }
+
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void GetDamage(float damage)
+    {
+        GetDamage(damage, EnemyType.EnemyA);
+    }
+
+    public void PowerDown()
+    {
+        if (powerUpLevel == 2)
+        {
+            weapon_2.SetActive(false);
+            weapon_1.SetActive(true);
+        }
+
+        if (powerUpLevel == 1)
+        {
+            weapon_1.SetActive(false);
+        }
+
+        powerUpLevel -= 1;
+    }
+
     public void PickUpItemEffect()
     {
         #region Strategy
@@ -153,7 +216,8 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
-
+        Debug.Log("death");
+        Destroy(gameObject);
     }
 
     public void Fever()
@@ -174,18 +238,18 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponBox()
     {
-        if (powerUpLevel == 0)
+        powerUpLevel += 1;
+
+        if (powerUpLevel == 1)
         {
-            powerUpLevel = 1;
-            var weapon = Instantiate(weapon1, weaponPoint.position, weaponPoint.rotation);
-            weapon.transform.parent = gameObject.transform;
+            //Debug.Log("Power up to level " + powerUpLevel);
+            weapon_1.SetActive(true);
         }
-        else if(powerUpLevel == 1)
+        else if(powerUpLevel == 2)
         {
-            powerUpLevel = 2;
-            Destroy(weapon1);
-            var weapon = Instantiate(weapon2, weaponPoint.position, weaponPoint.rotation);
-            weapon.transform.parent = gameObject.transform;
+            //Debug.Log("Power up to level " + powerUpLevel);
+            weapon_1.SetActive(false);
+            weapon_2.SetActive(true);
         }
     }
 

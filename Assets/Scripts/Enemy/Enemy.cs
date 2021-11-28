@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Player Reference")]
     // Player singleton object, assign manually only if player is not singleton
-    // NOTE: change all PlayerControllerTest to PlayerController later
     public PlayerController player;
 
     [Header("Enemy Data")]
@@ -71,7 +70,7 @@ public class Enemy : MonoBehaviour
         if (player == null)
         {
             // Debug.Log("Player instance assigned automatically");
-            player = PlayerController.Instance;
+            player = PlayerController.instance;
         }
 
         health = maxHealth;
@@ -92,6 +91,8 @@ public class Enemy : MonoBehaviour
 
     public void ReduceHealth(int damage)
     {
+        //Debug.Log("Enemy "+ type + " taken hit");
+
         health -= damage;
 
         // Add taking damage animation and sound effect here, if there any
@@ -111,6 +112,12 @@ public class Enemy : MonoBehaviour
     // method to check if player are nearby, return bool value
     public bool CheckIfPlayerNearby()
     {
+        // return is player already destroyed
+        if (player == null)
+        {
+            return false;
+        }
+
         // get player position and enemy position
         Vector2 playerPos = GetPlayerPosition();
         Vector2 enemyPos = gameObject.transform.position;
@@ -176,6 +183,21 @@ public class Enemy : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
 
         // source: https://youtu.be/wkKsl1Mfp5M
+    }
+
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            player.GetDamage(1, type);
+        }
+
+        // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
+        {
+            // Call reduce damage
+            ReduceHealth(1);
+        }
     }
 
     // to draw debug line

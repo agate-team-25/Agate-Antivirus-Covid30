@@ -11,8 +11,11 @@ public class CameraMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = transform.position;
-        newPosition.x = player.position.x + horizontalOffset;
-        transform.position = newPosition;
+        if (player != null)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.x = player.position.x + horizontalOffset;
+            transform.position = newPosition;
+        }
     }
 }

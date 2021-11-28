@@ -77,7 +77,9 @@ public class EnemyA : Enemy
 
             // if player nearby and enemy currently on ground, enemy will move to the player direction by jumping if player is alive
             if (onGround && playerAlive)
+            {
                 Jump();
+            }
         }
     }
 
@@ -222,6 +224,7 @@ public class EnemyA : Enemy
                 {
                     // also add damage to player here later
                     // --ADD DAMAGE TO PLAYER--
+                    player.GetDamage(1);
                 }
 
             }
@@ -230,17 +233,6 @@ public class EnemyA : Enemy
 
         // invoke onCompleted to execute superclass onDeath()
         onCompleted?.Invoke();
-    }
-
-    // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // check if enemy collide with a bullet / projectile
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
-        {
-            // Call reduce damage
-            ReduceHealth(1);
-        }
     }
 
     // to draw debug line specific for Enemy A
