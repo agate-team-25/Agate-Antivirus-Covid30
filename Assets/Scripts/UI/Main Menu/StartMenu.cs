@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StartPress : MonoBehaviour, IPointerDownHandler
+public class StartMenu : MonoBehaviour, IPointerDownHandler
 {
+    [Header("Start Text Blinking Settings")]
     // set blinking time
     [SerializeField] private float timeActive;
     [SerializeField] private float timeInactive;
@@ -14,6 +15,10 @@ public class StartPress : MonoBehaviour, IPointerDownHandler
     // Start is called before the first frame update
     void Start()
     {
+        // untuk mendapatkan data progress yang disimpan sebelumnya
+        UserDataManager.Load();
+        //Debug.Log("player telah memiliki progress sampai level :" + UserDataManager.Progress.levelProgress);
+
         counter = timeActive;
         startText.enabled = true;
     }

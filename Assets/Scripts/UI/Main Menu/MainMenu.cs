@@ -52,14 +52,19 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Memastikan data telah ke load di start menu, jika tidak maka load ulang
+        if (UserDataManager.Progress == null)
+        {
+            UserDataManager.Load();
+            //Debug.Log("player telah memiliki progress sampai level :" + UserDataManager.Progress.levelProgress);
+        }
+
         // Memastikan keduanya tidak di select sekaligus
         if (newGameSelected)
         {
             settingSelected = false;
         }
         checkMenuDisplay();
-
-
 
         newGameButton.onClick.AddListener(() =>
         {
@@ -77,6 +82,17 @@ public class MainMenu : MonoBehaviour
             newGameSelected = false;
             settingSelected = true;
             checkMenuDisplay();
+        });
+
+        exitButton.onClick.AddListener(() =>
+        {
+            //Debug.Log("Exit selected");
+
+            // cuma buat test fitur progress, hapus kalau sudah tidak dipakai
+            //UserDataManager.Progress.levelProgress += 1;
+            //UserDataManager.Save();
+
+            Application.Quit();
         });
     }
 
