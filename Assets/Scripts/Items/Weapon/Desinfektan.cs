@@ -5,11 +5,10 @@ using UnityEngine;
 public class Desinfektan : MonoBehaviour
 {
     public ParticleSystem particle;
-    private PolygonCollider2D polygonCollider2D;
 
     private void Awake()
     {
-        polygonCollider2D = GetComponent<PolygonCollider2D>();
+        particle = GetComponent<ParticleSystem>();
     }
     // Update is called once per frame
     void Update()
@@ -17,19 +16,25 @@ public class Desinfektan : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             particle.Play();            
-            polygonCollider2D.enabled = true;
         }
 
         else if (Input.GetMouseButtonUp(0))
         {
             particle.Stop();
-            polygonCollider2D.enabled = false;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnParticleCollision(GameObject other)
     {
-        //something
-        print("Hit object");
+        Debug.Log("Collide on Enemy");
+        if (other.tag == "Enemy")
+        {
+            Debug.Log("Collide on Enemy");
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.ReduceHealth(1);
+            }
+        }
     }
 }
