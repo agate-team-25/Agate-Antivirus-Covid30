@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonBones;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
 
     [Header("Power Up")]
-    public Transform weaponPoint;
+    public UnityEngine.Transform weaponPoint;
     public GameObject weapon1;
     public GameObject weapon2;
 
@@ -58,14 +59,14 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
     Rigidbody2D playerRigidbody;
-    Animator anim;
+    UnityArmatureComponent armatureComponent;
     #endregion
 
     // Start is called before the first frame update
     private void Awake()
     {
         //Mendapatkan komponen Animator
-        anim = GetComponent<Animator>();
+        armatureComponent = GetComponent<UnityArmatureComponent>();
 
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -122,6 +123,8 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
+        //armatureComponent.animation.Play("idle");
+
         Move(faceDirectionX);
     }
 
@@ -132,6 +135,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Jump");
+            Debug.Log(canJump);
+            Debug.Log(isOnGround);
             if (isOnGround && canJump)
             {
                 isJumping = true;                
@@ -216,7 +222,6 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
-        Debug.Log("death");
         Destroy(gameObject);
     }
 
