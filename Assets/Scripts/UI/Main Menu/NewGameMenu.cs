@@ -61,7 +61,7 @@ public class NewGameMenu : MonoBehaviour
             {
                 //Debug.Log("Level 2 clicked");
 
-                SceneManager.LoadScene(2);
+                //SceneManager.LoadScene(2);
             });
 
             // dan ubah image tombol level 2

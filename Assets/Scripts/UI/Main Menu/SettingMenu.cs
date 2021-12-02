@@ -19,20 +19,35 @@ public class SettingMenu : MonoBehaviour
     [SerializeField] private Button[] musicButtonList = new Button[10];
 
     [Header("Settings Default Value")]
-    [SerializeField] bool fullscreenStatus;
-    [SerializeField] float sound;
-    [SerializeField] float music;
+    [SerializeField] private bool fullscreenStatus;
+    [SerializeField] private float sound;
+    [SerializeField] private float music;
 
     // Color untuk menghilangkan/memunculkan button
     private Color32 activeColor = new Color32(255, 255, 225, 225);
     private Color32 inactiveColor = new Color32(255, 255, 225, 0);
     #endregion
 
+    #region singleton
+    // Untuk menjadikan object singleton
+    private static SettingMenu _instance = null;
+    public static SettingMenu Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<SettingMenu>();
+            }
+
+            return _instance;
+        }
+    }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
-        ChangeFullScreen(fullscreenStatus);
-
         // add listener ke button switch on/off fullscreen
         switchOn.onClick.AddListener(() =>
         {
@@ -173,6 +188,17 @@ public class SettingMenu : MonoBehaviour
     //void Update()
     //{}
 
+    private void OnEnable()
+    {
+        fullscreenStatus = Screen.fullScreen;
+        // Add/call function to get current value of sound and music
+        // --GET CURRENT VALUE OF SOUND AND MUSIC--
+
+        ChangeFullScreen(fullscreenStatus);
+        ChangeSoundVolume(sound);
+        ChangeMusicVolume(music);
+    }
+
     private void ChangeFullScreen(bool status)
     {
         // method untuk mengganti game ke fullscreen atau tidak
@@ -198,13 +224,61 @@ public class SettingMenu : MonoBehaviour
         fullscreenStatus = status;
     }
 
-    private void ChangeSoundVolume(int volume)
+    private void ChangeSoundVolume(float volume)
     {
+        //Debug.Log("Sound volume turned to " + volume);
 
+        // to show sound button less or equal to volume, and hide the rest
+        for (int i=1; i <= 10; i++)
+        {
+            if (i <= volume)
+            {
+                soundButtonList[i - 1].image.color = activeColor;
+            }
+            else
+            {
+                soundButtonList[i - 1].image.color = inactiveColor;
+            }
+        }
+
+        // change sound value
+        sound = volume;
+
+        // Add/call function to change volume of soundfx here
+        // --CHANGE VOLUME OF SOUNDFX--
     }
 
-    private void ChangeMusicVolume(int volume)
+    private void ChangeMusicVolume(float volume)
     {
+        //Debug.Log("Music volume turned to " + volume);
 
+        // to show sound button less or equal to volume, and hide the rest
+        for (int i = 1; i <= 10; i++)
+        {
+            if (i <= volume)
+            {
+                musicButtonList[i - 1].image.color = activeColor;
+            }
+            else
+            {
+                musicButtonList[i - 1].image.color = inactiveColor;
+            }
+        }
+
+        // change music value
+        music = volume;
+
+        // Add/call function to change volume of music here
+        // --CHANGE VOLUME OF MUSIC--
+    }
+
+    public float CurrentSoundValue()
+    {
+        return sound;
+    }
+
+    public float CurrentMusicValue()
+    {
+        return music;
     }
 }
