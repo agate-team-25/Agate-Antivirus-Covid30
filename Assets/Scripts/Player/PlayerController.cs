@@ -85,10 +85,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        //Mendapatkan nilai input horizontal (-1,0,1)
-        faceDirectionX = Input.GetAxisRaw("Horizontal");
-
+    {        
         // raycast ground
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, groundLayerMask);
         if (hit)
@@ -130,6 +127,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Mendapatkan nilai input horizontal (-1,0,1)
+        faceDirectionX = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isOnGround && canJump)
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
     public void Move(float h)
     {
         float moveBy = h * speed;
-        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
+        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
     }
 
     public void GetDamage(float damage, EnemyType type)
@@ -229,6 +229,12 @@ public class PlayerController : MonoBehaviour
     public void Bleed()
     {
         canJump = false;
+        Invoke("CureFromBleed", 5);
+    }
+
+    public void CureFromBleed()
+    {
+        canJump = true;
     }
 
     public void Cured()
