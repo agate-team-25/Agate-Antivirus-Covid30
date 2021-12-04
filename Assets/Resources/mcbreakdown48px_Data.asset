@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac5989859b81b34fa769bd84b9226b7, type: 3}
+  m_Name: mcbreakdown48px_Data
+  m_EditorClassIdentifier: 
+  dataName: mcbreakdown48px
+  dragonBonesJSON: {fileID: 4900000, guid: 84b1ce4c5c784a44e87388852bfd6bc4, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: dcafe6c15d4dcb54dbfd10814cd21f90, type: 3}
+    texture: {fileID: 2800000, guid: 1c10c0eaa13a054428be0d9b008f0b45, type: 3}
+    material: {fileID: 2100000, guid: 68ebaca10f304f8438307538186efec2, type: 2}
+    uiMaterial: {fileID: 0}

@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
     public static bool GamePaused = false;
     public GameObject PauseMenuUI;
+    private string sceneName;
+
+    private void Awake()
+    {
+        sceneName = SceneManager.GetActiveScene().name;
+    }
 
     // Update is called once per frame
     void Update()
@@ -45,10 +52,15 @@ public class Pause : MonoBehaviour
 
     public void OnRetry()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnPlay()
+    {
+
+    }
+
+    public void OnNext()
     {
 
     }
