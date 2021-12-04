@@ -26,15 +26,21 @@ public class Desinfektan : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Collide on Enemy");
+        //Debug.Log("Collide with something");
         if (other.tag == "Enemy")
         {
-            Debug.Log("Collide on Enemy");
+            //Debug.Log("Collide on Enemy");
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.ReduceHealth(1);
             }
+        }
+
+        if (other.tag == "Projectile")
+        {
+            //Debug.Log("Collide on Projectile");
+            Destroy(other);
         }
     }
 }

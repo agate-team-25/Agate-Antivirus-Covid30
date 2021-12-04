@@ -22,21 +22,24 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     [Header("Enemies")]
-    public Transform[] enemiesPoint;
-    public Enemy[] enemies;
+    //public Transform[] enemiesPoint;
+    public List<Enemy> enemies = new List<Enemy>();
 
-    [Header("Items")]
-    public Transform[] itemsPoint;
-    public Items[] items;
+    //[Header("Items")]
+    //public Transform[] itemsPoint;
+    //public Items[] items;
 
     private int allEnemies;
     private int enemyKilled;
 
     [Header("Text")]
     public Text timerText;
-    public Text allEnemiesText;
     public Text enemyKilledText;
     public Text powerUpLevel;
+
+    [Header("UI Object")]
+    public GameObject winUI;
+    public GameObject loseUI;
 
     public float timeRemaining = 120;
     public bool timerIsRunning = false;
@@ -45,6 +48,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         timerIsRunning = true;
+        allEnemies = GetEnemyCount();
     }
 
     // Update is called once per frame
@@ -67,6 +71,10 @@ public class LevelManager : MonoBehaviour
 
         DisplayTime(timeRemaining);
         #endregion
+
+        enemyKilled = allEnemies - GetEnemyCount();
+        enemyKilledText.text = "" + enemyKilled + "/" + allEnemies;
+        //Debug.Log("remaining enemies :" + allEnemies);
     }
 
     void InstantiateAllEnemies()
@@ -80,5 +88,24 @@ public class LevelManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public int GetEnemyCount()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+            }
+        }
+
+        return enemies.Count;
+    }
+
+    public void OnWin()
+    {
+        //Debug.Log("You win");
+        Pause.instance.Paused(winUI);
     }
 }

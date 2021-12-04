@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8536048108135295860}
   m_Layer: 0
   m_Name: P3K
-  m_TagString: Untagged
+  m_TagString: Non Physical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,9 +18,12 @@ public class WinArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
+        Debug.Log("Player got into win area");
+        int enemyCount = LevelManager.instance.GetEnemyCount();
 
+        if(collision.gameObject.tag == "Player" && enemyCount <= 0)
+        {
+            LevelManager.instance.OnWin();
         }
     }
 }

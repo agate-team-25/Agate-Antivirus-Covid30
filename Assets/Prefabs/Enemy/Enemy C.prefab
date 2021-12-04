@@ -174,15 +174,16 @@ MonoBehaviour:
   maxHealth: 2
   speed: 3
   facingLeft: 1
-  detectRangeX: 8
-  detectRangeY: 3
+  detectRangeX: 10
+  detectRangeY: 4
+  animator: {fileID: 0}
   travelRange: 5
   shootDelay: 2
-  projectileTime: 5
+  projectileTime: 2.5
   projectileSpeed: 4
   bulletPrefab: {fileID: 8960327627907720052, guid: a6c5bcc20a419764788579418ae358b5, type: 3}
   firePoint: {fileID: 4340441642153999272}
-  shootYDistance: 0.3
+  shootYDistance: 4
 --- !u!95 &7202342301065342110
 Animator:
   serializedVersion: 3

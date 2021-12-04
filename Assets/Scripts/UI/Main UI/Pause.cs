@@ -6,6 +6,22 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    #region singleton
+    public static Pause _instance = null;
+    public static Pause instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Pause>();
+            }
+
+            return _instance;
+        }
+    }
+    #endregion
+
     public static bool GamePaused = false;
     public GameObject PauseMenuUI;
     private string sceneName;
@@ -35,14 +51,21 @@ public class Pause : MonoBehaviour
     {
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = true;
         GamePaused = false;
+    }
+
+    public void Paused(GameObject ui)
+    {
+        ui.SetActive(true);
+        Time.timeScale = 0f;
+        AudioListener.pause = false;
+        GamePaused = true;
     }
 
     public void Paused()
     {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GamePaused = true;
+        Paused(PauseMenuUI);
     }
 
     public void OnBack()
@@ -53,6 +76,7 @@ public class Pause : MonoBehaviour
     public void OnRetry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Resume();
     }
 
     public void OnPlay()

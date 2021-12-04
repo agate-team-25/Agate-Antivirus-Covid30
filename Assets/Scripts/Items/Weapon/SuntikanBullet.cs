@@ -6,6 +6,7 @@ public class SuntikanBullet : MonoBehaviour
 {
     private float speed = 10f;
     public Rigidbody2D rb;
+    public float time = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -13,9 +14,24 @@ public class SuntikanBullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
+    private void Update()
+    {
+        // decrease counter
+        time -= Time.deltaTime;
+
+        if (time <= 0)
+        {
+            // destroy object if counter reach zero
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.gameObject.tag != "Non Physical")
+        {
+            Destroy(gameObject);
+        }
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -24,6 +40,11 @@ public class SuntikanBullet : MonoBehaviour
             {
                 enemy.ReduceHealth(1);
             }
+        }
+
+        if (collision.gameObject.tag == "Projectile")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }
