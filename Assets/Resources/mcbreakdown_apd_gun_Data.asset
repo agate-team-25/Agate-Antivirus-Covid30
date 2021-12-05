@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fac5989859b81b34fa769bd84b9226b7, type: 3}
-  m_Name: mcbreakdown72px_60_Data
+  m_Name: mcbreakdown_apd_gun_Data
   m_EditorClassIdentifier: 
-  dataName: mcbreakdown72px
-  dragonBonesJSON: {fileID: 4900000, guid: 0cb2e744d660e614d9396f7203b2bb1b, type: 3}
+  dataName: mcbreakdown_apd_gun
+  dragonBonesJSON: {fileID: 4900000, guid: c5ebdcaef201a1645ae73f55a767d9bd, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 36bfd48e1127e5c4da6dfcd3aa9e8954, type: 3}
-    texture: {fileID: 2800000, guid: d3ade4e594a2764409c99a78f9eaa616, type: 3}
-    material: {fileID: 2100000, guid: 992e7b1ce81d2ce4b876f8b2ff1b61cb, type: 2}
+  - textureAtlasJSON: {fileID: 4900000, guid: 74a377be580c9c448bc5da3d70a684d9, type: 3}
+    texture: {fileID: 2800000, guid: f539580857bff2e49bf9107b521de2b9, type: 3}
+    material: {fileID: 2100000, guid: ad848d1d0c1288c468dcf548c89a5e58, type: 2}
     uiMaterial: {fileID: 0}

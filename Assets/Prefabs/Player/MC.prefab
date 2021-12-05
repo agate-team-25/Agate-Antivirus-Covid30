@@ -204,8 +204,6 @@ GameObject:
   - component: {fileID: 3602597800768030585}
   - component: {fileID: 3602597800768030590}
   - component: {fileID: 3602597800768030584}
-  - component: {fileID: 1999716890617258208}
-  - component: {fileID: 8048908391755181653}
   m_Layer: 0
   m_Name: MC
   m_TagString: Player
@@ -301,59 +299,6 @@ MonoBehaviour:
   weapon2: {fileID: 3457375922892825528, guid: a4b42566eac7b444fae1c0e7afa07a09, type: 3}
   itemType: 1
   powerUpLevel: 0
---- !u!114 &1999716890617258208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3602597800768030589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dc4d6b5343a70348b2be19c1b8917a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unityData: {fileID: 11400000, guid: 0e5b66ca5e4a50d4199f408b6b329f93, type: 2}
-  armatureName: armatureName
-  armatureBaseName: 
-  isUGUI: 0
-  debugDraw: 0
-  animationName: 
-  _playTimes: 0
-  _timeScale: 1
-  _sortingMode: 0
-  _sortingLayerName: Default
-  _sortingOrder: 0
-  _zSpace: 0
-  _flipX: 0
-  _flipY: 0
-  _closeCombineMeshs: 0
---- !u!114 &8048908391755181653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3602597800768030589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152f06d588bdf4c48ab42630e23773e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotNames:
-  - tangan_kiri
-  - kaki_kiri
-  - kaki_kanan
-  - badan
-  - tangan_kanan
-  - STETOSKOP
-  - kepala
-  - mata_2
-  - mata
-  - rambut_kanan
-  - rambur_kiri
-  - kaca_mata
-  dirty: 0
 --- !u!1 &3900632126376701317
 GameObject:
   m_ObjectHideFlags: 0
