@@ -47,12 +47,17 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void Resume()
+    public void Resume(GameObject ui)
     {
-        PauseMenuUI.SetActive(false);
+        ui.SetActive(false);
         Time.timeScale = 1f;
         AudioListener.pause = true;
         GamePaused = false;
+    }
+
+    public void Resume()
+    {
+        Resume(PauseMenuUI);
     }
 
     public void Paused(GameObject ui)
@@ -79,9 +84,9 @@ public class Pause : MonoBehaviour
         Resume();
     }
 
-    public void OnPlay()
+    public void OnPlay(GameObject ui)
     {
-
+        Resume(ui);
     }
 
     public void OnNext()

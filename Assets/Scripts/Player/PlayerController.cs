@@ -135,9 +135,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Jump");
-            Debug.Log(canJump);
-            Debug.Log(isOnGround);
+            //Debug.Log("Jump");
+            //Debug.Log(canJump);
+            //Debug.Log(isOnGround);
             if (isOnGround && canJump)
             {
                 isJumping = true;                
@@ -223,6 +223,7 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         Destroy(gameObject);
+        LevelManager.instance.OnLose();
     }
 
     public void Fever()

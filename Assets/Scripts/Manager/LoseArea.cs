@@ -21,7 +21,7 @@ public class LoseArea : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            loseUI.SetActive(true);
+            LevelManager.instance.OnLose();
         }
     }
 }

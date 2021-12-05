@@ -36,18 +36,27 @@ public class LevelManager : MonoBehaviour
     public Text timerText;
     public Text enemyKilledText;
     public Text powerUpLevel;
+    
+    [Header("Win Text")]
+    public Text timerTextWin;
+    public Text enemyKilledTextWin;
+
+    [Header("Lose Text")]
+    public Text timerTextLose;
+    public Text enemyKilledTextLose;
 
     [Header("UI Object")]
     public GameObject winUI;
     public GameObject loseUI;
 
-    public float timeRemaining = 120;
+    public float timeRemaining;
     public bool timerIsRunning = false;
 
     // Start is called before the first frame update
     void Start()
     {
         timerIsRunning = true;
+        timeRemaining = 120;
         allEnemies = GetEnemyCount();
     }
 
@@ -63,9 +72,9 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                LoseCondition();
             }
         }
 
@@ -106,6 +115,23 @@ public class LevelManager : MonoBehaviour
     public void OnWin()
     {
         //Debug.Log("You win");
+        timerTextWin.text = timerText.text;
+        enemyKilledTextWin.text = enemyKilledText.text;
         Pause.instance.Paused(winUI);
+    }
+
+    public void OnLose()
+    {
+        timerTextLose.text = timerText.text;
+        enemyKilledTextLose.text = enemyKilledText.text;
+        Pause.instance.Paused(loseUI);
+    }
+
+    private void LoseCondition()
+    {
+        if(timeRemaining <= 0 && enemyKilled <= allEnemies)
+        {
+            OnLose();
+        }
     }
 }
