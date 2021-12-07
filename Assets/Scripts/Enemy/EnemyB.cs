@@ -89,11 +89,11 @@ public class EnemyB : Enemy
         // get current x position
         float currentX = transform.position.x;
 
+        // raycast gap
+        Vector3 raycastGap = new Vector3(0, raycastWidth / 2, 0);
+
         if (facingLeft)
         {
-            // raycasting above to check if enemy hit ceilling
-            Vector3 raycastGap = new Vector3(0, raycastWidth / 2, 0);
-
             // raycast from the bottom, middle, and upper to cover a wide area
             RaycastHit2D hitBottom = Physics2D.Raycast(transform.position - raycastGap, Vector2.left, raycastDistance, environmentLayer);
             RaycastHit2D hitMiddle = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, environmentLayer);
@@ -115,8 +115,13 @@ public class EnemyB : Enemy
 
         else
         {
-            // raycasting below to check if enemy hit floor
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, environmentLayer);
+            // raycast from the bottom, middle, and upper to cover a wide area
+            RaycastHit2D hitBottom = Physics2D.Raycast(transform.position - raycastGap, Vector2.right, raycastDistance, environmentLayer);
+            RaycastHit2D hitMiddle = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, environmentLayer);
+            RaycastHit2D hitUpper = Physics2D.Raycast(transform.position + raycastGap, Vector2.right, raycastDistance, environmentLayer);
+
+            // check if one of the raycast hit
+            bool hit = (hitBottom || hitMiddle || hitUpper);
 
             // check if collide with floor or current y position already below original y position
             if (hit || currentX >= rightX)
