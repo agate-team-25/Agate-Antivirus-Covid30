@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     private bool isFalling;
     private bool isfacingRight = true;
+    private bool apdActivate = false;
     private GameObject weapon_1;
     private GameObject weapon_2;
 
@@ -56,10 +57,12 @@ public class PlayerController : MonoBehaviour
 
     public int powerUpLevel = 0;    
     private float maxVelocity;
+    private float apdTimer = 10f;
 
     Vector2 movement;
     Rigidbody2D playerRigidbody;
     UnityArmatureComponent armatureComponent;
+    PolygonCollider2D apd;
     #endregion
 
     // Start is called before the first frame update
@@ -68,6 +71,9 @@ public class PlayerController : MonoBehaviour
         //Mendapatkan komponen Animator
         armatureComponent = GetComponent<UnityArmatureComponent>();
 
+        //Mendapatkan komponen Polygon collider
+        apd = GetComponent<PolygonCollider2D>();
+
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody2D>();
         maxVelocity = playerRigidbody.velocity.y + jumpAccel;
@@ -75,9 +81,11 @@ public class PlayerController : MonoBehaviour
         //Assign health
         health = maxHealth;
 
+        //Instantiate weapon 1
         weapon_1 = Instantiate(weapon1, weaponPoint.position, weaponPoint.rotation);
         weapon_1.transform.parent = gameObject.transform;
 
+        //Instantiate weapon 2
         weapon_2 = Instantiate(weapon2, weaponPoint.position, weaponPoint.rotation);
         weapon_2.transform.parent = gameObject.transform;
 
@@ -101,6 +109,8 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
 
+        #region jump
+        //Jump handle
         Vector2 velocityVector = playerRigidbody.velocity;
         
         if (isJumping && canJump)
@@ -108,7 +118,9 @@ public class PlayerController : MonoBehaviour
             velocityVector.y += jumpAccel;
             isJumping = false;
         }
+        #endregion
 
+        #region move
         if (velocityVector.y <= maxVelocity)
         {
             playerRigidbody.velocity = velocityVector;
@@ -123,9 +135,22 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
+        if (apdActivate)
+        {
+            apdTimer -= Time.deltaTime;
+
+            //Debug.Log("" + counter);
+
+            if (apdTimer <= 0)
+            {
+                apd.enabled = false;
+            }
+        }
+
         //armatureComponent.animation.Play("idle");
 
         Move(faceDirectionX);
+        #endregion
     }
 
     private void Update()
@@ -133,13 +158,11 @@ public class PlayerController : MonoBehaviour
         //Mendapatkan nilai input horizontal (-1,0,1)
         faceDirectionX = Input.GetAxisRaw("Horizontal");
 
+        //Jump input key
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-            //Debug.Log("Jump");
-            //Debug.Log(canJump);
-            //Debug.Log(isOnGround);
             if (isOnGround && canJump)
-            {
+            {                
                 isJumping = true;                
             }
         }      
@@ -162,25 +185,28 @@ public class PlayerController : MonoBehaviour
     public void GetDamage(float damage, EnemyType type)
     {
         //Debug.Log("Player taken hit from " + type);
-
-        if (powerUpLevel <= 0)
+        if (apdActivate == false)
         {
-            health -= damage;
-        }
+            if (powerUpLevel <= 0)
+            {
+                health -= damage;
+            }
 
-        else
-        {
-            PowerDown();
-        }
+            else
+            {
+                PowerDown();
+            }
 
-        if (type == EnemyType.EnemyB || type == EnemyType.EnemyC) {
-            Fever();
-        }
+            if (type == EnemyType.EnemyB || type == EnemyType.EnemyC)
+            {
+                Fever();
+            }
 
-        if (health <= 0)
-        {
-            Death();
-        }
+            if (health <= 0)
+            {
+                Death();
+            }
+        }        
     }
 
     public void GetDamage(float damage)
@@ -266,9 +292,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void APDBox()
+    public void Immune()
     {
-
+        apdActivate = true;
+        apd.enabled = true;
     }
 }
 

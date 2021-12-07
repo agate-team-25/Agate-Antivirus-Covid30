@@ -15,6 +15,7 @@ public class CameraMoveController : MonoBehaviour
         {
             Vector3 newPosition = transform.position;
             newPosition.x = player.position.x + horizontalOffset;
+            newPosition.y = player.position.y;
             transform.position = newPosition;
         }
     }
