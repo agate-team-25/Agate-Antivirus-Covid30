@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon1;
     public GameObject weapon2;
 
+    [Header("Animation")]
+    public Animator animator;
+
     public ItemType itemType;
 
     //boolean field
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //Mendapatkan komponen Animator
+        animator = GetComponent<Animator>();
         armatureComponent = GetComponent<UnityArmatureComponent>();
 
         //Mendapatkan komponen Polygon collider
@@ -304,4 +308,14 @@ public enum ItemType
     P3K,
     WeaponBox,
     APDBox
+}
+
+public enum PlayerAnimationType
+{
+    Common,
+    Suntikan,
+    Desinfektan,
+    APDCommon,
+    APDSuntikan,
+    APDDesinfektan
 }
