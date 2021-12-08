@@ -20,9 +20,14 @@ public class Sound {
 
 	public bool loop = false;
 
+	// is the sound will be stopped when paused or not, used for UI sounds
+	public bool ignorePause;
+
 	public AudioMixerGroup mixerGroup;
 
 	[HideInInspector]
 	public AudioSource source;
 
 }
+
+// source: Brackeys

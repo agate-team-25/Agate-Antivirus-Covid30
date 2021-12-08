@@ -20,8 +20,13 @@ public class SettingMenu : MonoBehaviour
 
     [Header("Settings Default Value")]
     [SerializeField] private bool fullscreenStatus;
+    [Range(0f, 1f)]
     [SerializeField] private float sound;
+    [Range(0f, 1f)]
     [SerializeField] private float music;
+
+    // to save audio manager
+    private AudioManager audioManager;
 
     // Color untuk menghilangkan/memunculkan button
     private Color32 activeColor = new Color32(255, 255, 225, 225);
@@ -45,6 +50,15 @@ public class SettingMenu : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        // Get audio manager
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,122 +78,122 @@ public class SettingMenu : MonoBehaviour
         soundButtonList[0].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 1");
-            ChangeSoundVolume(1);
+            ChangeSoundVolume(0.1f);
         });
 
         soundButtonList[1].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 2");
-            ChangeSoundVolume(2);
+            ChangeSoundVolume(0.2f);
         });
 
         soundButtonList[2].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 3");
-            ChangeSoundVolume(3);
+            ChangeSoundVolume(0.3f);
         });
 
         soundButtonList[3].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 4");
-            ChangeSoundVolume(4);
+            ChangeSoundVolume(0.4f);
         });
 
         soundButtonList[4].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 5");
-            ChangeSoundVolume(5);
+            ChangeSoundVolume(0.5f);
         });
 
         soundButtonList[5].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 6");
-            ChangeSoundVolume(6);
+            ChangeSoundVolume(0.6f);
         });
 
         soundButtonList[6].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 7");
-            ChangeSoundVolume(7);
+            ChangeSoundVolume(0.7f);
         });
 
         soundButtonList[7].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 8");
-            ChangeSoundVolume(8);
+            ChangeSoundVolume(0.8f);
         });
 
         soundButtonList[8].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 9");
-            ChangeSoundVolume(9);
+            ChangeSoundVolume(0.9f);
         });
 
         soundButtonList[9].onClick.AddListener(() =>
         {
             //Debug.Log("Sound volume turned to 10");
-            ChangeSoundVolume(10);
+            ChangeSoundVolume(1f);
         });
 
         // add listener ke button music volume
         musicButtonList[0].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 1");
-            ChangeMusicVolume(1);
+            ChangeMusicVolume(0.1f);
         });
 
         musicButtonList[1].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 2");
-            ChangeMusicVolume(2);
+            ChangeMusicVolume(0.2f);
         });
 
         musicButtonList[2].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 3");
-            ChangeMusicVolume(3);
+            ChangeMusicVolume(0.3f);
         });
 
         musicButtonList[3].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 4");
-            ChangeMusicVolume(4);
+            ChangeMusicVolume(0.4f);
         });
 
         musicButtonList[4].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 5");
-            ChangeMusicVolume(5);
+            ChangeMusicVolume(0.5f);
         });
 
         musicButtonList[5].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 6");
-            ChangeMusicVolume(6);
+            ChangeMusicVolume(0.6f);
         });
 
         musicButtonList[6].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 7");
-            ChangeMusicVolume(7);
+            ChangeMusicVolume(0.7f);
         });
 
         musicButtonList[7].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 8");
-            ChangeMusicVolume(8);
+            ChangeMusicVolume(0.8f);
         });
 
         musicButtonList[8].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 9");
-            ChangeMusicVolume(9);
+            ChangeMusicVolume(0.9f);
         });
 
         musicButtonList[9].onClick.AddListener(() =>
         {
             //Debug.Log("Music volume turned to 10");
-            ChangeMusicVolume(10);
+            ChangeMusicVolume(1f);
         });
 
     }
@@ -190,9 +204,19 @@ public class SettingMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        // To get current status of fullscreen
         fullscreenStatus = Screen.fullScreen;
+        
+        // to make sure the audio manager is stil referenced
+        if (audioManager == null)
+        {
+            //Debug.Log("Audio Manager not found");
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         // Add/call function to get current value of sound and music
-        // --GET CURRENT VALUE OF SOUND AND MUSIC--
+        music = audioManager.musicVol;
+        sound = audioManager.soundVol;
 
         ChangeFullScreen(fullscreenStatus);
         ChangeSoundVolume(sound);
@@ -231,7 +255,10 @@ public class SettingMenu : MonoBehaviour
         // to show sound button less or equal to volume, and hide the rest
         for (int i=1; i <= 10; i++)
         {
-            if (i <= volume)
+            // multiply vol by 10 to similarize the scale
+            float vol10 = volume * 10;
+
+            if (i <= vol10)
             {
                 soundButtonList[i - 1].image.color = activeColor;
             }
@@ -245,7 +272,7 @@ public class SettingMenu : MonoBehaviour
         sound = volume;
 
         // Add/call function to change volume of soundfx here
-        // --CHANGE VOLUME OF SOUNDFX--
+        audioManager.SetSoundVol(volume);
     }
 
     private void ChangeMusicVolume(float volume)
@@ -255,7 +282,10 @@ public class SettingMenu : MonoBehaviour
         // to show sound button less or equal to volume, and hide the rest
         for (int i = 1; i <= 10; i++)
         {
-            if (i <= volume)
+            // multiply vol by 10 to similarize the scale
+            float vol10 = volume * 10;
+
+            if (i <= vol10)
             {
                 musicButtonList[i - 1].image.color = activeColor;
             }
@@ -269,7 +299,7 @@ public class SettingMenu : MonoBehaviour
         music = volume;
 
         // Add/call function to change volume of music here
-        // --CHANGE VOLUME OF MUSIC--
+        audioManager.SetMusicVol(volume);
     }
 
     public float CurrentSoundValue()
