@@ -36,10 +36,10 @@ public class EnemyA : Enemy
 
     // status if enemy is on the ground or not
     private bool onGround;
-    #endregion
 
     // status if enemy has exploded or not
     private bool hasExploded;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -153,6 +153,7 @@ public class EnemyA : Enemy
 
         // Add jump animation and sound effect here later
         // --JUMP ANIMATION AND SFX--
+        //FindObjectOfType<AudioManager>().PlaySound("EnemyA_Jump");
 
         // add force to rigidbody to jump
         EnemyRigidBody.AddForce(jumpForce);
