@@ -14,9 +14,11 @@ public class SettingMenu : MonoBehaviour
 
     [Header("Sound FX Settings")]
     [SerializeField] private Button[] soundButtonList = new Button[10];
+    [SerializeField] private Button muteSoundButton;
 
     [Header("Music Settings")]
     [SerializeField] private Button[] musicButtonList = new Button[10];
+    [SerializeField] private Button muteMusicButton;
 
     [Header("Settings Default Value")]
     [SerializeField] private bool fullscreenStatus;
@@ -135,6 +137,12 @@ public class SettingMenu : MonoBehaviour
             ChangeSoundVolume(1f);
         });
 
+        muteSoundButton.onClick.AddListener(() =>
+        {
+            //Debug.Log("Sound volume turned to 10");
+            ChangeSoundVolume(0f);
+        });
+
         // add listener ke button music volume
         musicButtonList[0].onClick.AddListener(() =>
         {
@@ -194,6 +202,12 @@ public class SettingMenu : MonoBehaviour
         {
             //Debug.Log("Music volume turned to 10");
             ChangeMusicVolume(1f);
+        });
+
+        muteMusicButton.onClick.AddListener(() =>
+        {
+            //Debug.Log("Music volume turned to 10");
+            ChangeMusicVolume(0f);
         });
 
     }
