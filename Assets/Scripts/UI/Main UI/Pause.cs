@@ -51,7 +51,7 @@ public class Pause : MonoBehaviour
     {
         ui.SetActive(false);
         Time.timeScale = 1f;
-        AudioListener.pause = true;
+        AudioListener.pause = false;
         GamePaused = false;
     }
 
@@ -64,7 +64,7 @@ public class Pause : MonoBehaviour
     {
         ui.SetActive(true);
         Time.timeScale = 0f;
-        AudioListener.pause = false;
+        AudioListener.pause = true;
         GamePaused = true;
     }
 

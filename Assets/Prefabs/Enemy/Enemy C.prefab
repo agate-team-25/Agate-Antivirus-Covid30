@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 7417815135302586729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.67, y: -4.01, z: 0.15742493}
-  m_LocalScale: {x: 0.079907864, y: 0.079907864, z: 0.079907864}
+  m_LocalScale: {x: 0.12216314, y: 0.12216314, z: 0.12216314}
   m_Children:
   - {fileID: 4340441642153999272}
   m_Father: {fileID: 0}
@@ -174,16 +174,16 @@ MonoBehaviour:
   maxHealth: 1
   speed: 3
   facingLeft: 1
-  detectRangeX: 7
+  detectRangeX: 9
   detectRangeY: 3
   animator: {fileID: 0}
-  travelRange: 5
+  travelRange: 7
   shootDelay: 2
   projectileTime: 5
   projectileSpeed: 4
   bulletPrefab: {fileID: 8960327627907720052, guid: a6c5bcc20a419764788579418ae358b5, type: 3}
   firePoint: {fileID: 4340441642153999272}
-  shootYDistance: 0.3
+  shootYDistance: 1
 --- !u!95 &7202342301065342110
 Animator:
   serializedVersion: 3

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8960327627907720052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.391449, y: 0.21980906, z: 1}
+  m_LocalScale: {x: 0.72368973, y: 0.4063711, z: 1.8487458}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRigidBody: {fileID: 8960327627907720048}
+  projectileCollider: {fileID: 7536657096997322852}
+  projectileTrigger: {fileID: 8875768749011968126}
   player: {fileID: 0}
 --- !u!50 &8960327627907720048
 Rigidbody2D:

@@ -194,6 +194,15 @@ public class Enemy : MonoBehaviour
             player.GetDamage(1, type);
         }
 
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Collider2D collider = collision.gameObject.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), EnemyCollider);
+            }
+        }
+
         // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
         //if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Projectile")
         //{
