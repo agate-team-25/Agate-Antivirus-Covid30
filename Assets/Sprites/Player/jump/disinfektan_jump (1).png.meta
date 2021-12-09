@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 0f9eb381d88621641b932cfb16db60ef
+guid: cfe519c090d319949968415c1adf05bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4229085835412985654
-    second: apd_gun_walk_0
+      213: 6875864681153273882
+    second: disinfektan_jump (1)_0
   - first:
-      213: -4380678073021070242
-    second: apd_gun_walk_1
+      213: 8930642345421493157
+    second: disinfektan_jump (1)_1
   - first:
-      213: 1300270399465337151
-    second: apd_gun_walk_2
+      213: -1881455697040491973
+    second: disinfektan_jump (1)_2
   - first:
-      213: 1907007288528954350
-    second: apd_gun_walk_3
+      213: -755443266353272861
+    second: disinfektan_jump (1)_3
   - first:
-      213: 4604354672246130947
-    second: apd_gun_walk_4
+      213: -7033293326238826869
+    second: disinfektan_jump (1)_4
   - first:
-      213: -516558213323377338
-    second: apd_gun_walk_5
+      213: 9022306397570118417
+    second: disinfektan_jump (1)_5
   - first:
-      213: -4840135374325810981
-    second: apd_gun_walk_6
+      213: -5955247069378217217
+    second: disinfektan_jump (1)_6
   - first:
-      213: -3450739467689117364
-    second: apd_gun_walk_7
+      213: -5566855785408781962
+    second: disinfektan_jump (1)_7
   - first:
-      213: -7667537602514635945
-    second: apd_gun_walk_8
+      213: -1035591448719321266
+    second: disinfektan_jump (1)_8
   - first:
-      213: -5863034850480792597
-    second: apd_gun_walk_9
+      213: -4075432664959258164
+    second: disinfektan_jump (1)_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: apd_gun_walk_0
+      name: disinfektan_jump (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 262
-        height: 491
+        width: 265
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6375d60292bb0ba30800000000000000
-      internalID: 4229085835412985654
+      spriteID: a10abc36f7afb6f50800000000000000
+      internalID: 6875864681153273882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_1
+      name: disinfektan_jump (1)_1
       rect:
         serializedVersion: 2
-        x: 338
+        x: 340
         y: 0
-        width: 264
-        height: 490
+        width: 267
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,125 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e548c3e9084b433c0800000000000000
-      internalID: -4380678073021070242
+      spriteID: 5a3d8e685e300fb70800000000000000
+      internalID: 8930642345421493157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_2
+      name: disinfektan_jump (1)_2
       rect:
         serializedVersion: 2
-        x: 678
-        y: 0
-        width: 264
-        height: 497
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3136180a0d7b0210800000000000000
-      internalID: 1300270399465337151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_3
-      rect:
-        serializedVersion: 2
-        x: 1018
-        y: 0
-        width: 264
-        height: 497
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee369d0760d077a10800000000000000
-      internalID: 1907007288528954350
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_4
-      rect:
-        serializedVersion: 2
-        x: 1358
-        y: 0
-        width: 264
-        height: 497
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3090423fd24f5ef30800000000000000
-      internalID: 4604354672246130947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_5
-      rect:
-        serializedVersion: 2
-        x: 1697
-        y: 0
-        width: 264
-        height: 497
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 645bc05ba01d4d8f0800000000000000
-      internalID: -516558213323377338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_6
-      rect:
-        serializedVersion: 2
-        x: 2037
-        y: 0
-        width: 264
-        height: 497
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd8f18c658264dcb0800000000000000
-      internalID: -4840135374325810981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_7
-      rect:
-        serializedVersion: 2
-        x: 2376
+        x: 683
         y: 0
         width: 265
-        height: 497
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4938f7acb28c10d0800000000000000
-      internalID: -3450739467689117364
+      spriteID: b3a344d030ab3e5e0800000000000000
+      internalID: -1881455697040491973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_8
+      name: disinfektan_jump (1)_3
       rect:
         serializedVersion: 2
-        x: 2718
+        x: 1023
         y: 0
-        width: 262
-        height: 497
+        width: 268
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7533a24cc2f679590800000000000000
-      internalID: -7667537602514635945
+      spriteID: 3e76d0d0a502485f0800000000000000
+      internalID: -755443266353272861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_9
+      name: disinfektan_jump (1)_4
       rect:
         serializedVersion: 2
-        x: 3056
+        x: 1366
         y: 0
-        width: 262
-        height: 491
+        width: 267
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,8 +219,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beb5b5ffdd052aea0800000000000000
-      internalID: -5863034850480792597
+      spriteID: b8eb868dbf8b46e90800000000000000
+      internalID: -7033293326238826869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: disinfektan_jump (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 0
+        width: 266
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 113b6e9cddba53d70800000000000000
+      internalID: 9022306397570118417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: disinfektan_jump (1)_6
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 0
+        width: 267
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa7608b756ba5da0800000000000000
+      internalID: -5955247069378217217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: disinfektan_jump (1)_7
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 0
+        width: 267
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671a1ea582e8eb2b0800000000000000
+      internalID: -5566855785408781962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: disinfektan_jump (1)_8
+      rect:
+        serializedVersion: 2
+        x: 2734
+        y: 0
+        width: 266
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4717ae6017d0a1f0800000000000000
+      internalID: -1035591448719321266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: disinfektan_jump (1)_9
+      rect:
+        serializedVersion: 2
+        x: 3075
+        y: 0
+        width: 265
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1741375972177c0800000000000000
+      internalID: -4075432664959258164
       vertices: []
       indices: 
       edges: []

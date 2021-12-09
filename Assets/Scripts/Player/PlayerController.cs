@@ -44,10 +44,11 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     public ItemType itemType;
+    //public PlayerAnimationType animType = PlayerAnimationType.Common;
+    //public State state = State.Idle;
 
     //boolean field
     private float health;
-    private bool isJumping;
     private bool canJump = true;
     private bool isOnGround;
     private bool isFalling;
@@ -65,7 +66,6 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
     Rigidbody2D playerRigidbody;
     UnityArmatureComponent armatureComponent;
-    PolygonCollider2D apd;
     #endregion
 
     // Start is called before the first frame update
@@ -74,9 +74,6 @@ public class PlayerController : MonoBehaviour
         //Mendapatkan komponen Animator
         animator = GetComponent<Animator>();
         armatureComponent = GetComponent<UnityArmatureComponent>();
-
-        //Mendapatkan komponen Polygon collider
-        apd = GetComponent<PolygonCollider2D>();
 
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -113,23 +110,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
 
-        #region jump
-        //Jump handle
-        Vector2 velocityVector = playerRigidbody.velocity;
-        
-        if (isJumping && canJump)
-        {
-            velocityVector.y += jumpAccel;
-            isJumping = false;
-        }
-        #endregion
-
         #region move
-        if (velocityVector.y <= maxVelocity)
-        {
-            playerRigidbody.velocity = velocityVector;
-        }
-
         if (faceDirectionX > 0 && !isfacingRight)
         {
             Flip();
@@ -147,13 +128,11 @@ public class PlayerController : MonoBehaviour
 
             if (apdTimer <= 0)
             {
-                apd.enabled = false;
+                apdActivate = false;
             }
-        }
+        }        
 
-        //armatureComponent.animation.Play("idle");
-
-        Move(faceDirectionX);
+        Move(faceDirectionX);        
         #endregion
     }
 
@@ -161,15 +140,26 @@ public class PlayerController : MonoBehaviour
     {
         //Mendapatkan nilai input horizontal (-1,0,1)
         faceDirectionX = Input.GetAxisRaw("Horizontal");
+        Vector2 velocityVector = playerRigidbody.velocity;
 
         //Jump input key
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isOnGround && canJump)
-            {                
-                isJumping = true;                
-            }
-        }      
+            {
+                velocityVector.y += jumpAccel;
+            }            
+        }
+
+        if (velocityVector.y <= maxVelocity)
+        {
+            playerRigidbody.velocity = velocityVector;
+        }
+
+        if (powerUpLevel == 0 && apdActivate == false)
+        {
+            animator.SetBool("isGround", isOnGround);
+        }
     }
 
     private void Flip()
@@ -183,7 +173,13 @@ public class PlayerController : MonoBehaviour
     public void Move(float h)
     {
         float moveBy = h * speed;
-        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
+
+        if (powerUpLevel == 0 && apdActivate == false)
+        {
+            animator.SetBool("isWalk", h != 0);
+        }
+
+        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
     }
 
     public void GetDamage(float damage, EnemyType type)
@@ -240,11 +236,13 @@ public class PlayerController : MonoBehaviour
         switch (itemType)
         {
             case ItemType.P3K:
+                Cured();
                 break;
             case ItemType.WeaponBox:
                 WeaponBox();
                 break;
             case ItemType.APDBox:
+                Immune();
                 break;
         }
         #endregion
@@ -299,7 +297,6 @@ public class PlayerController : MonoBehaviour
     public void Immune()
     {
         apdActivate = true;
-        apd.enabled = true;
     }
 }
 
@@ -308,6 +305,14 @@ public enum ItemType
     P3K,
     WeaponBox,
     APDBox
+}
+
+public enum State
+{
+    Idle,
+    Jump,
+    Die,
+    Walk
 }
 
 public enum PlayerAnimationType

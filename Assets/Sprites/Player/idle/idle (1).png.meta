@@ -1,37 +1,34 @@
 fileFormatVersion: 2
-guid: 0f9eb381d88621641b932cfb16db60ef
+guid: 1058cfbcb22fe3647ba13375a2200309
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4229085835412985654
-    second: apd_gun_walk_0
+      213: 5606235672744479607
+    second: idle (1)_0
   - first:
-      213: -4380678073021070242
-    second: apd_gun_walk_1
+      213: 5069903921761207787
+    second: idle (1)_1
   - first:
-      213: 1300270399465337151
-    second: apd_gun_walk_2
+      213: 6335221955604160197
+    second: idle (1)_2
   - first:
-      213: 1907007288528954350
-    second: apd_gun_walk_3
+      213: 5569873470066788542
+    second: idle (1)_3
   - first:
-      213: 4604354672246130947
-    second: apd_gun_walk_4
+      213: 8170282106704815018
+    second: idle (1)_4
   - first:
-      213: -516558213323377338
-    second: apd_gun_walk_5
+      213: 6595743402262839600
+    second: idle (1)_5
   - first:
-      213: -4840135374325810981
-    second: apd_gun_walk_6
+      213: 73100894441553497
+    second: idle (1)_6
   - first:
-      213: -3450739467689117364
-    second: apd_gun_walk_7
+      213: 2752199880169828394
+    second: idle (1)_7
   - first:
-      213: -7667537602514635945
-    second: apd_gun_walk_8
-  - first:
-      213: -5863034850480792597
-    second: apd_gun_walk_9
+      213: -6141442582520356311
+    second: idle (1)_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: apd_gun_walk_0
+      name: idle (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 262
-        height: 491
+        width: 165
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6375d60292bb0ba30800000000000000
-      internalID: 4229085835412985654
+      spriteID: 77bce0924a95dcd40800000000000000
+      internalID: 5606235672744479607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_1
+      name: idle (1)_1
       rect:
         serializedVersion: 2
-        x: 338
+        x: 242
         y: 0
-        width: 264
-        height: 490
+        width: 170
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e548c3e9084b433c0800000000000000
-      internalID: -4380678073021070242
+      spriteID: be5cfed51caeb5640800000000000000
+      internalID: 5069903921761207787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_2
+      name: idle (1)_2
       rect:
         serializedVersion: 2
-        x: 678
+        x: 489
         y: 0
-        width: 264
-        height: 497
+        width: 174
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3136180a0d7b0210800000000000000
-      internalID: 1300270399465337151
+      spriteID: 5ce9a0d9dca3be750800000000000000
+      internalID: 6335221955604160197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_3
+      name: idle (1)_3
       rect:
         serializedVersion: 2
-        x: 1018
+        x: 740
         y: 0
-        width: 264
-        height: 497
+        width: 178
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee369d0760d077a10800000000000000
-      internalID: 1907007288528954350
+      spriteID: eb8043b196a2c4d40800000000000000
+      internalID: 5569873470066788542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_4
+      name: idle (1)_4
       rect:
         serializedVersion: 2
-        x: 1358
+        x: 995
         y: 0
-        width: 264
-        height: 497
+        width: 174
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3090423fd24f5ef30800000000000000
-      internalID: 4604354672246130947
+      spriteID: aa3eedcb94ca26170800000000000000
+      internalID: 8170282106704815018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_5
+      name: idle (1)_5
       rect:
         serializedVersion: 2
-        x: 1697
+        x: 1246
         y: 0
-        width: 264
-        height: 497
+        width: 172
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 645bc05ba01d4d8f0800000000000000
-      internalID: -516558213323377338
+      spriteID: 031c089bda9c88b50800000000000000
+      internalID: 6595743402262839600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_6
+      name: idle (1)_6
       rect:
         serializedVersion: 2
-        x: 2037
+        x: 1494
         y: 0
-        width: 264
-        height: 497
+        width: 170
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd8f18c658264dcb0800000000000000
-      internalID: -4840135374325810981
+      spriteID: 95eb3fd40e4b30100800000000000000
+      internalID: 73100894441553497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_7
+      name: idle (1)_7
       rect:
         serializedVersion: 2
-        x: 2376
+        x: 1741
         y: 0
-        width: 265
-        height: 497
+        width: 167
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4938f7acb28c10d0800000000000000
-      internalID: -3450739467689117364
+      spriteID: a2035609537c13620800000000000000
+      internalID: 2752199880169828394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: apd_gun_walk_8
+      name: idle (1)_8
       rect:
         serializedVersion: 2
-        x: 2718
+        x: 1985
         y: 0
-        width: 262
-        height: 497
+        width: 165
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,29 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7533a24cc2f679590800000000000000
-      internalID: -7667537602514635945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: apd_gun_walk_9
-      rect:
-        serializedVersion: 2
-        x: 3056
-        y: 0
-        width: 262
-        height: 491
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: beb5b5ffdd052aea0800000000000000
-      internalID: -5863034850480792597
+      spriteID: 922aa6c828635caa0800000000000000
+      internalID: -6141442582520356311
       vertices: []
       indices: 
       edges: []

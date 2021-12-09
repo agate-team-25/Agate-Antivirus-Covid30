@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: f9dc9291e9188924f8ebfdfd0c20cde2
+guid: ea905d384cf3e6342815229e1d79c0a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5764845327335603080
-    second: with gun (3)_0
+      213: 8757098914875501893
+    second: die_0
   - first:
-      213: -2371166884200058664
-    second: with gun (3)_1
+      213: -6103215479232170835
+    second: die_1
   - first:
-      213: 1868196057406385018
-    second: with gun (3)_2
+      213: -5062548802251577173
+    second: die_2
   - first:
-      213: -8932909901552758121
-    second: with gun (3)_3
+      213: 2613213492379772746
+    second: die_3
   - first:
-      213: -3860138091881937667
-    second: with gun (3)_4
+      213: -3911252712821790162
+    second: die_4
   - first:
-      213: -774067423794135108
-    second: with gun (3)_5
+      213: 2167553827956773973
+    second: die_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,12 +109,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: with gun (3)_0
+      name: die_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 241
+        width: 166
         height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -123,103 +123,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88bb8e02848d00050800000000000000
-      internalID: 5764845327335603080
+      spriteID: 54dec14e017778970800000000000000
+      internalID: 8757098914875501893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: with gun (3)_1
+      name: die_1
       rect:
         serializedVersion: 2
-        x: 320
+        x: 242
         y: 0
-        width: 242
-        height: 480
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d0f514284ce71fd0800000000000000
-      internalID: -2371166884200058664
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: with gun (3)_2
-      rect:
-        serializedVersion: 2
-        x: 641
-        y: 1
-        width: 242
-        height: 477
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7b2e748a6a2de910800000000000000
-      internalID: 1868196057406385018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: with gun (3)_3
-      rect:
-        serializedVersion: 2
-        x: 962
-        y: 1
-        width: 242
-        height: 479
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 792d06be5cde70480800000000000000
-      internalID: -8932909901552758121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: with gun (3)_4
-      rect:
-        serializedVersion: 2
-        x: 1283
-        y: 0
-        width: 241
-        height: 482
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df44c697bd80e6ac0800000000000000
-      internalID: -3860138091881937667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: with gun (3)_5
-      rect:
-        serializedVersion: 2
-        x: 1604
-        y: 0
-        width: 241
+        width: 234
         height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -228,8 +144,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbf7c8c77c5f145f0800000000000000
-      internalID: -774067423794135108
+      spriteID: da473bc9bd50d4ba0800000000000000
+      internalID: -6103215479232170835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_2
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 0
+        width: 333
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba827b7dfa63eb9b0800000000000000
+      internalID: -5062548802251577173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_3
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 0
+        width: 416
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47ed8f63dff34420800000000000000
+      internalID: 2613213492379772746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_4
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 0
+        width: 476
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a6971616078b9c0800000000000000
+      internalID: -3911252712821790162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_5
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 0
+        width: 497
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554d6eae8b2b41e10800000000000000
+      internalID: 2167553827956773973
       vertices: []
       indices: 
       edges: []

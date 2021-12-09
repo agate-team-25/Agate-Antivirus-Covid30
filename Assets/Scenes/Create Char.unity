@@ -421,6 +421,7 @@ MonoBehaviour:
   weaponPoint: {fileID: 1550503313}
   weapon1: {fileID: 2513033792262925928, guid: 2be17a6fb354cff4f9904bbe01118366, type: 3}
   weapon2: {fileID: 3457375922892825528, guid: a4b42566eac7b444fae1c0e7afa07a09, type: 3}
+  animator: {fileID: 0}
   itemType: 1
   powerUpLevel: 0
 --- !u!70 &2004320675

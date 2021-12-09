@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: d38b3211f2e38064fad7c964eecd72e2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7679639240204069628
+    second: apd_gun_jump_0
+  - first:
+      213: -8354820644889275877
+    second: apd_gun_jump_1
+  - first:
+      213: 419997825425879448
+    second: apd_gun_jump_2
+  - first:
+      213: 504691459838544696
+    second: apd_gun_jump_3
+  - first:
+      213: -2824728693849454353
+    second: apd_gun_jump_4
+  - first:
+      213: 6751404908075985621
+    second: apd_gun_jump_5
+  - first:
+      213: -461458247266327661
+    second: apd_gun_jump_6
+  - first:
+      213: -4011634197483472169
+    second: apd_gun_jump_7
+  - first:
+      213: 5920551756632099308
+    second: apd_gun_jump_8
+  - first:
+      213: 5530270353573862910
+    second: apd_gun_jump_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +71,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +105,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: apd_gun_jump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 258
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfaa383533f839a60800000000000000
+      internalID: 7679639240204069628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_1
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 0
+        width: 262
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b125643a3e6bd0c80800000000000000
+      internalID: -8354820644889275877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_2
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 0
+        width: 258
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89132f60cc124d500800000000000000
+      internalID: 419997825425879448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_3
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 0
+        width: 260
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b89d07536010700800000000000000
+      internalID: 504691459838544696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_4
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 261
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe80040183c8cc8d0800000000000000
+      internalID: -2824728693849454353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_5
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 0
+        width: 260
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5daa2b05efec1bd50800000000000000
+      internalID: 6751404908075985621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_6
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 0
+        width: 260
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39324054b229899f0800000000000000
+      internalID: -461458247266327661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_7
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 0
+        width: 261
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da3032b3ffc358c0800000000000000
+      internalID: -4011634197483472169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_8
+      rect:
+        serializedVersion: 2
+        x: 2693
+        y: 0
+        width: 260
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce90f5844760a2250800000000000000
+      internalID: 5920551756632099308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apd_gun_jump_9
+      rect:
+        serializedVersion: 2
+        x: 3030
+        y: 0
+        width: 256
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdd4a006977fbc40800000000000000
+      internalID: 5530270353573862910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
