@@ -97,12 +97,17 @@ public class Enemy : MonoBehaviour
 
         // Add taking damage animation and sound effect here, if there any
         // --TAKING DAMAGE ANIMATION AND SFX--
+        FindObjectOfType<AudioManager>().PlaySound("Enemy_Taking_Damage");
 
         // if health is reduced to 0, call OnDeath() method
         if (health <= 0)
         {
             // Status enemy is already dead before the dead animation began
             isAlive = false;
+
+            // Add death animation and sound effect here, or in the subclass override method
+            // --DEATH ANIMATION AND SFX--
+            FindObjectOfType<AudioManager>().PlaySound("Enemy_Death");
 
             //Debug.Log("the enemy is dead");
             OnDeath();
@@ -169,9 +174,6 @@ public class Enemy : MonoBehaviour
     // Called if enemy got killed. Need to be overridden for certain enemy types
     public virtual void OnDeath()
     {
-        // Add death animation and sound effect here, or in the subclass override method
-        // --DEATH ANIMATION AND SFX--
-
         // Destroy game object in the end
         Destroy(this.gameObject);
     }

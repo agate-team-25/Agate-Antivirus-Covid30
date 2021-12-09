@@ -47,7 +47,7 @@ MonoBehaviour:
   musics:
   - name: Menu_Music
     clip: {fileID: 8300000, guid: 70a8409724af41f44a85a0ff8b762fd5, type: 3}
-    volume: 1
+    volume: 0.6
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -66,9 +66,49 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   sounds:
-  - name: EnemyA_Jump
-    clip: {fileID: 8300000, guid: 6b6a812e1cc2f77459a819828026cf49, type: 3}
+  - name: Enemy_Death
+    clip: {fileID: 8300000, guid: a908f1014d4a46842b787e30c3f27ef6, type: 3}
     volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Shoot
+    clip: {fileID: 8300000, guid: f1a0c96e4ffdd404e83f6b96074b786d, type: 3}
+    volume: 0.1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: EnemyA_Jump
+    clip: {fileID: 8300000, guid: 4fe877a091b841548972d49c07ded098, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: EnemyA_Explode
+    clip: {fileID: 8300000, guid: a1078bb9a20432e4fbcc01d13bfe0fb7, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Taking_Damage
+    clip: {fileID: 8300000, guid: 4dc548ff03350e342aef732bdf9e3ff0, type: 3}
+    volume: 0.2
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

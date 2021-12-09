@@ -149,6 +149,9 @@ public class EnemyC : Enemy
             // instantiate projectile prefab
             GameObject projectile = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+            // Add shooting sfx
+            FindObjectOfType<AudioManager>().PlaySound("Enemy_Shoot");
+
             // set projectile type based on enemy c and immediately launch it
             projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
 

@@ -153,7 +153,7 @@ public class EnemyA : Enemy
 
         // Add jump animation and sound effect here later
         // --JUMP ANIMATION AND SFX--
-        //FindObjectOfType<AudioManager>().PlaySound("EnemyA_Jump");
+        FindObjectOfType<AudioManager>().PlaySound("EnemyA_Jump");
 
         // add force to rigidbody to jump
         EnemyRigidBody.AddForce(jumpForce);
@@ -187,9 +187,10 @@ public class EnemyA : Enemy
 
         // delay before explosion occur
         yield return new WaitForSeconds(explosionDelay);
-        
+
         // Maybe add exploding animation and sound effect here
         // --EXPLODE ANIMATION AND SFX--
+        FindObjectOfType<AudioManager>().PlaySound("EnemyA_Explode");
 
         // get all of the object in the explosion radius
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
