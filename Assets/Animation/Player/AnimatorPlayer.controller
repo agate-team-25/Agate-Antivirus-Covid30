@@ -340,6 +340,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -8287502937692942662}
     m_Position: {x: 710, y: 960, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8318571697505940543}
+    m_Position: {x: 745, y: 1025, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -5492132986401555075}
@@ -561,6 +564,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5fb7f0a7f5265b840bafc11cd841cc63, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &8318571697505940543
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: walk_desinfektan
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7ac16269fe2a01a4da6a205ecc731bd1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
