@@ -75,7 +75,8 @@ public class Pause : MonoBehaviour
 
     public void OnBack()
     {
-
+        Resume();
+        SceneManager.LoadScene(0);
     }
 
     public void OnRetry()

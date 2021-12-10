@@ -42,5 +42,14 @@ public class Desinfektan : MonoBehaviour
             //Debug.Log("Collide on Projectile");
             Destroy(other);
         }
+
+        if (other.tag == "Obstacle")
+        {
+            Obstacle obstacle = other.GetComponent<Obstacle>();
+            if (obstacle != null && obstacle.isDestroyable)
+            {
+                Destroy(other);
+            }
+        }
     }
 }

@@ -199,6 +199,7 @@ public class Enemy : MonoBehaviour
             Collider2D collider = collision.gameObject.GetComponent<Collider2D>();
             if (collider != null)
             {
+                //Debug.Log("enemy collide");
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), EnemyCollider);
             }
         }

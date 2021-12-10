@@ -58,6 +58,7 @@ public class LevelManager : MonoBehaviour
         timerIsRunning = true;
         timeRemaining = 120;
         allEnemies = GetEnemyCount();
+        powerUpLevel.text = "Level 0";
     }
 
     // Update is called once per frame
@@ -84,6 +85,12 @@ public class LevelManager : MonoBehaviour
         enemyKilled = allEnemies - GetEnemyCount();
         enemyKilledText.text = "" + enemyKilled + "/" + allEnemies;
         //Debug.Log("remaining enemies :" + allEnemies);
+        if (PlayerController.instance != null)
+        {
+            int powerLevel = PlayerController.instance.powerUpLevel;
+            powerUpLevel.text = "Level " + powerLevel;
+        }
+        
     }
 
     void InstantiateAllEnemies()
@@ -118,6 +125,12 @@ public class LevelManager : MonoBehaviour
         timerTextWin.text = timerText.text;
         enemyKilledTextWin.text = enemyKilledText.text;
         Pause.instance.Paused(winUI);
+
+        if (UserDataManager.Progress.levelProgress < 1)
+        {
+            UserDataManager.Progress.levelProgress = 1;
+            UserDataManager.Save();
+        }
     }
 
     public void OnLose()

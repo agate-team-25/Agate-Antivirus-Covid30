@@ -215,8 +215,10 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                animator.SetBool("die", true);
-                Invoke("Death", 2);
+                Debug.Log("Player death animation");
+                //animator.SetBool("die", true);
+                animator.Play("die");
+                Invoke("Death", 1f);
             }
         }        
     }

@@ -143,7 +143,7 @@ MonoBehaviour:
   maxHealth: 1
   speed: 5
   facingLeft: 1
-  detectRangeX: 10
+  detectRangeX: 15
   detectRangeY: 3
   animator: {fileID: 0}
   jumpForceX: 170
