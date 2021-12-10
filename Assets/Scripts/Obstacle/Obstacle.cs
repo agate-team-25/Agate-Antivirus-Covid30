@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
     [Header("Obstacle Property")]
     public ObstacleStatus obstacleStatus;
     public bool isDestroyable;
+    public float hitCount = 1;
 
     [Header("Player Reference")]
     // Player singleton object, assign manually only if player is not singleton
@@ -32,7 +33,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Obstacle hit a collider");
+        //Debug.Log("Obstacle hit a collider");
 
         // check if obstacle collide with player
         if (collision.gameObject.tag == "Player" && player != null)
@@ -47,17 +48,21 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Obstacle hit a trigger");
+        //Debug.Log("Obstacle hit a trigger");
 
         // check if bullet/projectile trigger hit the obstacle
         if (collision.gameObject.tag == "Projectile" || collision.gameObject.tag == "Bullet")
         {
             if (isDestroyable)
             {
-                // Add destroyed animation and sound effect here later
-                // --DESTROYED ANIMATION AND SFX--
-                Debug.Log("Object destroyed");
-                Destroy(gameObject);
+                hitCount -= 1;
+                if (hitCount <= 0)
+                {
+                    // Add destroyed animation and sound effect here later
+                    // --DESTROYED ANIMATION AND SFX--
+                    //Debug.Log("Object destroyed");
+                    Destroy(gameObject);
+                }
             }
         }
     }
