@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SuntikanBullet : MonoBehaviour
 {
-    private float speed = 10f;
+    private float speed = 14f;
     public Rigidbody2D rb;
     public float time = 5f;
 

@@ -7,6 +7,7 @@ public class CameraMoveController : MonoBehaviour
     [Header("Position")]
     public Transform player;
     public float horizontalOffset;
+    public float verticalOffset;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +16,7 @@ public class CameraMoveController : MonoBehaviour
         {
             Vector3 newPosition = transform.position;
             newPosition.x = player.position.x + horizontalOffset;
-            newPosition.y = player.position.y;
+            newPosition.y = player.position.y + verticalOffset;
             transform.position = newPosition;
         }
     }

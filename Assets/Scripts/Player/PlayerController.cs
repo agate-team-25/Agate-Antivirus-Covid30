@@ -128,7 +128,26 @@ public class PlayerController : MonoBehaviour
 
             if (apdTimer <= 0)
             {
+                Debug.Log("APD deactivate");
                 apdActivate = false;
+                if(powerUpLevel == 0)
+                {
+                    Debug.Log("layer changed");
+                    animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
+                }
+
+                else if(powerUpLevel == 1)
+                {
+                    animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 0f);
+                }
+
+                else if (powerUpLevel == 2)
+                {
+                    animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 1f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 0f);
+                }
             }
         }        
 
@@ -156,10 +175,7 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.velocity = velocityVector;
         }
 
-        if (powerUpLevel == 0 && apdActivate == false)
-        {
-            animator.SetBool("isGround", isOnGround);
-        }
+        animator.SetBool("isGround", isOnGround);
     }
 
     private void Flip()
@@ -173,12 +189,7 @@ public class PlayerController : MonoBehaviour
     public void Move(float h)
     {
         float moveBy = h * speed;
-
-        if (powerUpLevel == 0 && apdActivate == false)
-        {
-            animator.SetBool("isWalk", h != 0);
-        }
-
+        animator.SetBool("isWalk", h != 0);
         playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
     }
 
@@ -204,7 +215,8 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                Death();
+                animator.SetBool("die", true);
+                Invoke("Death", 2);
             }
         }        
     }
@@ -219,12 +231,16 @@ public class PlayerController : MonoBehaviour
         if (powerUpLevel == 2)
         {
             weapon_2.SetActive(false);
-            weapon_1.SetActive(true);
+            weapon_1.SetActive(true);            
+            animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
+            animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
         }
 
         if (powerUpLevel == 1)
-        {
+        {            
             weapon_1.SetActive(false);
+            animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
+            animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
         }
 
         powerUpLevel -= 1;
@@ -273,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
     public void Cured()
     {
-        speed = 5;
+        speed = 8;
         canJump = true;
     }
 
@@ -284,11 +300,27 @@ public class PlayerController : MonoBehaviour
         if (powerUpLevel == 1)
         {
             //Debug.Log("Power up to level " + powerUpLevel);
+            if (apdActivate)
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 1f);
+            }
+            else
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
+            }
             weapon_1.SetActive(true);
         }
         else if(powerUpLevel == 2)
         {
             //Debug.Log("Power up to level " + powerUpLevel);
+            if (apdActivate)
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 1f);
+            }
+            else
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 1f);
+            }
             weapon_1.SetActive(false);
             weapon_2.SetActive(true);
         }
@@ -296,7 +328,22 @@ public class PlayerController : MonoBehaviour
 
     public void Immune()
     {
+        Cured();
         apdActivate = true;
+        if (powerUpLevel == 0)
+        {
+            animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 1f);
+        }
+
+        else if(powerUpLevel == 1)
+        {
+            animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 1f);
+        }
+
+        else if(powerUpLevel == 2)
+        {
+            animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 1f);
+        }               
     }
 }
 
