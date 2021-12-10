@@ -1,0 +1,828 @@
+fileFormatVersion: 2
+guid: 119621b0960f7d44093a2b2f82886463
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5688683807375266923
+    second: sprite lompat copy_0
+  - first:
+      213: 3075625397007741338
+    second: sprite lompat copy_1
+  - first:
+      213: -8474016723843187030
+    second: sprite lompat copy_2
+  - first:
+      213: 4159580528269404288
+    second: sprite lompat copy_3
+  - first:
+      213: -7295415936217355055
+    second: sprite lompat copy_4
+  - first:
+      213: 1993182257414965561
+    second: sprite lompat copy_5
+  - first:
+      213: -145588805670458249
+    second: sprite lompat copy_6
+  - first:
+      213: -8251887702274146131
+    second: sprite lompat copy_7
+  - first:
+      213: 3105017009300655181
+    second: sprite lompat copy_8
+  - first:
+      213: -2739111323339610149
+    second: sprite lompat copy_9
+  - first:
+      213: -8655363460707006767
+    second: sprite lompat copy_10
+  - first:
+      213: -678916085157376347
+    second: sprite lompat copy_11
+  - first:
+      213: -3578527682164187653
+    second: sprite lompat copy_12
+  - first:
+      213: 5155763580858872648
+    second: sprite lompat copy_13
+  - first:
+      213: -701013296877231458
+    second: sprite lompat copy_14
+  - first:
+      213: 2773338324066484949
+    second: sprite lompat copy_15
+  - first:
+      213: -2693055024605483375
+    second: sprite lompat copy_16
+  - first:
+      213: 63195843229205784
+    second: sprite lompat copy_17
+  - first:
+      213: 6050908112464207564
+    second: sprite lompat copy_18
+  - first:
+      213: 1217535725854632889
+    second: sprite lompat copy_19
+  - first:
+      213: -1538539486084657780
+    second: sprite lompat copy_20
+  - first:
+      213: -8757921686297827407
+    second: sprite lompat copy_21
+  - first:
+      213: -1610641284372917117
+    second: sprite lompat copy_22
+  - first:
+      213: -6121168496842204327
+    second: sprite lompat copy_23
+  - first:
+      213: 6228158903958471175
+    second: sprite lompat copy_24
+  - first:
+      213: 7167840159108334602
+    second: sprite lompat copy_25
+  - first:
+      213: 3775491071205412733
+    second: sprite lompat copy_26
+  - first:
+      213: 5582683987497742664
+    second: sprite lompat copy_27
+  - first:
+      213: 914901296443202957
+    second: sprite lompat copy_28
+  - first:
+      213: -8572932574382542247
+    second: sprite lompat copy_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite lompat copy_0
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 2525
+        width: 187
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b61e5973cbd01b0800000000000000
+      internalID: -5688683807375266923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_1
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 2535
+        width: 186
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91f0d2d001deaa20800000000000000
+      internalID: 3075625397007741338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_2
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 2559
+        width: 183
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae7b9adfae366a80800000000000000
+      internalID: -8474016723843187030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_3
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 2573
+        width: 178
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 088212ab37cc9b930800000000000000
+      internalID: 4159580528269404288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_4
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 2597
+        width: 177
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc6a09dbd971ca90800000000000000
+      internalID: -7295415936217355055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_5
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 2124
+        width: 184
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93984d9e3b439ab10800000000000000
+      internalID: 1993182257414965561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_6
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 2143
+        width: 185
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77c2dbaa0c3cafdf0800000000000000
+      internalID: -145588805670458249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_7
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 2161
+        width: 182
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da0098bead76b7d80800000000000000
+      internalID: -8251887702274146131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_8
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 2172
+        width: 177
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c49e4d48c371b20800000000000000
+      internalID: 3105017009300655181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_9
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 2192
+        width: 184
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd7a71c83c8bcf9d0800000000000000
+      internalID: -2739111323339610149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_10
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1710
+        width: 186
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6c9a26ac8f1e780800000000000000
+      internalID: -8655363460707006767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_11
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1697
+        width: 188
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae45e7ea610496f0800000000000000
+      internalID: -678916085157376347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_12
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1677
+        width: 184
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd93bd6804865ec0800000000000000
+      internalID: -3578527682164187653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_13
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 1665
+        width: 177
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8433dfe09a3fc8740800000000000000
+      internalID: 5155763580858872648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_14
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 1658
+        width: 175
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92aec0ee108546f0800000000000000
+      internalID: -701013296877231458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_15
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1156
+        width: 182
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d2c5ff0380ec7620800000000000000
+      internalID: 2773338324066484949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_16
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1148
+        width: 187
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e2fc939b850aad0800000000000000
+      internalID: -2693055024605483375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_17
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 1137
+        width: 188
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81545fad84480e000800000000000000
+      internalID: 63195843229205784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_18
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 1121
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce55f38ed429f350800000000000000
+      internalID: 6050908112464207564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_19
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 1109
+        width: 179
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bba9e8ba4e85e010800000000000000
+      internalID: 1217535725854632889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_20
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 597
+        width: 178
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d030b2d7206aae0800000000000000
+      internalID: -1538539486084657780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_21
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 594
+        width: 185
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b72785b0ac957680800000000000000
+      internalID: -8757921686297827407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_22
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 583
+        width: 185
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3849f50194ad5a9e0800000000000000
+      internalID: -1610641284372917117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_23
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 575
+        width: 184
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b9867fead3d0ba0800000000000000
+      internalID: -6121168496842204327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_24
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 562
+        width: 178
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7028123668dde6650800000000000000
+      internalID: 6228158903958471175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_25
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 62
+        width: 178
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a048e6ad5a8497360800000000000000
+      internalID: 7167840159108334602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_26
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 56
+        width: 186
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f8bd7302d356430800000000000000
+      internalID: 3775491071205412733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_27
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 47
+        width: 188
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8417010228da97d40800000000000000
+      internalID: 5582683987497742664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_28
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 43
+        width: 187
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d9a0bb1e162bc00800000000000000
+      internalID: 914901296443202957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite lompat copy_29
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 40
+        width: 186
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952bd84be33d60980800000000000000
+      internalID: -8572932574382542247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
