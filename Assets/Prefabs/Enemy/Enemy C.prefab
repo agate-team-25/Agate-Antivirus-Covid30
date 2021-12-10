@@ -177,7 +177,7 @@ MonoBehaviour:
   detectRangeX: 9
   detectRangeY: 3
   animator: {fileID: 0}
-  travelRange: 7
+  travelRange: 4
   shootDelay: 2
   projectileTime: 5
   projectileSpeed: 4

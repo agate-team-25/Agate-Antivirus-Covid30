@@ -161,7 +161,7 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
   moveWithTransform: 2
-  moveWithCustomTransform: {fileID: 2868523715906481415}
+  moveWithCustomTransform: {fileID: 3457375922892825527}
   scalingMode: 1
   randomSeed: 0
   InitialModule:

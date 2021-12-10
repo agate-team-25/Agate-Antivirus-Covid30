@@ -9,6 +9,7 @@ public class Desinfektan : MonoBehaviour
     private void Awake()
     {
         particle = GetComponent<ParticleSystem>();
+        GetComponent<Renderer>().sortingLayerName = "Foreground";
     }
     // Update is called once per frame
     void Update()
