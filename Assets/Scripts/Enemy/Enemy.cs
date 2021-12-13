@@ -33,6 +33,10 @@ public class Enemy : MonoBehaviour
     public float detectRangeX = 7;
     public float detectRangeY = 3;
 
+    [Header("Knockback Component")]
+    // force of knockback to player when touching enemy
+    public float knockbackForce = 100;
+
     [Header("Animation Component")]
     public Animator animator;
 
@@ -80,6 +84,16 @@ public class Enemy : MonoBehaviour
         if (!facingLeft)
         {
             transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    private void OnEnable()
+    {
+        GameObject[] otherEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in otherEnemies)
+        {
+            Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), EnemyCollider);
         }
     }
 
@@ -192,16 +206,14 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.GetDamage(1, type);
-        }
 
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Collider2D collider = collision.gameObject.GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                //Debug.Log("enemy collide");
-                Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), EnemyCollider);
-            }
+            // Notes: knockback belum bisa diimplementasikan karena autoreset velocity dari player
+            // get knockback direction
+            //Vector2 knockbackDirection = player.transform.position - transform.position;
+
+            // give knockback to player when touching enemy
+            //Debug.Log("Knockback");
+            //player.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce);
         }
 
         // NOTES: Only for testing enemy taking damage from bullet, call ReduceHealth from the bullet object instead, remove when finished
