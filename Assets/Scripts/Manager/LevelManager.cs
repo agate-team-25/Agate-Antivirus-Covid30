@@ -52,6 +52,13 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Memastikan data telah ke load di start menu, jika tidak maka load ulang
+        if (UserDataManager.Progress == null)
+        {
+            UserDataManager.Load();
+            //Debug.Log("player telah memiliki progress sampai level :" + UserDataManager.Progress.levelProgress);
+        }
+
         timerIsRunning = true;
         timeRemaining = 120;
         allEnemies = GetEnemyCount();

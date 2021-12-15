@@ -46,5 +46,14 @@ public class SuntikanBullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+            if (obstacle != null)
+            {
+                obstacle.GetDamage(1);
+            }
+        }
     }
 }

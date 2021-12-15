@@ -252,11 +252,7 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                Debug.Log("Player death animation");
-                //animator.SetBool("die", true);
-                animator.Play("die");
-                FindObjectOfType<AudioManager>().PlaySound("Die");
-                Invoke("Death", 1f);
+                Death();
             }
         }        
     }
@@ -305,6 +301,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Death()
+    {
+        //Debug.Log("Player death animation");
+        //animator.SetBool("die", true);
+        animator.Play("die");
+        FindObjectOfType<AudioManager>().PlaySound("Die");
+        Invoke("OnLose", 1f);
+    }
+    public void OnLose()
     {
         Destroy(gameObject);
         LevelManager.instance.OnLose();

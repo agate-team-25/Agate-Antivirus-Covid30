@@ -48,9 +48,9 @@ public class Desinfektan : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
-            if (obstacle != null && obstacle.isDestroyable)
+            if (obstacle != null)
             {
-                Destroy(other);
+                obstacle.GetDamage(1);
             }
         }
     }

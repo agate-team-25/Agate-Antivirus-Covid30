@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4248317846944037079}
   - component: {fileID: 4248317846944037078}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kursi platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

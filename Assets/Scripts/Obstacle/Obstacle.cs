@@ -11,6 +11,7 @@ public class Obstacle : MonoBehaviour
     public bool isDestroyable;
     public float hitCount = 1;
     public float damage = 0;
+    public bool instantDeath = false;
 
     [Header("Player Reference")]
     // Player singleton object, assign manually only if player is not singleton
@@ -45,7 +46,13 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.tag == "Player" && player != null)
         {
             //Debug.Log("obstacle hit the player");
-            
+
+            if (instantDeath)
+            {
+                player.Death();
+                return;
+            }
+
             // check if obstacle can cause bleeding
             if (obstacleStatus == ObstacleStatus.Bleed)
             {
@@ -73,28 +80,49 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //Debug.Log("Obstacle hit a trigger");
+
+    //    // check if bullet/projectile trigger hit the obstacle
+    //    if (collision.gameObject.tag == "Projectile" || collision.gameObject.tag == "Bullet")
+    //    {
+    //        if (isDestroyable)
+    //        {
+    //            hitCount -= 1;
+    //            if (hitCount <= 0)
+    //            {
+    //                // Add destroyed animation and sound effect here later
+    //                // --DESTROYED ANIMATION AND SFX--
+    //                //Debug.Log("Object destroyed");
+    //                Destroy(gameObject);
+
+    //                // When object destroyed, will immediately spawn hidden enemy
+    //                if (hiddenObj != null)
+    //                {
+    //                    hiddenObj.SetActive(true);
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    public void GetDamage(float damage)
     {
-        //Debug.Log("Obstacle hit a trigger");
-
-        // check if bullet/projectile trigger hit the obstacle
-        if (collision.gameObject.tag == "Projectile" || collision.gameObject.tag == "Bullet")
+        if (isDestroyable)
         {
-            if (isDestroyable)
+            hitCount -= damage;
+            if (hitCount <= 0)
             {
-                hitCount -= 1;
-                if (hitCount <= 0)
-                {
-                    // Add destroyed animation and sound effect here later
-                    // --DESTROYED ANIMATION AND SFX--
-                    //Debug.Log("Object destroyed");
-                    Destroy(gameObject);
+                // Add destroyed animation and sound effect here later
+                // --DESTROYED ANIMATION AND SFX--
+                //Debug.Log("Object destroyed");
+                Destroy(gameObject);
 
-                    // When object destroyed, will immediately spawn hidden enemy
-                    if (hiddenObj != null)
-                    {
-                        hiddenObj.SetActive(true);
-                    }
+                // When object destroyed, will immediately spawn hidden enemy
+                if (hiddenObj != null)
+                {
+                    hiddenObj.SetActive(true);
                 }
             }
         }
