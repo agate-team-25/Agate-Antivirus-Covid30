@@ -116,5 +116,65 @@ MonoBehaviour:
     ignorePause: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Walk
+    clip: {fileID: 8300000, guid: 2e9d44389cd52404d8123975e6110189, type: 3}
+    volume: 0.1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Gun_Shoot
+    clip: {fileID: 8300000, guid: 55a3a4c37a32795478b41d584a9045ac, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Desinfektan
+    clip: {fileID: 8300000, guid: 916c8a96c982c784fb8621e52af8cd9f, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Hurt
+    clip: {fileID: 8300000, guid: e19be818e7a076f42a6e9ef24f24d7db, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 2bc8ff95a68d0fb419748c32b8033a33, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Die
+    clip: {fileID: 8300000, guid: 18b69a4013660ff45910caae0b36820c, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    ignorePause: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   musicVol: 1
   soundVol: 1

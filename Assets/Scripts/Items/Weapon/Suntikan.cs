@@ -13,6 +13,7 @@ public class Suntikan : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(suntikanBullet, shootPoint.position, shootPoint.rotation);
+            FindObjectOfType<AudioManager>().PlaySound("Gun_Shoot");
         }
     }
 }
