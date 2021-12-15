@@ -17,6 +17,8 @@ public class FallingObstacle : Obstacle
     public float fallDelay = 1;
     // delay before the object get destroyed
     public float destroyDelay = 2;
+    // type of obstacle, if its not a pole then false
+    public bool poleType = false;
 
     // to save object already detected player or not, already fall or not and counter for delay
     private bool playerDetected;
@@ -85,10 +87,14 @@ public class FallingObstacle : Obstacle
 
     public override void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log("Obstacle collider hit something");
         base.OnCollisionEnter2D(collision);
 
         // set damage to 0 so player didnt get damaged anymore after touching it
-        damage = 0;
+        if (!poleType)
+        {
+            damage = 0;
+        }
 
         // destroy when hitting something
         // Add hitting sound effect and maybe animation here later
