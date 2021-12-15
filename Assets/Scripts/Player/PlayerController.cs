@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
 
+    [Header("Status Effect")]
+    public GameObject bleed;
+    public GameObject fever;
+
     [Header("Movement")]
     public float speed;
 
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Power Up")]
     public UnityEngine.Transform weaponPoint;
+    public UnityEngine.Transform desinfektanPoint;
     public GameObject weapon1;
     public GameObject weapon2;
 
@@ -54,12 +59,14 @@ public class PlayerController : MonoBehaviour
     private bool isFalling;
     private bool isfacingRight = true;
     private bool apdActivate = false;
+    private bool isWalk;
     private GameObject weapon_1;
     private GameObject weapon_2;
 
     private float faceDirectionX = 0f;
 
-    public int powerUpLevel = 0;    
+    public int powerUpLevel = 0;
+    public string status = "Healthy";
     private float maxVelocity;
     private float apdTimer = 10f;
 
@@ -87,7 +94,7 @@ public class PlayerController : MonoBehaviour
         weapon_1.transform.parent = gameObject.transform;
 
         //Instantiate weapon 2
-        weapon_2 = Instantiate(weapon2, weaponPoint.position, weaponPoint.rotation);
+        weapon_2 = Instantiate(weapon2, desinfektanPoint.position, desinfektanPoint.rotation);
         weapon_2.transform.parent = gameObject.transform;
 
         weapon_1.SetActive(false);
@@ -135,18 +142,30 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("layer changed");
                     animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
                     animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 0f);
                 }
 
                 else if(powerUpLevel == 1)
                 {
                     animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
                     animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 0f);
                 }
 
                 else if (powerUpLevel == 2)
                 {
                     animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 1f);
                     animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 0f);
+                    animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
                 }
             }
         }        
@@ -165,17 +184,33 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isOnGround && canJump)
-            {
+            {                
                 velocityVector.y += jumpAccel;
+                FindObjectOfType<AudioManager>().PlaySound("Jump");
             }            
         }
+
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && faceDirectionX != 0 && isOnGround)
+        {
+            FindObjectOfType<AudioManager>().PlaySound("Walk");
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            FindObjectOfType<AudioManager>().StopSound("Walk");
+        }
+
+        //Debug mental
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+          //  addForce();
+        //}
 
         if (velocityVector.y <= maxVelocity)
         {
             playerRigidbody.velocity = velocityVector;
         }
 
-        animator.SetBool("isGround", isOnGround);
+        animator.SetBool("isGround", isOnGround);        
     }
 
     private void Flip()
@@ -190,7 +225,8 @@ public class PlayerController : MonoBehaviour
     {
         float moveBy = h * speed;
         animator.SetBool("isWalk", h != 0);
-        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
+        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
+        
     }
 
     public void GetDamage(float damage, EnemyType type)
@@ -198,6 +234,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Player taken hit from " + type);
         if (apdActivate == false)
         {
+            FindObjectOfType<AudioManager>().PlaySound("Hurt");
             if (powerUpLevel <= 0)
             {
                 health -= damage;
@@ -218,6 +255,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Player death animation");
                 //animator.SetBool("die", true);
                 animator.Play("die");
+                FindObjectOfType<AudioManager>().PlaySound("Die");
                 Invoke("Death", 1f);
             }
         }        
@@ -275,24 +313,27 @@ public class PlayerController : MonoBehaviour
     public void Fever()
     {
         //Debug.Log("Player got fever status");
-        speed = 3;
+        speed = 4;
+        status = "Fever";
+        fever.SetActive(true);
+        Invoke("Cured", 5);
     }
 
     public void Bleed()
     {
         canJump = false;
-        Invoke("CureFromBleed", 5);
-    }
-
-    public void CureFromBleed()
-    {
-        canJump = true;
+        status = "Bleed";
+        bleed.SetActive(true);
+        Invoke("Cured", 5);
     }
 
     public void Cured()
     {
         speed = 8;
         canJump = true;
+        fever.SetActive(false);
+        bleed.SetActive(false);
+        status = "Healthy";
     }
 
     private void WeaponBox()

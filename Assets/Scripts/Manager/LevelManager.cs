@@ -25,10 +25,6 @@ public class LevelManager : MonoBehaviour
     //public Transform[] enemiesPoint;
     public List<Enemy> enemies = new List<Enemy>();
 
-    //[Header("Items")]
-    //public Transform[] itemsPoint;
-    //public Items[] items;
-
     private int allEnemies;
     private int enemyKilled;
 
@@ -36,6 +32,7 @@ public class LevelManager : MonoBehaviour
     public Text timerText;
     public Text enemyKilledText;
     public Text powerUpLevel;
+    public Text statusText;
     
     [Header("Win Text")]
     public Text timerTextWin;
@@ -59,6 +56,8 @@ public class LevelManager : MonoBehaviour
         timeRemaining = 120;
         allEnemies = GetEnemyCount();
         powerUpLevel.text = "Level 0";
+        statusText.text = "Healthy";
+        statusText.color = new Color(0f, 202f / 255f, 11f / 255f);
     }
 
     // Update is called once per frame
@@ -89,12 +88,24 @@ public class LevelManager : MonoBehaviour
         {
             int powerLevel = PlayerController.instance.powerUpLevel;
             powerUpLevel.text = "Level " + powerLevel;
-        }
-        
-    }
 
-    void InstantiateAllEnemies()
-    {
+            if (PlayerController.instance.status == "Fever")
+            {
+                statusText.text = "Fever";
+                statusText.color = new Color(48f / 255f, 48f / 255f, 111f / 255f);
+            }
+            else if (PlayerController.instance.status == "Bleed")
+            {
+                statusText.text = "Bleed";
+                statusText.color = new Color(1f, 0f, 0f);
+            }
+
+            else
+            {
+                statusText.text = "Healthy";
+                statusText.color = new Color(0f, 202f / 255f, 11f / 255f);
+            }
+        }
         
     }
 

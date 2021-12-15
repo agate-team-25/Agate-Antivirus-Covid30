@@ -15,12 +15,14 @@ public class Desinfektan : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            particle.Play();            
+            particle.Play();
+            FindObjectOfType<AudioManager>().PlaySound("Desinfektan");
         }
 
         else if (Input.GetMouseButtonUp(0))
         {
             particle.Stop();
+            FindObjectOfType<AudioManager>().StopSound("Desinfektan");
         }
     }
 
