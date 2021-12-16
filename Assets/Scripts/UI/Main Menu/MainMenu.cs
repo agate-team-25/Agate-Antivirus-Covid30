@@ -109,7 +109,7 @@ public class MainMenu : MonoBehaviour
         menuPage.SetActive(true);
 
         // ubah posisi title menjadi ke pinggir
-        title.transform.localPosition = new Vector2(-164, 202);
+        title.transform.localPosition = new Vector2(-138.5f, 191);
 
     }
 
