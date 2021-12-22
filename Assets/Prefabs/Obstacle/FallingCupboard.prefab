@@ -127,7 +127,7 @@ MonoBehaviour:
   isDestroyable: 1
   hitCount: 2
   damage: 100
-  instantDeath: 0
+  instantDeath: 1
   player: {fileID: 0}
   hiddenObj: {fileID: 0}
   detectRangeX: 7
@@ -146,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 1885802505805609813}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07200c5bec140b742b928ffe49166876, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

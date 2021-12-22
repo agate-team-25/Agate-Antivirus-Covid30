@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private bool isfacingRight = true;
     private bool apdActivate = false;
     private bool isWalk;
+    private bool enableInput;
     private GameObject weapon_1;
     private GameObject weapon_2;
 
@@ -88,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         //Assign health
         health = maxHealth;
+
+        enableInput = true;
 
         //Instantiate weapon 1
         weapon_1 = Instantiate(weapon1, weaponPoint.position, weaponPoint.rotation);
@@ -135,11 +138,11 @@ public class PlayerController : MonoBehaviour
 
             if (apdTimer <= 0)
             {
-                Debug.Log("APD deactivate");
+                //Debug.Log("APD deactivate");
                 apdActivate = false;
                 if(powerUpLevel == 0)
                 {
-                    Debug.Log("layer changed");
+                    //Debug.Log("layer changed");
                     animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
                     animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
                     animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
@@ -176,6 +179,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (enableInput)
+        {
+            Movement();
+        }
+
+        else
+        {
+            playerRigidbody.velocity = new Vector2(0,0);
+        }
+    }
+
+    private void Movement()
+    {
         //Mendapatkan nilai input horizontal (-1,0,1)
         faceDirectionX = Input.GetAxisRaw("Horizontal");
         Vector2 velocityVector = playerRigidbody.velocity;
@@ -184,10 +200,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isOnGround && canJump)
-            {                
+            {
                 velocityVector.y += jumpAccel;
                 FindObjectOfType<AudioManager>().PlaySound("Jump");
-            }            
+            }
         }
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && faceDirectionX != 0 && isOnGround)
@@ -202,7 +218,7 @@ public class PlayerController : MonoBehaviour
         //Debug mental
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
-          //  addForce();
+        //  addForce();
         //}
 
         if (velocityVector.y <= maxVelocity)
@@ -210,9 +226,8 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.velocity = velocityVector;
         }
 
-        animator.SetBool("isGround", isOnGround);        
+        animator.SetBool("isGround", isOnGround);
     }
-
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -302,8 +317,25 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
+        if (apdActivate)
+        {
+            return;
+        }
+
         //Debug.Log("Player death animation");
         //animator.SetBool("die", true);
+        animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
+        animator.SetLayerWeight(animator.GetLayerIndex("APD Base Layer"), 0f);
+        animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
+        animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 0f);
+        animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
+        animator.SetLayerWeight(animator.GetLayerIndex("APD Gun Layer"), 0f);
+
+        if (isOnGround)
+        {
+            enableInput = false;
+            faceDirectionX = 0;
+        }
         animator.Play("die");
         FindObjectOfType<AudioManager>().PlaySound("Die");
         Invoke("OnLose", 1f);

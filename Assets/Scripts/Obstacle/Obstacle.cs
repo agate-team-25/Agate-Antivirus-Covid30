@@ -23,6 +23,8 @@ public class Obstacle : MonoBehaviour
     // note: object need to be set to not active first
     public GameObject hiddenObj;
 
+    private bool playerHit;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -32,6 +34,8 @@ public class Obstacle : MonoBehaviour
             // Debug.Log("Player instance assigned automatically");
             player = PlayerController.instance;
         }
+
+        playerHit = false;
     }
 
     // Update is called once per frame
@@ -47,9 +51,10 @@ public class Obstacle : MonoBehaviour
         {
             //Debug.Log("obstacle hit the player");
 
-            if (instantDeath)
+            if (instantDeath && !playerHit)
             {
                 player.Death();
+                playerHit = true;
                 return;
             }
 

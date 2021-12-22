@@ -2320,11 +2320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885802505805609809, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.35
+      value: -33.49
       objectReference: {fileID: 0}
     - target: {fileID: 1885802505805609809, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.25
+      value: 13.54
       objectReference: {fileID: 0}
     - target: {fileID: 1885802505805609809, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2361,6 +2361,10 @@ PrefabInstance:
     - target: {fileID: 1885802505805609813, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
       propertyPath: m_Name
       value: FallingCupboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885802505805609814, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
+      propertyPath: instantDeath
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb845b04625bf2d4989bf6cc9fa70a5a, type: 3}
@@ -2438,11 +2442,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8844306364909410738, guid: c29ef1f693768cc439777945b1879dd5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.93
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 8844306364909410738, guid: c29ef1f693768cc439777945b1879dd5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.94
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 8844306364909410738, guid: c29ef1f693768cc439777945b1879dd5, type: 3}
       propertyPath: m_LocalPosition.z
