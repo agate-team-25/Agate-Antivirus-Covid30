@@ -424,6 +424,16 @@ public class PlayerController : MonoBehaviour
             animator.SetLayerWeight(animator.GetLayerIndex("APD Desinfektan Layer"), 1f);
         }               
     }
+
+    public bool GetAPDStatus()
+    {
+        return apdActivate;
+    }
+
+    public float GetAPDTime()
+    {
+        return apdTimer;
+    }
 }
 
 public enum ItemType

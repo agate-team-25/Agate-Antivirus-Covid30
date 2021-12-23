@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1412482674775698626}
-  time: 5
+  time: 1
 --- !u!61 &4777690832381121672
 BoxCollider2D:
   m_ObjectHideFlags: 0
