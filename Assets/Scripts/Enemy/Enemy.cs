@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     // Enemy rigidbody, collider, and sprite renderer
     [Header("Object Component")]
     public Rigidbody2D EnemyRigidBody;
-    public CircleCollider2D EnemyCollider;
+    public Collider2D EnemyCollider;
     public SpriteRenderer EnemySprite;
 
     [Header("Player Reference")]
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         
         if (EnemyCollider == null)
         {
-            EnemyCollider = GetComponent<CircleCollider2D>();
+            EnemyCollider = GetComponent<Collider2D>();
         }
 
         if (EnemySprite == null)
