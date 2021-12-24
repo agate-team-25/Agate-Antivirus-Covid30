@@ -36,7 +36,6 @@ public class LevelManager : MonoBehaviour
     public Text armorUsedText;
     public Text durationTimeText;
 
-
     [Header("Win Text")]
     public Text timerTextWin;
     public Text enemyKilledTextWin;
@@ -49,8 +48,14 @@ public class LevelManager : MonoBehaviour
     public GameObject winUI;
     public GameObject loseUI;
 
+    [Header("Status Bar")]
+    public GameObject APDBar;
+    public GameObject bleedBar;
+    public GameObject feverBar;
+
     public float timeRemaining;
     public bool timerIsRunning = false;
+    public bool enableInput;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +68,7 @@ public class LevelManager : MonoBehaviour
         }
 
         timerIsRunning = true;
+        enableInput = true;
         timeRemaining = 120;
         allEnemies = GetEnemyCount();
         powerUpLevel.text = "Level 0";
@@ -103,27 +109,35 @@ public class LevelManager : MonoBehaviour
             {
                 statusText.text = "Fever";
                 statusText.color = new Color(48f / 255f, 48f / 255f, 111f / 255f);
+                feverBar.SetActive(true);
             }
             else if (PlayerController.instance.status == "Bleed")
             {
                 statusText.text = "Bleed";
                 statusText.color = new Color(1f, 0f, 0f);
+                bleedBar.SetActive(true);
             }
 
             else
             {
                 statusText.text = "Healthy";
                 statusText.color = new Color(0f, 202f / 255f, 11f / 255f);
+                feverBar.SetActive(false);
+                bleedBar.SetActive(false);
             }
 
             if (PlayerController.instance.GetAPDStatus())
             {
                 armorUsedText.text = "APD";
                 durationTimeText.text = "" + PlayerController.instance.GetAPDTime().ToString("F0");
+                APDBar.SetActive(true);
+                feverBar.SetActive(false);
+                bleedBar.SetActive(false);
             }
 
             else
             {
+                APDBar.SetActive(false);
                 armorUsedText.text = "None";
                 durationTimeText.text = "-";
             }
@@ -157,6 +171,7 @@ public class LevelManager : MonoBehaviour
         //Debug.Log("You win");
         timerTextWin.text = timerText.text;
         enemyKilledTextWin.text = enemyKilledText.text;
+        enableInput = false;
         Pause.instance.Paused(winUI);
 
         if (UserDataManager.Progress.levelProgress < 1)
@@ -170,6 +185,7 @@ public class LevelManager : MonoBehaviour
     {
         timerTextLose.text = timerText.text;
         enemyKilledTextLose.text = enemyKilledText.text;
+        enableInput = false;
         Pause.instance.Paused(loseUI);
     }
 

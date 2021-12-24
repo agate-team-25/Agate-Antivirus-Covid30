@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7402918143047430820}
   - component: {fileID: 21723344841270206}
   - component: {fileID: 1128260570810267515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy B
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   facingLeft: 1
   detectRangeX: 9
   detectRangeY: 3
+  knockbackForce: 100
   animator: {fileID: 0}
   travelRange: 10
   raycastDistance: 2

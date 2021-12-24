@@ -338,10 +338,12 @@ public class PlayerController : MonoBehaviour
         }
         animator.Play("die");
         FindObjectOfType<AudioManager>().PlaySound("Die");
-        Invoke("OnLose", 1f);
+        StartCoroutine(OnLose());
     }
-    public void OnLose()
+
+    public IEnumerator OnLose()
     {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
         LevelManager.instance.OnLose();
     }

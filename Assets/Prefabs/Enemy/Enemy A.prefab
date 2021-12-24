@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6542893794146913715}
   - component: {fileID: 6542893794146913725}
   - component: {fileID: 1920431691341735881}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy A
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   facingLeft: 1
   detectRangeX: 15
   detectRangeY: 3
+  knockbackForce: 100
   animator: {fileID: 0}
   jumpForceX: 170
   jumpForceY: 500

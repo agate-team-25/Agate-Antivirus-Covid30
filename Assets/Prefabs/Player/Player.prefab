@@ -9834,7 +9834,7 @@ MonoBehaviour:
   groundRaycastDistance: 2.5
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
   weaponPoint: {fileID: 7936629624965535042}
   desinfektanPoint: {fileID: 7545225390216422762}
   weapon1: {fileID: 2513033792262925928, guid: 2be17a6fb354cff4f9904bbe01118366, type: 3}
