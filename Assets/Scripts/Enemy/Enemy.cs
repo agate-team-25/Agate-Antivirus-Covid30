@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     // Enemy type
     public EnemyType type;
     // Enemy maximum health
-    public int maxHealth = 1;
+    public float maxHealth = 1f;
     // Enemy speed (not used for Enemy A)
     public int speed = 3;
 
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
 
     // Enemy current health
-    private int health;
+    private float health;
 
     // Status if enemy is still alive, might be used for something
     private bool isAlive;
@@ -103,11 +103,16 @@ public class Enemy : MonoBehaviour
         // checking is the enemy still alive moved to ReduceHealth() method so it wont get called multiple times
     }
 
-    public void ReduceHealth(int damage)
+    public void ReduceHealth(float damage)
     {
-        //Debug.Log("Enemy "+ type + " taken hit");
+        if (type == EnemyType.EnemyBoss)
+        {
+            damage *= 10;
+        }
 
         health -= damage;
+
+        //Debug.Log("Enemy " + type + " taken hit, remaining health: " + health);
 
         // Add taking damage animation and sound effect here, if there any
         // --TAKING DAMAGE ANIMATION AND SFX--
@@ -121,11 +126,24 @@ public class Enemy : MonoBehaviour
 
             // Add death animation and sound effect here, or in the subclass override method
             // --DEATH ANIMATION AND SFX--
-            FindObjectOfType<AudioManager>().PlaySound("Enemy_Death");
+            if (type == EnemyType.EnemyBoss)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("EnemyBoss_Death");
+            }
+
+            else
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Enemy_Death");
+            }
 
             //Debug.Log("the enemy is dead");
             OnDeath();
         }
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 
     // method to check if player are nearby, return bool value
