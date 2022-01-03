@@ -363,7 +363,10 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponBox()
     {
-        powerUpLevel += 1;
+        if(powerUpLevel < 2)
+        {
+            powerUpLevel += 1;
+        }        
 
         if (powerUpLevel == 1)
         {
