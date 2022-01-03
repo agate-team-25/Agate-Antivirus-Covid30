@@ -186,7 +186,8 @@ public class EnemyBoss : Enemy
 
         // direction based on enemy currently going up or down
         int direction = (facingLeft ? -1 : 1);
-        EnemyRigidBody.velocity = new Vector2(speed * direction, 0);
+        float y = EnemyRigidBody.velocity.y;
+        EnemyRigidBody.velocity = new Vector2(speed * direction, y);
     }
 
     // method to jump
@@ -273,9 +274,10 @@ public class EnemyBoss : Enemy
 
     private void SummonEnemy()
     {
+        summonCounter -= Time.deltaTime;
+
         if (summonCounter > 0 || !onGround)
         {
-            summonCounter -= Time.deltaTime;
             return;
         }
 
@@ -283,13 +285,13 @@ public class EnemyBoss : Enemy
 
         if (type == 0)
         {
-            Debug.Log("Boss enemy summon enemy type A");
+            //Debug.Log("Boss enemy summon enemy type A");
             Instantiate(summon1, summonPoint1.position, summonPoint1.rotation);
         }
 
         else
         {
-            Debug.Log("Boss enemy summon enemy type B");
+            //Debug.Log("Boss enemy summon enemy type B");
             Instantiate(summon2, summonPoint2.position, summonPoint2.rotation).FlipY();
         }
 
