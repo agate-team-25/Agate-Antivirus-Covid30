@@ -4923,6 +4923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 3457375922892825525}
+  animator: {fileID: 0}
 --- !u!1 &4880723353491154243
 GameObject:
   m_ObjectHideFlags: 0

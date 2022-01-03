@@ -52,6 +52,8 @@ public class LevelManager : MonoBehaviour
     public GameObject APDBar;
     public GameObject bleedBar;
     public GameObject feverBar;
+    public GameObject GunCd;
+    public GameObject DesinfektanCd;
 
     public float timeRemaining;
     public bool timerIsRunning = false;
@@ -104,6 +106,24 @@ public class LevelManager : MonoBehaviour
         {
             int powerLevel = PlayerController.instance.powerUpLevel;
             powerUpLevel.text = "Level " + powerLevel;
+
+            if(powerLevel == 1)
+            {                
+                GunCd.SetActive(true);
+                DesinfektanCd.SetActive(false);
+            }
+
+            else if(powerLevel == 2)
+            {                
+                DesinfektanCd.SetActive(true);
+                GunCd.SetActive(false);
+            }
+
+            else
+            {
+                GunCd.SetActive(false);
+                DesinfektanCd.SetActive(false);
+            }
 
             if (PlayerController.instance.status == "Fever")
             {

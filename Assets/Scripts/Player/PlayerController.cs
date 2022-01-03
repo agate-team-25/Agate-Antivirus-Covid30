@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
 
     [Header("Power Up")]
-    public UnityEngine.Transform weaponPoint;
-    public UnityEngine.Transform desinfektanPoint;
     public GameObject weapon1;
     public GameObject weapon2;
 
@@ -61,8 +59,6 @@ public class PlayerController : MonoBehaviour
     private bool apdActivate = false;
     private bool isWalk;
     private bool enableInput;
-    private GameObject weapon_1;
-    private GameObject weapon_2;
 
     private float faceDirectionX = 0f;
 
@@ -92,16 +88,8 @@ public class PlayerController : MonoBehaviour
 
         enableInput = true;
 
-        //Instantiate weapon 1
-        weapon_1 = Instantiate(weapon1, weaponPoint.position, weaponPoint.rotation);
-        weapon_1.transform.parent = gameObject.transform;
-
-        //Instantiate weapon 2
-        weapon_2 = Instantiate(weapon2, desinfektanPoint.position, desinfektanPoint.rotation);
-        weapon_2.transform.parent = gameObject.transform;
-
-        weapon_1.SetActive(false);
-        weapon_2.SetActive(false);
+        weapon1.SetActive(false);
+        weapon2.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -240,8 +228,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveBy = h * speed;
         animator.SetBool("isWalk", h != 0);
-        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
-        
+        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);        
     }
 
     public void GetDamage(float damage, EnemyType type)
@@ -281,15 +268,15 @@ public class PlayerController : MonoBehaviour
     {
         if (powerUpLevel == 2)
         {
-            weapon_2.SetActive(false);
-            weapon_1.SetActive(true);            
+            weapon2.SetActive(false);
+            weapon1.SetActive(true);            
             animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
             animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 0f);
         }
 
         if (powerUpLevel == 1)
         {            
-            weapon_1.SetActive(false);
+            weapon1.SetActive(false);
             animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
             animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
         }
@@ -389,7 +376,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 1f);
             }
-            weapon_1.SetActive(true);
+            weapon1.SetActive(true);
         }
         else if(powerUpLevel == 2)
         {
@@ -402,8 +389,8 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetLayerWeight(animator.GetLayerIndex("Desinfektan Layer"), 1f);
             }
-            weapon_1.SetActive(false);
-            weapon_2.SetActive(true);
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
         }
     }
 

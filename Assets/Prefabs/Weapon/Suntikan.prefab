@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2513033792262925943}
   - component: {fileID: 2513033792262925941}
   m_Layer: 0
-  m_Name: Thompson
+  m_Name: Suntikan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,3 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 2513033791127165961}
   suntikanBullet: {fileID: 1084552150748311128, guid: f6c4ae62680bdab41ab33223b5ca06ce, type: 3}
+  canShoot: 1
+  animator: {fileID: 0}

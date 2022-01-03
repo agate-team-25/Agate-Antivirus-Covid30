@@ -5,24 +5,64 @@ using UnityEngine;
 public class Desinfektan : MonoBehaviour
 {
     public ParticleSystem particle;
+    public GameObject DesinfektanCD;    
+    public float sprayTime = 5f;
+    public float sprayDelay = 2f;
 
+    private Animator animator;
+    private bool spraying;
+    private bool canSpray;
+    
     private void Awake()
     {
-        particle = GetComponent<ParticleSystem>();
+        canSpray = true;
+        particle = GetComponent<ParticleSystem>();        
+    }
+
+    private void OnEnable()
+    {
+        animator = DesinfektanCD.GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            particle.Play();
-            FindObjectOfType<AudioManager>().PlaySound("Desinfektan");
+            if (canSpray)
+            {
+                Spray();
+                spraying = true;
+            }                       
         }
 
         else if (Input.GetMouseButtonUp(0))
         {
-            particle.Stop();
-            FindObjectOfType<AudioManager>().StopSound("Desinfektan");
+            spraying = false;
+            sprayTime = 5f;
+            Stop();                 
+        }
+
+        if (spraying)
+        {
+            sprayTime -= Time.deltaTime;
+            if (sprayTime <= 0)
+            {
+                canSpray = false;
+                animator.SetBool("isCD", true);
+                Stop();                
+            }
+        }
+
+        if (canSpray == false)
+        {            
+            spraying = false;
+            sprayDelay -= Time.deltaTime;
+            if (sprayDelay <= 0)
+            {
+                animator.SetBool("isCD", false);
+                canSpray = true;
+                sprayDelay = 2f;
+            }
         }
     }
 
@@ -53,5 +93,17 @@ public class Desinfektan : MonoBehaviour
                 obstacle.GetDamage(1);
             }
         }
+    }
+
+    private void Spray()
+    {        
+        particle.Play();
+        FindObjectOfType<AudioManager>().PlaySound("Desinfektan");        
+    }
+
+    private void Stop()
+    {                
+        particle.Stop();
+        FindObjectOfType<AudioManager>().StopSound("Desinfektan");
     }
 }
