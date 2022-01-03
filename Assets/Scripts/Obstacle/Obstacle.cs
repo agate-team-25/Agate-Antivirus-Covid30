@@ -61,18 +61,15 @@ public class Obstacle : MonoBehaviour
             // check if obstacle can cause bleeding
             if (obstacleStatus == ObstacleStatus.Bleed)
             {
-                Vector2 impactDirection = player.transform.position - transform.position;
-                float explosionDistance = impactDirection.magnitude;
+                //Vector2 impactDirection = player.transform.position - transform.position;
+                //float explosionDistance = impactDirection.magnitude;
 
-                // to calculate impact base power base on player distance from the enemy
-                impactDirection /= explosionDistance;
-                float forceCalculation = 4 * 1.2f - explosionDistance;
+                //// to calculate impact base power base on player distance from the enemy
+                //impactDirection /= explosionDistance;
+                //float forceCalculation = 4 * 1.2f - explosionDistance;
 
-                // apply force to the objects with the impact calculation times explosion force
-                //obj.GetComponent<Rigidbody2D>().AddForce(impactDirection * explosionForce);
-
-                player.GetComponent<Rigidbody2D>().AddForce(impactDirection * forceCalculation * 200);
-                FindObjectOfType<AudioManager>().PlaySound("Hurt");
+                //player.GetComponent<Rigidbody2D>().AddForce(impactDirection * forceCalculation * 200);
+                
                 player.Bleed();
             }
 

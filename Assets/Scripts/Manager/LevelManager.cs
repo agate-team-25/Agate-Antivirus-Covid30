@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     [Header("Enemies")]
     //public Transform[] enemiesPoint;
     public List<Enemy> enemies = new List<Enemy>();
+    public int targetKilled = 10;
 
     private int allEnemies;
     private int enemyKilled;
@@ -100,7 +101,7 @@ public class LevelManager : MonoBehaviour
         #endregion
 
         enemyKilled = allEnemies - GetEnemyCount();
-        enemyKilledText.text = "" + enemyKilled + "/" + allEnemies;
+        enemyKilledText.text = "" + enemyKilled + "/" + targetKilled;
         //Debug.Log("remaining enemies :" + allEnemies);
         if (PlayerController.instance != null)
         {
@@ -215,5 +216,10 @@ public class LevelManager : MonoBehaviour
         {
             OnLose();
         }
+    }
+
+    public int GetEnemyOffset()
+    {
+        return allEnemies - targetKilled;
     }
 }

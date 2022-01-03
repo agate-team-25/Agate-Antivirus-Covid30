@@ -16,13 +16,13 @@ public class Suntikan : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().StopSound("Desinfektan");
         animator = GunCD.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
-        FindObjectOfType<AudioManager>().StopSound("Desinfektan");
         if (Input.GetMouseButtonDown(0))
         {
             if (canShoot)
@@ -33,13 +33,7 @@ public class Suntikan : MonoBehaviour
         }
 
         if(canShoot == false)
-        {                        
-            if (!shoot)
-            {
-                animator.SetBool("isCD", true);
-                shoot = true;
-            }
-
+        {
             delay -= Time.deltaTime;
 
             if (delay <= 0)
@@ -56,47 +50,48 @@ public class Suntikan : MonoBehaviour
     {
         Instantiate(suntikanBullet, shootPoint.position, shootPoint.rotation);
         FindObjectOfType<AudioManager>().PlaySound("Gun_Shoot");
-    }
-
-    private IEnumerator ShootDelay()
-    {
-        yield return new WaitForSeconds(delay);
-        canShoot = true;
-    }
-
-    private IEnumerator ShootDelays()
-    {
         animator.SetBool("isCD", true);
-        float counter = 0f;
-        float waitTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        while(counter < waitTime)
-        {
-            counter += Time.deltaTime;
-            yield return null;
-        }
-
-        animator.SetBool("isCD", false);
-        canShoot = true;
-        shoot = false;
     }
 
-    private IEnumerator WaitForCoolDown(System.Action onCompleted)
-    {
-        float time = 0.0f;
+    //private IEnumerator ShootDelay()
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    canShoot = true;
+    //}
 
-        // run animation on next frame for safety reason
-        yield return new WaitForEndOfFrame();
+    //private IEnumerator ShootDelays()
+    //{
+    //    animator.SetBool("isCD", true);
+    //    float counter = 0f;
+    //    float waitTime = animator.GetCurrentAnimatorStateInfo(0).length;
+    //    while(counter < waitTime)
+    //    {
+    //        counter += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        animator.SetBool("isCD", true);
+    //    animator.SetBool("isCD", false);
+    //    canShoot = true;
+    //    shoot = false;
+    //}
 
-        while (time < shootDelay)
-        {            
-            time += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
+    //private IEnumerator WaitForCoolDown(System.Action onCompleted)
+    //{
+    //    float time = 0.0f;
 
-        animator.SetBool("isCD", false);
-        canShoot = true;
-        onCompleted?.Invoke();
-    }
+    //    // run animation on next frame for safety reason
+    //    yield return new WaitForEndOfFrame();
+
+    //    animator.SetBool("isCD", true);
+
+    //    while (time < shootDelay)
+    //    {            
+    //        time += Time.deltaTime;
+    //        yield return new WaitForEndOfFrame();
+    //    }
+
+    //    animator.SetBool("isCD", false);
+    //    canShoot = true;
+    //    onCompleted?.Invoke();
+    //}
 }

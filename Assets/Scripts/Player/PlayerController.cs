@@ -346,6 +346,7 @@ public class PlayerController : MonoBehaviour
 
     public void Bleed()
     {
+        FindObjectOfType<AudioManager>().PlaySound("Hurt");
         canJump = false;
         status = "Bleed";
         bleed.SetActive(true);

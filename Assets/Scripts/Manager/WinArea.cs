@@ -20,8 +20,9 @@ public class WinArea : MonoBehaviour
     {
         Debug.Log("Player got into win area");
         int enemyCount = LevelManager.instance.GetEnemyCount();
+        int offSet = LevelManager.instance.GetEnemyOffset();
 
-        if(collision.gameObject.tag == "Player" && enemyCount <= 0)
+        if (collision.gameObject.tag == "Player" && enemyCount <= offSet)
         {
             LevelManager.instance.OnWin();
         }
