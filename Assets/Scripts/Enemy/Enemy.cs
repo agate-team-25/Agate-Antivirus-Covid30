@@ -223,8 +223,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetDamage(1, type);
-
+            if (!player.isDead)
+            {
+                player.GetDamage(1, type);
+            }
+            
             // Notes: knockback belum bisa diimplementasikan karena autoreset velocity dari player
             // get knockback direction
             //Vector2 knockbackDirection = player.transform.position - transform.position;

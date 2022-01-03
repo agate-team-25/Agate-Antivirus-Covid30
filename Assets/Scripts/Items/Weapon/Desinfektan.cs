@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Desinfektan : MonoBehaviour
 {
     public ParticleSystem particle;
-    public GameObject DesinfektanCD;    
+    public GameObject DesinfektanCD;
+    public GameObject DesinfektanSlider;
     public float sprayTime = 5f;
     public float sprayDelay = 2f;
+    public float currentDelay = 2f;
+    public float currentTime = 5f;
 
     private Animator animator;
+    private Slider slider;
     private bool spraying;
     private bool canSpray;
     
@@ -22,6 +27,8 @@ public class Desinfektan : MonoBehaviour
     private void OnEnable()
     {
         animator = DesinfektanCD.GetComponent<Animator>();
+        slider = DesinfektanSlider.GetComponent<Slider>();
+
     }
     // Update is called once per frame
     void Update()
@@ -62,6 +69,7 @@ public class Desinfektan : MonoBehaviour
                 animator.SetBool("isCD", false);
                 canSpray = true;
                 sprayDelay = 2f;
+                currentDelay = 2f;
             }
         }
     }

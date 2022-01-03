@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private float faceDirectionX = 0f;
 
+    public bool isDead;
     public int powerUpLevel = 0;
     public string status = "Healthy";
     private float maxVelocity;
@@ -77,6 +78,8 @@ public class PlayerController : MonoBehaviour
     {
         //Mendapatkan komponen Animator
         animator = GetComponent<Animator>();
+        animator.SetBool("die", false);
+        isDead = false;
         armatureComponent = GetComponent<UnityArmatureComponent>();
 
         //Mendapatkan komponen Rigidbody
@@ -161,7 +164,7 @@ public class PlayerController : MonoBehaviour
             }
         }        
 
-        Move(faceDirectionX);        
+        //Move(faceDirectionX);        
         #endregion
     }
 
@@ -176,6 +179,8 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(0,0);
         }
+
+        Move(faceDirectionX);
     }
 
     private void Movement()
@@ -194,11 +199,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && faceDirectionX != 0 && isOnGround)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) || (faceDirectionX != 0 && isOnGround) && !FindObjectOfType<AudioManager>().isPlaying("Walk"))
         {
             FindObjectOfType<AudioManager>().PlaySound("Walk");
         }
-        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || (isOnGround && faceDirectionX == 0) || !isOnGround || health <= 0)
         {
             FindObjectOfType<AudioManager>().StopSound("Walk");
         }
@@ -237,6 +242,7 @@ public class PlayerController : MonoBehaviour
         if (apdActivate == false)
         {
             FindObjectOfType<AudioManager>().PlaySound("Hurt");
+            
             if (powerUpLevel <= 0)
             {
                 health -= damage;
@@ -254,7 +260,8 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                Death();
+                isDead = true;
+                StartCoroutine(Death());
             }
         }        
     }
@@ -302,12 +309,15 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
-    public void Death()
+    public IEnumerator Death()
     {
+        yield return new WaitForEndOfFrame();
         if (apdActivate)
         {
-            return;
+            yield return null;
         }
+
+        canJump = false;
 
         //Debug.Log("Player death animation");
         //animator.SetBool("die", true);
@@ -323,8 +333,9 @@ public class PlayerController : MonoBehaviour
             enableInput = false;
             faceDirectionX = 0;
         }
-        animator.Play("die");
-        FindObjectOfType<AudioManager>().PlaySound("Die");
+
+        animator.SetBool("die", true);
+        FindObjectOfType<AudioManager>().PlaySound("Die");        
         StartCoroutine(OnLose());
     }
 

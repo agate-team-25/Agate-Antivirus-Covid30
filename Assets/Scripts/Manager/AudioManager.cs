@@ -241,6 +241,18 @@ public class AudioManager : MonoBehaviour
 		StopMusic();
 		PlayMusic(music);
     }
+
+    public bool isPlaying(string sound)
+    {
+        Sound s = Array.Find(sounds, item => item.name == sound);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return false;
+        }
+
+        return s.source.isPlaying;
+    }
 }
 
 // source: Brackeys
