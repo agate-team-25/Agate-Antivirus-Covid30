@@ -105,6 +105,8 @@ public class EnemyA : Enemy
             // Debug.Log("In the air");
             onGround = false;
         }
+
+        animator.SetBool("OnGround", onGround);
     }
 
     // method to jump
