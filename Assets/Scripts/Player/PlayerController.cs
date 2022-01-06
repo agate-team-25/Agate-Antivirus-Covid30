@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = false;
         }
-
+        
         #region move
         if (faceDirectionX > 0 && !isfacingRight)
         {
@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
             if (isOnGround && canJump)
             {
                 velocityVector.y += jumpAccel;
+                isOnGround = false;
                 FindObjectOfType<AudioManager>().PlaySound("Jump");
             }
         }
@@ -453,14 +454,4 @@ public enum State
     Jump,
     Die,
     Walk
-}
-
-public enum PlayerAnimationType
-{
-    Common,
-    Suntikan,
-    Desinfektan,
-    APDCommon,
-    APDSuntikan,
-    APDDesinfektan
 }
