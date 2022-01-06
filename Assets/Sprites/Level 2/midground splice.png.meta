@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 04bf4cff74d2c574cb4d970369bc5e17
+guid: 1956c04848b6f34428b99125b25345aa
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2909076174927732515
+    second: midground splice_0
+  - first:
+      213: 6594499866955423217
+    second: midground splice_1
+  - first:
+      213: 214984185746289652
+    second: midground splice_2
+  - first:
+      213: -3734082607009824631
+    second: midground splice_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +53,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -89,7 +101,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: midground splice_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 765
+        width: 836
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f9e1f3e5d1f5820800000000000000
+      internalID: 2909076174927732515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: midground splice_1
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 765
+        width: 584
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd1d3990be548b50800000000000000
+      internalID: 6594499866955423217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: midground splice_2
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 765
+        width: 359
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3fbb75af6cbf200800000000000000
+      internalID: 214984185746289652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: midground splice_3
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 765
+        width: 120
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980073727afdd2cc0800000000000000
+      internalID: -3734082607009824631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
