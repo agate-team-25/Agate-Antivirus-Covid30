@@ -188,11 +188,10 @@ public class PlayerController : MonoBehaviour
     {
         //Mendapatkan nilai input horizontal (-1,0,1)
         faceDirectionX = Input.GetAxisRaw("Horizontal");
-        Vector2 velocityVector = playerRigidbody.velocity;
         Vector2 jump = new Vector2(0, 1);
 
         //Jump input key
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (isOnGround && canJump)
             {
