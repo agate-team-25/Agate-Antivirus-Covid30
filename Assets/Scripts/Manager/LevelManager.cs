@@ -34,8 +34,6 @@ public class LevelManager : MonoBehaviour
     public Text enemyKilledText;
     public Text powerUpLevel;
     public Text statusText;
-    public Text armorUsedText;
-    public Text durationTimeText;
 
     [Header("Win Text")]
     public Text timerTextWin;
@@ -72,7 +70,6 @@ public class LevelManager : MonoBehaviour
 
         timerIsRunning = true;
         enableInput = true;
-        timeRemaining = 120;
         allEnemies = GetEnemyCount();
         powerUpLevel.text = "Level 0";
         statusText.text = "Healthy";
@@ -149,8 +146,6 @@ public class LevelManager : MonoBehaviour
 
             if (PlayerController.instance.GetAPDStatus())
             {
-                armorUsedText.text = "APD";
-                durationTimeText.text = "" + PlayerController.instance.GetAPDTime().ToString("F0");
                 APDBar.SetActive(true);
                 feverBar.SetActive(false);
                 bleedBar.SetActive(false);
@@ -159,8 +154,6 @@ public class LevelManager : MonoBehaviour
             else
             {
                 APDBar.SetActive(false);
-                armorUsedText.text = "None";
-                durationTimeText.text = "-";
             }
         }
         

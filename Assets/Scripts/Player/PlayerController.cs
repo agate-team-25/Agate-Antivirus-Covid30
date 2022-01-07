@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     [Header("Jump")]
-    public float jumpAccel;   
+    public float jumpForce;   
 
     [Header("Ground Raycast")]
     public float groundRaycastDistance;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public int powerUpLevel = 0;
     public string status = "Healthy";
-    private float maxVelocity;
+    private Vector2 maxForce = new Vector2(0,1);
     private float apdTimer = 10f;
 
     Vector2 movement;
@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
 
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody2D>();
-        maxVelocity = playerRigidbody.velocity.y + jumpAccel;
+        maxForce *= jumpForce*1.4f;
+        Debug.Log(maxForce);
 
         //Assign health
         health = maxHealth;
@@ -188,13 +189,16 @@ public class PlayerController : MonoBehaviour
         //Mendapatkan nilai input horizontal (-1,0,1)
         faceDirectionX = Input.GetAxisRaw("Horizontal");
         Vector2 velocityVector = playerRigidbody.velocity;
+        Vector2 jump = new Vector2(0, 1);
 
         //Jump input key
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isOnGround && canJump)
             {
-                velocityVector.y += jumpAccel;
+                //velocityVector.y += jumpForce;
+                playerRigidbody.AddForce(jump * jumpForce);
+                Debug.Log(jump);
                 isOnGround = false;
                 FindObjectOfType<AudioManager>().PlaySound("Jump");
             }
@@ -209,16 +213,18 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<AudioManager>().StopSound("Walk");
         }
 
+        
+
         //Debug mental
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //  addForce();
         //}
 
-        if (velocityVector.y <= maxVelocity)
-        {
-            playerRigidbody.velocity = velocityVector;
-        }
+        //if (velocityVector.y <= maxVelocity)
+        //{
+        //    playerRigidbody.velocity = velocityVector;
+        //}
 
         animator.SetBool("isGround", isOnGround);
     }
