@@ -145,7 +145,7 @@ public class LevelManager : MonoBehaviour
             }
 
             if (PlayerController.instance.GetAPDStatus())
-            {
+            {                
                 APDBar.SetActive(true);
                 feverBar.SetActive(false);
                 bleedBar.SetActive(false);

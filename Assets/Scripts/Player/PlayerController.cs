@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public string status = "Healthy";
     private Vector2 maxForce = new Vector2(0,1);
     private float apdTimer = 10f;
+    private float apdTimerReset = 10f;
 
     Vector2 movement;
     Rigidbody2D playerRigidbody;
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log("APD deactivate");
                 apdActivate = false;
+                apdTimer = apdTimerReset;
                 if(powerUpLevel == 0)
                 {
                     //Debug.Log("layer changed");
