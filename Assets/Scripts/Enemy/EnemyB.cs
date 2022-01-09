@@ -65,6 +65,12 @@ public class EnemyB : Enemy
 
         // call function to check if player is alive
         playerAlive = CheckPlayerIsAlive();
+
+        // stop moving if enemy dead
+        if (!CheckIsAlive())
+        {
+            StopMoving();
+        }
     }
 
     private void FixedUpdate()
@@ -75,11 +81,15 @@ public class EnemyB : Enemy
         // decrease shoot counter every time even when player is not in range
         shootCounter -= Time.deltaTime;
 
-        // check if there is player nearby and enemy still alive
-        if (playerNearby && playerAlive && CheckIsAlive())
+        // check if there is player nearby, enemy still alive, shoot counter already zero, and if enemy facing player
+        if (playerNearby && playerAlive && CheckIsAlive() && shootCounter <= 0.4 && CheckIfFacingPlayer())
         {
-            // call function to shoot at enemy
-            Shoot();
+            // start coroutine to play shoot animation, and called Shoot() function right after coroutine finish executing
+            StartCoroutine(ShootAnimation(() => { Shoot(); }));
+            //Shoot();
+
+            // reset shoot counter
+            shootCounter = shootDelay;
         }
     }
 
@@ -145,30 +155,47 @@ public class EnemyB : Enemy
         EnemyRigidBody.velocity = new Vector2(speed * direction, 0);
     }
 
-    private void Shoot()
+    // method to stop moving
+    private void StopMoving()
+    {
+        EnemyRigidBody.velocity = new Vector2(0, 0);
+    }
+
+    private bool CheckIfFacingPlayer()
     {
         // get player x position
         float playerX = GetPlayerPosition().x;
         // get enemy x position
         float currentX = transform.position.x;
         // check if enemy facing player using xnor expression
-        bool facingPlayer = (facingLeft && (playerX <= currentX)) || (!facingLeft && !(playerX <= currentX));
+        return (facingLeft && (playerX <= currentX)) || (!facingLeft && !(playerX <= currentX));
+    }
 
-        // only shoot if counter are on 0 and enemy is facing player
-        if (shootCounter <= 0 && facingPlayer)
-        {
-            // instantiate projectile prefab
-            GameObject projectile = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    private IEnumerator ShootAnimation(System.Action onCompleted)
+    {
+        // play shooting animation
+        animator.SetBool("Shooting", true);
 
-            // Add shooting sfx
-            FindObjectOfType<AudioManager>().PlaySound("Enemy_Shoot");
+        // wait until shooting animation finished
+        yield return new WaitForSeconds(0.4f);
 
-            // set projectile type based on enemy c and immediately launch it
-            projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
+        // stop shooting animation
+        animator.SetBool("Shooting", false);
 
-            // reset shoot counter
-            shootCounter = shootDelay;
-        }
+        // invoke onCompleted to execute Shoot() function after
+        onCompleted?.Invoke();
+    }
+
+    private void Shoot()
+    {
+        // instantiate projectile prefab
+        GameObject projectile = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        // Add shooting sfx
+        FindObjectOfType<AudioManager>().PlaySound("Enemy_Shoot");
+
+        // set projectile type based on enemy c and immediately launch it
+        projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
     }
 
     // to draw debug line specific for Enemy B

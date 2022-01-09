@@ -106,4 +106,9 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //private void OnDestroy()
+    //{
+    //    Debug.Log("Enemy Bullet Destroyed");
+    //}
 }

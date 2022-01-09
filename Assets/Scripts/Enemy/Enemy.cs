@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Animation Component")]
     public Animator animator;
+    public float deathDuration = 0f;
 
     // Enemy current health
     private float health;
@@ -137,7 +138,13 @@ public class Enemy : MonoBehaviour
             }
 
             //Debug.Log("the enemy is dead");
-            OnDeath();
+
+            // play death animation if the enemy have one
+            animator.SetBool("Alive", false);
+
+            // call OnDeath() with delay based on enemy death animation duration
+            Invoke("OnDeath", deathDuration);
+            //OnDeath();
         }
     }
 
