@@ -6,4 +6,9 @@ public class WeaponBox : Items
         PlayerController.instance.PickUpItemEffect();
         Destroy(gameObject);
     }
+
+    public override string GetName()
+    {
+        return "WeaponBox";
+    }
 }
