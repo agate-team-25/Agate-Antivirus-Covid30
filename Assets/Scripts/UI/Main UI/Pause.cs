@@ -90,8 +90,8 @@ public class Pause : MonoBehaviour
         Resume(ui);
     }
 
-    public void OnNext()
+    public void OnNext(int level)
     {
-
+        SceneManager.LoadScene(level);
     }
 }

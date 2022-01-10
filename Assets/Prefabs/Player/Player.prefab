@@ -9770,17 +9770,16 @@ MonoBehaviour:
   bleed: {fileID: 7620546152637000991}
   fever: {fileID: 217284086417932471}
   speed: 8
-  jumpAccel: 14
+  jumpForce: 345
   groundRaycastDistance: 2.5
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 200
-  weaponPoint: {fileID: 0}
-  desinfektanPoint: {fileID: 0}
   weapon1: {fileID: 829217097814521299}
   weapon2: {fileID: 5621990077462574605}
   animator: {fileID: 7936629625654139250}
   itemType: 1
+  isDead: 0
   powerUpLevel: 0
   status: Healthy
 --- !u!1001 &2981926550091881403

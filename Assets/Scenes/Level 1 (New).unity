@@ -8385,6 +8385,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2141412591361294439, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2190903897288277656, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
       propertyPath: PauseMenuUI
       value: 
@@ -15468,11 +15472,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3054883817934215164, guid: 698fd1f4ab2e1374b9d69f2bba62775c, type: 3}
   m_PrefabInstance: {fileID: 1573628813}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1576469432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8713725736274212717, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
-  m_PrefabInstance: {fileID: 845780519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1580961973
 GameObject:
   m_ObjectHideFlags: 0
@@ -20117,7 +20116,7 @@ PrefabInstance:
     - target: {fileID: 1756121877893312516, guid: e7169f6ddb839b74fad34eef6a18fd33, type: 3}
       propertyPath: DesinfektanSlider
       value: 
-      objectReference: {fileID: 1576469432}
+      objectReference: {fileID: 0}
     - target: {fileID: 4702439344740600850, guid: e7169f6ddb839b74fad34eef6a18fd33, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -20644,9 +20643,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 845780520}
     - target: {fileID: 4660390542265520543, guid: 4e968280b5c763048a9486f5ae8ba752, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660390542265520543, guid: 4e968280b5c763048a9486f5ae8ba752, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 845780520}
+    - target: {fileID: 4660390542265520543, guid: 4e968280b5c763048a9486f5ae8ba752, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4660390543218042326, guid: 4e968280b5c763048a9486f5ae8ba752, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
