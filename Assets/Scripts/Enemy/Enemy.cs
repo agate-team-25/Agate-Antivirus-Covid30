@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
     {
         if (type == EnemyType.EnemyBoss)
         {
-            damage *= 1f;
+            damage *= 10f;
         }
 
         health -= damage;

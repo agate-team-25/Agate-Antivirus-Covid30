@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3813836820818528109}
   - component: {fileID: 3813836820818528111}
   - component: {fileID: 3813836820818528098}
-  - component: {fileID: 3923351520532995270}
+  - component: {fileID: 1861352974641771327}
   m_Layer: 7
   m_Name: EnemyBoss
   m_TagString: Enemy
@@ -170,7 +170,7 @@ MonoBehaviour:
   speed: 4
   facingLeft: 1
   detectRangeX: 15
-  detectRangeY: 5
+  detectRangeY: 4
   knockbackForce: 100
   animator: {fileID: 0}
   deathDuration: 0.5
@@ -444,7 +444,7 @@ PolygonCollider2D:
       - {x: 1.0849999, y: -2.83}
       - {x: 1.105, y: -2.3999999}
       - {x: 1.0749999, y: -2.08}
---- !u!95 &3923351520532995270
+--- !u!95 &1861352974641771327
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
