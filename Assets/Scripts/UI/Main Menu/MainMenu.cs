@@ -16,15 +16,18 @@ public class MainMenu : MonoBehaviour
     // Button utama yang ada pada main menu
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button settingButton;
+    [SerializeField] private Button aboutButton;
     [SerializeField] private Button exitButton;
 
     // Menyimpan gameObject untuk menu new game dan setting
     [SerializeField] private GameObject newGameMenu;
     [SerializeField] private GameObject settingMenu;
+    [SerializeField] private GameObject aboutMenu;
 
     // Variable untuk menyimpan status apakah new game atau setting button sedang di select
     [SerializeField] private bool newGameSelected;
     [SerializeField] private bool settingSelected;
+    [SerializeField] private bool aboutSelected;
 
     // Color untuk active/inactive button
     private Color32 activeColor = new Color32(255, 255, 225, 225);
@@ -63,6 +66,7 @@ public class MainMenu : MonoBehaviour
         if (newGameSelected)
         {
             settingSelected = false;
+            aboutSelected = false;
         }
         checkMenuDisplay();
 
@@ -72,6 +76,7 @@ public class MainMenu : MonoBehaviour
 
             newGameSelected = true;
             settingSelected = false;
+            aboutSelected = false;
             checkMenuDisplay();
         });
 
@@ -80,7 +85,16 @@ public class MainMenu : MonoBehaviour
             //Debug.Log("Setting selected");
 
             newGameSelected = false;
+            aboutSelected = false;
             settingSelected = true;
+            checkMenuDisplay();
+        });
+
+        aboutButton.onClick.AddListener(() =>
+        {
+            newGameSelected = false;
+            settingSelected = false;
+            aboutSelected = true; 
             checkMenuDisplay();
         });
 
@@ -118,9 +132,11 @@ public class MainMenu : MonoBehaviour
         // set tombol mana yang lebih jelas berdasarkan menu yang aktif
         newGameButton.image.color = (newGameSelected ? activeColor : inactiveColor);
         settingButton.image.color = (settingSelected ? activeColor : inactiveColor);
+        aboutButton.image.color = (aboutSelected ? activeColor : inactiveColor);
 
         // set menu mana yang akan ditampilkan
         newGameMenu.SetActive(newGameSelected);
         settingMenu.SetActive(settingSelected);
+        aboutMenu.SetActive(aboutSelected);
     }
 }

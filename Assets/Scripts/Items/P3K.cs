@@ -6,4 +6,9 @@ public class P3K : Items
         PlayerController.instance.PickUpItemEffect();
         Destroy(gameObject);
     }
+
+    public override string GetName()
+    {
+        return "P3K";
+    }
 }

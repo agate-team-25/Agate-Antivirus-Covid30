@@ -16,4 +16,6 @@ public abstract class Items : MonoBehaviour
     }
 
     public abstract void PickUp();
+
+    public abstract string GetName();
 }
