@@ -98,6 +98,8 @@ public class EnemyBoss : Enemy
         // call function to check if player is alive
         playerAlive = CheckPlayerIsAlive();
 
+        CheckMoving();
+
         // update phase based on health
         float health = GetHealth();
         moveByJumping = (health <= jumpingHealth);
@@ -145,6 +147,25 @@ public class EnemyBoss : Enemy
         }
     }
 
+    private void CheckMoving()
+    {
+        if (moveByJumping)
+        {
+            // if already changed phase to jumping, walking animation wont ever play anymore
+            animator.SetBool("Moving", false);
+        }
+
+        else if (EnemyRigidBody.velocity.magnitude > 0)
+        {
+            animator.SetBool("Moving", true);
+        }
+
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
+    }
+
     // method to check if enemy on the ground or air
     private void CheckOnGroud()
     {
@@ -177,6 +198,9 @@ public class EnemyBoss : Enemy
             //Debug.Log("In the air");
             onGround = false;
         }
+
+        // set jumping animation based on onground status
+        animator.SetBool("OnGround", onGround);
     }
 
     // method to move enemy left or right based on enemy facing left or right
