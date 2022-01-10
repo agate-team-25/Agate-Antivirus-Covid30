@@ -147,6 +147,7 @@ MonoBehaviour:
   detectRangeY: 3
   knockbackForce: 100
   animator: {fileID: 0}
+  deathDuration: 0
   jumpForceX: 170
   jumpForceY: 500
   jumpDelay: 1

@@ -188,10 +188,13 @@ public class EnemyA : Enemy
         //Debug.Log("Explode Coroutine called");
 
         // delay before explosion occur
-        yield return new WaitForSeconds(explosionDelay);
+        yield return new WaitForSeconds(explosionDelay - 1f);
 
         // Maybe add exploding animation and sound effect here
-        // --EXPLODE ANIMATION AND SFX--
+        animator.SetBool("Exploding", true);
+
+        yield return new WaitForSeconds(0.6f);
+        
         FindObjectOfType<AudioManager>().PlaySound("EnemyA_Explode");
 
         // get all of the object in the explosion radius
@@ -233,11 +236,15 @@ public class EnemyA : Enemy
 
             }
         }
-        // source: https://youtu.be/k4hr7-7ysCY
+
+        yield return new WaitForSeconds(0.4f);
+
+        animator.SetBool("Exploding", false);
 
         // invoke onCompleted to execute superclass onDeath()
         onCompleted?.Invoke();
     }
+    // source: https://youtu.be/k4hr7-7ysCY
 
     // to draw debug line specific for Enemy A
     public override void OnDrawGizmos()
