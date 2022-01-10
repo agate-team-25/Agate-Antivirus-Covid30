@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8c57dc3f836b14fb9708ee0aad4cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
   timer: 2
   objectToRespawn: {fileID: 0}
 --- !u!1001 &965883005219255471

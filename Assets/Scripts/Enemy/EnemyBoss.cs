@@ -53,10 +53,15 @@ public class EnemyBoss : Enemy
     // summon enemy counter
     private float summonCounter;
 
+    // List of monster summoned
+    private List<Enemy> SummonedMonsters;
+
     // jump counter
     private float jumpCounter;
 
     private bool onGround;
+
+    private Vector3 spawnPosition;
 
     #endregion
 
@@ -74,6 +79,10 @@ public class EnemyBoss : Enemy
         jumpCounter = 0;
         summonCounter = 0;
         onGround = true;
+
+        spawnPosition = transform.position;
+
+        SummonedMonsters = new List<Enemy>();
 
         if (jumpingHealth > maxHealth)
         {
@@ -99,6 +108,9 @@ public class EnemyBoss : Enemy
         playerAlive = CheckPlayerIsAlive();
 
         CheckMoving();
+        CheckOnGroud();
+
+        UpdateSummonCount();
 
         // update phase based on health
         float health = GetHealth();
@@ -117,7 +129,7 @@ public class EnemyBoss : Enemy
             // call function to shoot at enemy
             Shoot();
 
-            CheckOnGroud();
+            //CheckOnGroud();
 
             if (onGround)
             {
@@ -296,11 +308,30 @@ public class EnemyBoss : Enemy
         }
     }
 
+    private void UpdateSummonCount()
+    {
+        //foreach (Enemy summon in SummonedMonsters)
+        //{
+        //    if (summon == null)
+        //    {
+        //        SummonedMonsters.Remove(summon);
+        //    }
+        //}
+
+        for (int i = 0; i < SummonedMonsters.Count; i++)
+        {
+            if (SummonedMonsters[i] == null)
+            {
+                SummonedMonsters.RemoveAt(i);
+            }
+        }
+    }
+
     private void SummonEnemy()
     {
         summonCounter -= Time.deltaTime;
 
-        if (summonCounter > 0 || !onGround)
+        if (summonCounter > 0 || !onGround || SummonedMonsters.Count >= maxSummon)
         {
             return;
         }
@@ -309,17 +340,64 @@ public class EnemyBoss : Enemy
 
         if (type == 0)
         {
+            BossSummonPoint summonPoint = summonPoint1.GetComponent<BossSummonPoint>();
+
+            if (summonPoint.objInArea > 0)
+            {
+                return;
+            }
+
             //Debug.Log("Boss enemy summon enemy type A");
-            Instantiate(summon1, summonPoint1.position, summonPoint1.rotation);
+            Enemy summon = Instantiate(summon1, summonPoint1.position, summonPoint1.rotation);
+            SummonedMonsters.Add(summon);
         }
 
         else
         {
+
+            BossSummonPoint summonPoint = summonPoint2.GetComponent<BossSummonPoint>();
+
+            if (summonPoint.objInArea > 0)
+            {
+                return;
+            }
+
             //Debug.Log("Boss enemy summon enemy type B");
-            Instantiate(summon2, summonPoint2.position, summonPoint2.rotation).FlipY();
+            Enemy summon = Instantiate(summon2, summonPoint2.position, summonPoint2.rotation);
+            summon.FlipY();
+            SummonedMonsters.Add(summon);
         }
 
         summonCounter = summonDelay;
+    }
+
+    public void ResetEnemyState()
+    {
+        if (GetHealth() <= 0)
+        {
+            return;
+        }
+
+        SetHealth(maxHealth);
+        DestroySummonedEnemies();
+        transform.position = spawnPosition;
+    }
+
+    public override void OnDeath()
+    {
+        DestroySummonedEnemies();
+        base.OnDeath();
+    }
+
+    private void DestroySummonedEnemies()
+    {
+        foreach (Enemy summon in SummonedMonsters)
+        {
+            if (summon != null)
+            {
+                Destroy(summon.gameObject);
+            }
+        }
     }
 
     // to draw debug line specific for Enemy B

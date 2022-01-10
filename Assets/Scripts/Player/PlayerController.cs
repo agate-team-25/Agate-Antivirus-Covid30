@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     //public PlayerAnimationType animType = PlayerAnimationType.Common;
     //public State state = State.Idle;
 
+    [HideInInspector]
+    public bool reachCheckPoint;
+
     //boolean field
     private float health;
     private bool canJump = true;
@@ -95,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         weapon1.SetActive(false);
         weapon2.SetActive(false);
+
+        reachCheckPoint = false;
     }
 
     private void FixedUpdate()
@@ -268,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
             if (health <= 0)
             {
-                isDead = true;
+                //isDead = true;
                 StartCoroutine(Death());
             }
         }        
@@ -350,8 +355,14 @@ public class PlayerController : MonoBehaviour
     public IEnumerator OnLose()
     {
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
-        LevelManager.instance.OnLose();
+
+        isDead = true;
+
+        if (!reachCheckPoint)
+        {
+            LevelManager.instance.OnLose();
+            Destroy(gameObject);
+        }
     }
 
     public void Fever()
@@ -445,6 +456,16 @@ public class PlayerController : MonoBehaviour
     public float GetAPDTime()
     {
         return apdTimer;
+    }
+
+    public void Resurrect()
+    {
+        isDead = false;
+        animator.SetBool("die", false);
+        health = maxHealth;
+        canJump = true;
+        enableInput = true;
+        powerUpLevel = 0;
     }
 }
 

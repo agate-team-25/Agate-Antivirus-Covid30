@@ -153,6 +153,11 @@ public class Enemy : MonoBehaviour
         return health;
     }
 
+    public void SetHealth(float h)
+    {
+        health = h;
+    }
+
     // method to check if player are nearby, return bool value
     public bool CheckIfPlayerNearby()
     {

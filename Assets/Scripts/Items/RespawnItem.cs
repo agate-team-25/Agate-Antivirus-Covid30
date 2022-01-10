@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RespawnItem : MonoBehaviour
 {
-    public Items obj;
+    //private Items obj;
+
     public float timer;
     public Items objectToRespawn;
 
@@ -14,7 +15,7 @@ public class RespawnItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        respawnTime = timer;
+        respawnTime = 0;
     }
 
     // Update is called once per frame
@@ -25,16 +26,20 @@ public class RespawnItem : MonoBehaviour
 
     public void Respawn()
     {
-        if(obj == null)
+        if(item == null)
         {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+            respawnTime -= Time.deltaTime;
+            if(respawnTime <= 0)
             {
-                timer = respawnTime;
+                respawnTime = timer;
                 item = Instantiate(objectToRespawn, transform.position, transform.rotation);
-                obj = item;
                 item.transform.parent = gameObject.transform;
             }
         }
+    }
+
+    public void resetTimer()
+    {
+        respawnTime = 0;
     }
 }

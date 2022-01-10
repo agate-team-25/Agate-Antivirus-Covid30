@@ -205,7 +205,7 @@ public class LevelManager : MonoBehaviour
 
     private void LoseCondition()
     {
-        if(timeRemaining <= 0 && enemyKilled <= allEnemies)
+        if(timeRemaining <= 0)
         {
             OnLose();
         }
