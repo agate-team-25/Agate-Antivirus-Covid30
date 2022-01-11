@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
             {
                 //velocityVector.y += jumpForce;
                 playerRigidbody.AddForce(jump * jumpForce);
-                Debug.Log(jump);
+                //Debug.Log(jump);
                 isOnGround = false;
                 FindObjectOfType<AudioManager>().PlaySound("Jump");
             }
@@ -301,7 +301,10 @@ public class PlayerController : MonoBehaviour
             animator.SetLayerWeight(animator.GetLayerIndex("Gun Layer"), 0f);
         }
 
-        powerUpLevel -= 1;
+        if (powerUpLevel > 0)
+        {
+            powerUpLevel -= 1;
+        }
     }
 
     public void PickUpItemEffect()
@@ -465,7 +468,8 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
         canJump = true;
         enableInput = true;
-        powerUpLevel = 0;
+        PowerDown();
+        PowerDown();
     }
 }
 

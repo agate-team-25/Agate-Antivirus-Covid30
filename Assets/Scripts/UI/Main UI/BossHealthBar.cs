@@ -35,4 +35,14 @@ public class BossHealthBar : MonoBehaviour
         yield return new WaitForSeconds(hideDelay);
         gameObject.SetActive(false);
     }
+
+    //private Vector3 GetPlayerLocation()
+    //{
+    //    return PlayerController.instance.gameObject.transform.position;
+    //}
+
+    //private Vector3 GetBossLocation()
+    //{
+    //    return boss.gameObject.transform.position;
+    //}
 }

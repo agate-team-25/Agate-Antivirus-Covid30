@@ -80,7 +80,15 @@ public class Desinfektan : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.ReduceHealth(1);
+                if (enemy.type == EnemyType.EnemyBoss)
+                {
+                    enemy.ReduceHealth(0.025f);
+                }
+
+                else
+                {
+                    enemy.ReduceHealth(1);
+                }
             }
         }
 

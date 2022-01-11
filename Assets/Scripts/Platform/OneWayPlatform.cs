@@ -10,7 +10,7 @@ public class OneWayPlatform : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            Debug.Log(isUp);
+            //Debug.Log(isUp);
             transform.parent.GetComponent<Collider2D>().enabled = isUp;
         }
     }

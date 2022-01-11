@@ -38,7 +38,15 @@ public class SuntikanBullet : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.ReduceHealth(1);
+                if (enemy.type == EnemyType.EnemyBoss)
+                {
+                    enemy.ReduceHealth(10);
+                }
+
+                else
+                {
+                    enemy.ReduceHealth(1);
+                }
             }
         }
 

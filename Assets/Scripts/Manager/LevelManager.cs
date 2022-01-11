@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
+    public int StageLevel = 1;
+
     [Header("Enemies")]
     //public Transform[] enemiesPoint;
     public List<Enemy> enemies = new List<Enemy>();
@@ -188,9 +190,9 @@ public class LevelManager : MonoBehaviour
         enableInput = false;
         Pause.instance.Paused(winUI);
 
-        if (UserDataManager.Progress.levelProgress < 1)
+        if (UserDataManager.Progress.levelProgress < StageLevel)
         {
-            UserDataManager.Progress.levelProgress = 1;
+            UserDataManager.Progress.levelProgress = StageLevel;
             UserDataManager.Save();
         }
     }
