@@ -251,11 +251,11 @@ MonoBehaviour:
   firePoint: {fileID: 3813836821272095119}
   jumpingHealth: 70
   summonHealth: 50
-  maxSummon: 3
+  maxSummon: 5
   summon1: {fileID: 6542893794146913725, guid: a0b04abd38b0b5a49858b923907995e9, type: 3}
   summon2: {fileID: 4340441642422517219, guid: 68d7897f581dd7342b3ccae51ec7060f, type: 3}
   jumpDelay: 1
-  summonDelay: 6
+  summonDelay: 5
   jumpForceX: 10000
   jumpForceY: 18000
   summonPoint1: {fileID: 3813836819813362558}

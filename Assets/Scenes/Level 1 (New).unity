@@ -9178,6 +9178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lose UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1652377798392001633, guid: 8d7d6d163ed40574e9e83b03ce31045e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1652377798731388699, guid: 8d7d6d163ed40574e9e83b03ce31045e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
