@@ -74,10 +74,21 @@ public class EnemyC : Enemy
         shootCounter -= Time.deltaTime;
 
         // check if there is player nearby and enemy still alive
-        if (playerNearby && playerAlive && CheckIsAlive())
+        if (shootCounter <= 0 && playerNearby && playerAlive && CheckIsAlive())
         {
-            // call function to shoot at enemy
-            Shoot();
+            // get player y distance from enemy
+            float playerYDistance = Mathf.Abs(GetPlayerPosition().y - transform.position.y);
+
+            // check if y shoot distance less than player y distance from enemy
+            if (shootYDistance >= playerYDistance)
+            {
+                // start coroutine to play shoot animation, and called Shoot() function right after coroutine finish executing
+                StartCoroutine(ShootAnimation(() => { Shoot(); }));
+                //Shoot();
+
+                // reset shoot counter
+                shootCounter = shootDelay;
+            }
         }
 
         // Call function to move constantly to maintain speed
@@ -138,26 +149,31 @@ public class EnemyC : Enemy
         EnemyRigidBody.velocity = new Vector2(0, speed*direction);
     }
 
+    private IEnumerator ShootAnimation(System.Action onCompleted)
+    {
+        // play shooting animation
+        animator.SetBool("Shooting", true);
+
+        // wait until shooting animation finished
+        yield return new WaitForSeconds(0.5f);
+
+        // stop shooting animation
+        animator.SetBool("Shooting", false);
+
+        // invoke onCompleted to execute Shoot() function after
+        onCompleted?.Invoke();
+    }
+
     private void Shoot()
     {
-        // get player y distance from enemy
-        float playerYDistance = Mathf.Abs(GetPlayerPosition().y - transform.position.y);
+        // instantiate projectile prefab
+        GameObject projectile = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // only shoot if counter are on 0 and y distance is close
-        if (shootCounter <= 0 && shootYDistance >= playerYDistance)
-        {
-            // instantiate projectile prefab
-            GameObject projectile = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Add shooting sfx
+        FindObjectOfType<AudioManager>().PlaySound("Enemy_Shoot");
 
-            // Add shooting sfx
-            FindObjectOfType<AudioManager>().PlaySound("Enemy_Shoot");
-
-            // set projectile type based on enemy c and immediately launch it
-            projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
-
-            // reset shoot counter
-            shootCounter = shootDelay;
-        }
+        // set projectile type based on enemy c and immediately launch it
+        projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
     }
 
     // to draw debug line specific for Enemy C

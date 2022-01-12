@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4340441642153999273}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -13, y: 0, z: 0}
+  m_LocalPosition: {x: -2.63, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7417815135302586727}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7417815135302586725}
   - component: {fileID: 7417815135302586724}
   - component: {fileID: 4340441642422517219}
-  - component: {fileID: 7202342301065342110}
+  - component: {fileID: 496006099187776764}
   m_Layer: 7
   m_Name: Enemy C
   m_TagString: Enemy
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 7417815135302586729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.67, y: -4.01, z: 0.15742493}
-  m_LocalScale: {x: 0.12216314, y: 0.12216314, z: 0.12216314}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4340441642153999272}
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0622c16e8bc04eb4b8506079c7b7b223, type: 3}
+  m_Sprite: {fileID: 8793639957104055765, guid: 2ef85c4a449b5374b928796113beaa0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,9 +151,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13832586, y: -0.092219226}
+  m_Offset: {x: 0, y: -0.06158161}
   serializedVersion: 2
-  m_Radius: 9.379087
+  m_Radius: 2.42
 --- !u!114 &4340441642422517219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   detectRangeY: 3
   knockbackForce: 100
   animator: {fileID: 0}
+  deathDuration: 0.5
   travelRange: 4
   shootDelay: 2
   projectileTime: 5
@@ -185,7 +186,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8960327627907720052, guid: a6c5bcc20a419764788579418ae358b5, type: 3}
   firePoint: {fileID: 4340441642153999272}
   shootYDistance: 1
---- !u!95 &7202342301065342110
+--- !u!95 &496006099187776764
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 7417815135302586729}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ebf47c3a76ac4654a8c3d6d2179f492b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 728fab752f558144386eadb0f8919ac6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
