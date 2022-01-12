@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +7,10 @@ public class EnemyBoss : Enemy
 
     [Header("Raycast Component")]
     // for raycast distance to detect object right and left
-    public float raycastDistance = 0.75f;
-    public float raycastWidth = 0.7f;
+    //public float raycastDistance = 0.75f;
+    public float groundRaycastWidth = 0.7f;
     public float groundRaycastDistance = 0.48f;
+    //public float sideRaycastDistance = 0.38f;
     public LayerMask environmentLayer;
 
     [Header("Shooting Component")]
@@ -181,8 +181,16 @@ public class EnemyBoss : Enemy
     // method to check if enemy on the ground or air
     private void CheckOnGroud()
     {
+        // get the gap between left/right to middle raycast
+        Vector3 raycastGap = new Vector3(groundRaycastWidth / 2, 0, 0);
+
         // raycasting below to check if enemy is on ground
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - raycastGap, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitMiddle = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + raycastGap, Vector2.down, groundRaycastDistance, environmentLayer);
+
+        // check if one of the raycast hit
+        bool hit = (hitLeft || hitMiddle || hitRight);
 
         // if the raycast hit the ground and enemy already stay still, then the enemy is on the ground
         if (hit && EnemyRigidBody.velocity.x == 0 && EnemyRigidBody.velocity.y == 0)
@@ -406,22 +414,31 @@ public class EnemyBoss : Enemy
         // call base function to draw detection range
         base.OnDrawGizmos();
 
-        Vector3 bottomRay = transform.position + new Vector3(0, -(raycastWidth / 2) , 0);
-        Vector3 upperRay = transform.position + new Vector3(0, raycastWidth / 2, 0);
+        //Vector3 bottomRay = transform.position + new Vector3(0, -(raycastWidth / 2) , 0);
+        //Vector3 upperRay = transform.position + new Vector3(0, raycastWidth / 2, 0);
 
-        // draw raycast in the bottom
-        Debug.DrawLine(bottomRay, bottomRay + (Vector3.right * raycastDistance), Color.blue);
-        Debug.DrawLine(bottomRay, bottomRay + (Vector3.left * raycastDistance), Color.blue);
+        //// draw raycast in the bottom
+        //Debug.DrawLine(bottomRay, bottomRay + (Vector3.right * raycastDistance), Color.blue);
+        //Debug.DrawLine(bottomRay, bottomRay + (Vector3.left * raycastDistance), Color.blue);
 
-        // draw raycast in the middle
-        Debug.DrawLine(transform.position, transform.position + (Vector3.right * raycastDistance), Color.blue);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.left * raycastDistance), Color.blue);
+        //// draw raycast in the middle
+        //Debug.DrawLine(transform.position, transform.position + (Vector3.right * raycastDistance), Color.blue);
+        //Debug.DrawLine(transform.position, transform.position + (Vector3.left * raycastDistance), Color.blue);
 
-        // draw raycast in the upper
-        Debug.DrawLine(upperRay, upperRay + (Vector3.right * raycastDistance), Color.blue);
-        Debug.DrawLine(upperRay, upperRay + (Vector3.left * raycastDistance), Color.blue);
+        //// draw raycast in the upper
+        //Debug.DrawLine(upperRay, upperRay + (Vector3.right * raycastDistance), Color.blue);
+        //Debug.DrawLine(upperRay, upperRay + (Vector3.left * raycastDistance), Color.blue);
 
-        // draw ground raycast debug line
+        Vector3 leftRay = transform.position + new Vector3(-(groundRaycastWidth / 2), 0, 0);
+        Vector3 rightRay = transform.position + new Vector3(groundRaycastWidth / 2, 0, 0);
+
+        // draw left ground raycast debug line
+        Debug.DrawLine(leftRay, leftRay + (Vector3.down * groundRaycastDistance), Color.blue);
+
+        // draw middle ground raycast debug line
         Debug.DrawLine(transform.position, transform.position + (Vector3.down * groundRaycastDistance), Color.blue);
+
+        // draw right ground raycast debug line
+        Debug.DrawLine(rightRay, rightRay + (Vector3.down * groundRaycastDistance), Color.blue);
     }
 }

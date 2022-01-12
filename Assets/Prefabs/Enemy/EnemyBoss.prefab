@@ -230,7 +230,7 @@ MonoBehaviour:
   EnemySprite: {fileID: 3813836820818528108}
   player: {fileID: 0}
   type: 3
-  maxHealth: 100
+  maxHealth: 70
   speed: 4
   facingLeft: 1
   detectRangeX: 30
@@ -238,8 +238,7 @@ MonoBehaviour:
   knockbackForce: 100
   animator: {fileID: 0}
   deathDuration: 0.5
-  raycastDistance: 0.75
-  raycastWidth: 0.7
+  groundRaycastWidth: 5
   groundRaycastDistance: 4.5
   environmentLayer:
     serializedVersion: 2
