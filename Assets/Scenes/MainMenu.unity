@@ -6323,12 +6323,12 @@ GameObject:
   - component: {fileID: 1635728602}
   - component: {fileID: 1635728601}
   m_Layer: 5
-  m_Name: Level3Complete
+  m_Name: Level3ComingSoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1635728600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6368,7 +6368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e5ec490bd42b6b64389adbdc82c0c834, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39b16f5276738dd4190cd7dbd0aa3156, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6404,7 +6404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1669237107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7051,7 +7051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1848786333
 RectTransform:
   m_ObjectHideFlags: 0
