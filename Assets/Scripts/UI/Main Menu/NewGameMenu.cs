@@ -72,24 +72,24 @@ public class NewGameMenu : MonoBehaviour
         if (levels >= 2)
         {
             level2Complete.SetActive(true);
-            level3Text.SetActive(true);
+            //level3Text.SetActive(true);
 
-            // listener untuk button ke level 3
-            level3Button.onClick.AddListener(() =>
-            {
-                //Debug.Log("Level 3 clicked");
+            //// listener untuk button ke level 3
+            //level3Button.onClick.AddListener(() =>
+            //{
+            //    //Debug.Log("Level 3 clicked");
 
-                //SceneManager.LoadScene(3);
-            });
+            //    SceneManager.LoadScene(3);
+            //});
 
-            // dan ubah image tombol level 3
-            level3Button.image.sprite = level3Unlocked;
+            //// dan ubah image tombol level 3
+            //level3Button.image.sprite = level3Unlocked;
         }
 
         // jika level 3 sudah dimenangkan
         if (levels >= 3)
         {
-            level3Complete.SetActive(true);
+            //level3Complete.SetActive(true);
         }
 
     }
