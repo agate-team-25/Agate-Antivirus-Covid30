@@ -237,7 +237,7 @@ MonoBehaviour:
   detectRangeY: 8
   knockbackForce: 100
   animator: {fileID: 0}
-  deathDuration: 0.5
+  deathDuration: 1
   groundRaycastWidth: 5
   groundRaycastDistance: 4.5
   environmentLayer:
