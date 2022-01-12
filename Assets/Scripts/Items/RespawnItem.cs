@@ -48,7 +48,7 @@ public class RespawnItem : MonoBehaviour
         {
             item = Instantiate(objectToRespawn, transform.position, transform.rotation);
             item.transform.parent = gameObject.transform;
-            Debug.Log("Spawned");
+            //Debug.Log("Spawned");
             itemSpawned = true;
             respawnTime = timer;
         }
