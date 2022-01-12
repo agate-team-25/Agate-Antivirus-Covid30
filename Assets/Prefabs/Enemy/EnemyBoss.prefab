@@ -230,7 +230,7 @@ MonoBehaviour:
   EnemySprite: {fileID: 3813836820818528108}
   player: {fileID: 0}
   type: 3
-  maxHealth: 70
+  maxHealth: 100
   speed: 4
   facingLeft: 1
   detectRangeX: 30

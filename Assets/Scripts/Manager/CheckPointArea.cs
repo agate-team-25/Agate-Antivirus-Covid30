@@ -69,6 +69,8 @@ public class CheckPointArea : MonoBehaviour
     {
         if (!checkPointTriggered && !bossKilled)
         {
+            FindObjectOfType<AudioManager>().StopMusic("Level1_Music");
+            FindObjectOfType<AudioManager>().PlayMusic("Boss_Music");
             checkPointTriggered = true;
             leftBarrier.SetActive(true);
             leftBarrier.GetComponent<BossAreaBarrier>().checkpointActive = true;

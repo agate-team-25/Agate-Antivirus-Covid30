@@ -65,6 +65,16 @@ MonoBehaviour:
     ignorePause: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Boss_Music
+    clip: {fileID: 8300000, guid: 62c906e83ae828f4b87ae0f75725d9ba, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    ignorePause: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   sounds:
   - name: Enemy_Death
     clip: {fileID: 8300000, guid: a908f1014d4a46842b787e30c3f27ef6, type: 3}
