@@ -19650,7 +19650,7 @@ PrefabInstance:
       objectReference: {fileID: 44580128}
     - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
       propertyPath: targetKilled
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
       propertyPath: timerTextWin
