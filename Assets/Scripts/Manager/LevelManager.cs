@@ -56,6 +56,9 @@ public class LevelManager : MonoBehaviour
     public GameObject GunCd;
     public GameObject DesinfektanCd;
 
+    [Header("Button")]
+    public GameObject pauseButton;
+
     public float timeRemaining;
     public bool timerIsRunning = false;
     public bool enableInput;
@@ -69,7 +72,8 @@ public class LevelManager : MonoBehaviour
             UserDataManager.Load();
             //Debug.Log("player telah memiliki progress sampai level :" + UserDataManager.Progress.levelProgress);
         }
-
+        Button btn = pauseButton.GetComponent<Button>();
+        btn.interactable = false;
         timerIsRunning = true;
         enableInput = true;
         allEnemies = GetEnemyCount();

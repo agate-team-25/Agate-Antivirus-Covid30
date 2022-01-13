@@ -720,6 +720,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &44580126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2190903897288277658, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
+  m_PrefabInstance: {fileID: 44580121}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &44580127 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 874912945001959474, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
@@ -767,7 +772,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2190903897288277656, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
   m_PrefabInstance: {fileID: 44580121}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 44580126}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f828b9f16bed5747998b5430d36ca47, type: 3}
@@ -19644,6 +19649,10 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 44580127}
+    - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 44580126}
     - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
       propertyPath: powerUpLevel
       value: 

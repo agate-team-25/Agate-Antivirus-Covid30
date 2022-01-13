@@ -2539,6 +2539,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5398474209128001220, guid: 9c34b9d0302ba5043b68175f1fbf3b94, type: 3}
   m_PrefabInstance: {fileID: 1931037549}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &290068520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2190903897288277658, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
+  m_PrefabInstance: {fileID: 845780519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &291254409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8528,7 +8533,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2190903897288277656, guid: d10e31343c25baa47b0a5ae064c91873, type: 3}
   m_PrefabInstance: {fileID: 845780519}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 290068520}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f828b9f16bed5747998b5430d36ca47, type: 3}
@@ -10386,6 +10391,10 @@ PrefabInstance:
       propertyPath: desinfektan
       value: 
       objectReference: {fileID: 664132065}
+    - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 290068520}
     - target: {fileID: 8105580205681562938, guid: 7ec66cb90fd723c4e96783c7cb770e81, type: 3}
       propertyPath: powerUpLevel
       value: 
@@ -20163,7 +20172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7936629625654139251, guid: e7169f6ddb839b74fad34eef6a18fd33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7936629625654139251, guid: e7169f6ddb839b74fad34eef6a18fd33, type: 3}
       propertyPath: m_LocalPosition.y

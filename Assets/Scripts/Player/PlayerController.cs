@@ -52,9 +52,10 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool reachCheckPoint;
+    public bool[] allStatus = {true, false, false};
 
-    //boolean field
-    private float health;
+    //boolean field        
+    private bool canWalk;
     private bool canJump = true;
     private bool isOnGround;
     private bool isFalling;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private bool enableInput;
 
     private float faceDirectionX = 0f;
+    private float health;
 
     public bool isDead;
     public int powerUpLevel = 0;
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 maxForce = new Vector2(0,1);
     private float apdTimer = 10f;
     private float apdTimerReset = 10f;
+    private float statusBleedTimer = 5f;
+    private float statusFeverTimer = 5f;
 
     Vector2 movement;
     Rigidbody2D playerRigidbody;
@@ -80,6 +84,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        canWalk = true;
         //Mendapatkan komponen Animator
         animator = GetComponent<Animator>();
         animator.SetBool("die", false);
@@ -93,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
         //Assign health
         health = maxHealth;
+        allStatus[0] = true;
 
         enableInput = true;
 
@@ -189,12 +195,40 @@ public class PlayerController : MonoBehaviour
         }
 
         Move(faceDirectionX);
+
+        if (status == "Bleed")
+        {
+            allStatus[1] = true;
+            statusBleedTimer -= Time.deltaTime;
+            if (statusBleedTimer <= 0)
+            {
+                statusBleedTimer = 5f;
+                CuredFromBleed();
+            }
+        }
+
+        if (status == "Fever")
+        {
+            allStatus[2] = true;
+            statusFeverTimer -= Time.deltaTime;
+            if (statusFeverTimer <= 0)
+            {
+                statusFeverTimer = 5f;
+                CuredFromFever();
+            }
+        }
+
+        CheckHealthy();
     }
 
     private void Movement()
     {
         //Mendapatkan nilai input horizontal (-1,0,1)
-        faceDirectionX = Input.GetAxisRaw("Horizontal");
+        if (canWalk)
+        {
+            faceDirectionX = Input.GetAxisRaw("Horizontal");
+        }
+        
         Vector2 jump = new Vector2(0, 1);
 
         //Jump input key
@@ -334,6 +368,7 @@ public class PlayerController : MonoBehaviour
         }
 
         canJump = false;
+        canWalk = false;
 
         //Debug.Log("Player death animation");
         //animator.SetBool("die", true);
@@ -368,13 +403,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CheckHealthy()
+    {
+        if (allStatus[1] == false && allStatus[2] == false)
+        {
+            allStatus[0] = true;
+            status = "Healthy";
+        }
+    }
+
     public void Fever()
     {
         //Debug.Log("Player got fever status");
         speed = 4;
         status = "Fever";
         fever.SetActive(true);
-        Invoke("Cured", 5);
     }
 
     public void Bleed()
@@ -383,16 +426,26 @@ public class PlayerController : MonoBehaviour
         canJump = false;
         status = "Bleed";
         bleed.SetActive(true);
-        Invoke("Cured", 5);
+    }
+
+    public void CuredFromBleed()
+    {        
+        canJump = true;        
+        bleed.SetActive(false);
+        allStatus[1] = false;
+    }
+
+    public void CuredFromFever()
+    {
+        speed = 8;
+        fever.SetActive(false);
+        allStatus[2] = false;
     }
 
     public void Cured()
     {
-        speed = 8;
-        canJump = true;
-        fever.SetActive(false);
-        bleed.SetActive(false);
-        status = "Healthy";
+        CuredFromBleed();
+        CuredFromFever();
     }
 
     private void WeaponBox()
@@ -467,6 +520,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("die", false);
         health = maxHealth;
         canJump = true;
+        canWalk = true;
         enableInput = true;
         PowerDown();
         PowerDown();
