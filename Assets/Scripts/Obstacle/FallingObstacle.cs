@@ -19,11 +19,21 @@ public class FallingObstacle : Obstacle
     public float destroyDelay = 2;
     // type of obstacle, if its not a pole then false
     public bool poleType = false;
+    // if true, damage will be removed from the object after some time when object didnt move
+    public bool damageRemovedOverTime = false;
+    // delay before the obstacle will be checked if still moving. If not, the damage will be removed
+    public float dmgRemoveDelay = 2;
+
+    // to save rigidbody when created
+    public Rigidbody2D rigid;
 
     // to save object already detected player or not, already fall or not and counter for delay
     private bool playerDetected;
     private bool hasFallen;
     private float counter;
+
+    private float dmgCounter;
+    private bool damageRemoved;
 
     // Start is called before the first frame update
     public override void Start()
@@ -32,7 +42,9 @@ public class FallingObstacle : Obstacle
         playerDetected = false;
         hasFallen = false;
         counter = fallDelay;
-    }
+        dmgCounter = dmgRemoveDelay;
+        damageRemoved = false;
+}
 
     // Update is called once per frame
     void Update()
@@ -46,7 +58,7 @@ public class FallingObstacle : Obstacle
                 if (!hasFallen)
                 {
                     // add rigidbody to make object fall
-                    Rigidbody2D rigid = gameObject.AddComponent<Rigidbody2D>();
+                    rigid = gameObject.AddComponent<Rigidbody2D>();
                     rigid.mass = obstacleMass;
                     hasFallen = true;
                 }
@@ -56,6 +68,15 @@ public class FallingObstacle : Obstacle
         else
         {
             playerDetected = CheckIfPlayerNearby();
+        }
+
+        if (damageRemovedOverTime && hasFallen && !damageRemoved)
+        {
+            dmgCounter -= Time.deltaTime;
+            if (dmgCounter <= 0)
+            {
+                RemoveDamageIfNotMoving();
+            }
         }
     }
 
@@ -108,6 +129,13 @@ public class FallingObstacle : Obstacle
         // Add destroyed animation and sound effect here later
         // --DESTROYED ANIMATION AND SFX--
         Destroy(gameObject);
+    }
+
+    private void RemoveDamageIfNotMoving()
+    {
+        if (Mathf.Abs(rigid.velocity.x) <= 0.001f && Mathf.Abs(rigid.velocity.y) <= 0.001f) {
+            damage = 0;
+        }
     }
 
     // to draw debug line

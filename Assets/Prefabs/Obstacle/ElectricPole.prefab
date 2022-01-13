@@ -109,6 +109,8 @@ MonoBehaviour:
   fallDelay: 1
   destroyDelay: 2.5
   poleType: 1
+  damageRemovedOverTime: 1
+  dmgRemoveDelay: 2
 --- !u!60 &8844306364909410733
 PolygonCollider2D:
   m_ObjectHideFlags: 0

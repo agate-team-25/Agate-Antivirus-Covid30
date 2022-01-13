@@ -63,6 +63,12 @@ public class EnemyC : Enemy
 
         // call function to check if player is alive
         playerAlive = CheckPlayerIsAlive();
+
+        // call function to check if player on the left or right, and flip accordingly
+        if (playerNearby && playerAlive && CheckIsAlive())
+        {
+            CheckIfFacingPlayer();
+        }
     }
 
     private void FixedUpdate()
@@ -174,6 +180,31 @@ public class EnemyC : Enemy
 
         // set projectile type based on enemy c and immediately launch it
         projectile.GetComponent<EnemyProjectile>().LaunchProjectile(projectileTime, projectileSpeed, type);
+    }
+
+    private void CheckIfFacingPlayer()
+    {
+        // get player position and enemy position to decide direction to jump to
+        Vector2 playerPos = GetPlayerPosition();
+        Vector2 enemyPos = gameObject.transform.position;
+
+        // check if player is on the left or right
+        if (playerPos.x < enemyPos.x)
+        {
+            // flip horizontally if enemy currently facing right
+            if (!facingLeft)
+            {
+                FlipY();
+            }
+        }
+        else
+        {
+            // flip horizontally if enemy currently facing left
+            if (facingLeft)
+            {
+                FlipY();
+            }
+        }
     }
 
     // to draw debug line specific for Enemy C

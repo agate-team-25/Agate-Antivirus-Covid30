@@ -14,7 +14,8 @@ public class EnemyA : Enemy
 
     [Header("Raycast Component")]
     // for raycast distance to the ground and ground layer to detect
-    public float groundRaycastDistance = 0.48f;
+    public float groundRaycastWidth = 2.5f;
+    public float groundRaycastDistance = 1.5f;
     public LayerMask environmentLayer;
 
     [Header("Explosion Component")]
@@ -86,14 +87,26 @@ public class EnemyA : Enemy
     // method to check if enemy on the ground or air
     private void CheckOnGroud()
     {
+        // get the gap between left/right to middle raycast
+        Vector3 raycastGap = new Vector3(groundRaycastWidth / 2, 0, 0);
+
         // raycasting below to check if enemy is on ground
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - raycastGap, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitMiddle = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, environmentLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + raycastGap, Vector2.down, groundRaycastDistance, environmentLayer);
+
+        // check if one of the raycast hit
+        bool hit = (hitLeft || hitMiddle || hitRight);
+
+        //Debug.Log("Hitting Ground: " + hit);
+        //Debug.Log("velocity of x: " + EnemyRigidBody.velocity.x);
+        //Debug.Log("velocity of y: " + EnemyRigidBody.velocity.y);
 
         // if the raycast hit the ground and enemy already stay still, then the enemy is on the ground
-        if (hit && EnemyRigidBody.velocity.x == 0 && EnemyRigidBody.velocity.y == 0)
+        if (hit && Mathf.Abs(EnemyRigidBody.velocity.x) <= 0.001f && Mathf.Abs(EnemyRigidBody.velocity.y) <= 0.001f)
         {
-            // Debug.Log("Hit the ground");
-
+            //Debug.Log("Hit the ground");
+            
             // Add idle animation after jumping here later
             // --IDLE ANIMATION--
 
@@ -256,7 +269,16 @@ public class EnemyA : Enemy
         // call base function to draw detection range
         base.OnDrawGizmos();
 
-        // draw ground raycast debug line
+        Vector3 leftRay = transform.position + new Vector3(-(groundRaycastWidth / 2), 0, 0);
+        Vector3 rightRay = transform.position + new Vector3(groundRaycastWidth / 2, 0, 0);
+
+        // draw left ground raycast debug line
+        Debug.DrawLine(leftRay, leftRay + (Vector3.down * groundRaycastDistance), Color.blue);
+
+        // draw middle ground raycast debug line
         Debug.DrawLine(transform.position, transform.position + (Vector3.down * groundRaycastDistance), Color.blue);
+
+        // draw right ground raycast debug line
+        Debug.DrawLine(rightRay, rightRay + (Vector3.down * groundRaycastDistance), Color.blue);
     }
 }

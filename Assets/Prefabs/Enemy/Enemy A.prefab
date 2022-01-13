@@ -142,6 +142,7 @@ MonoBehaviour:
   type: 0
   maxHealth: 1
   speed: 5
+  damageTick: 1
   facingLeft: 1
   detectRangeX: 15
   detectRangeY: 3
@@ -151,6 +152,7 @@ MonoBehaviour:
   jumpForceX: 170
   jumpForceY: 500
   jumpDelay: 1
+  groundRaycastWidth: 2.5
   groundRaycastDistance: 1.5
   environmentLayer:
     serializedVersion: 2

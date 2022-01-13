@@ -193,7 +193,7 @@ public class EnemyBoss : Enemy
         bool hit = (hitLeft || hitMiddle || hitRight);
 
         // if the raycast hit the ground and enemy already stay still, then the enemy is on the ground
-        if (hit && EnemyRigidBody.velocity.x == 0 && EnemyRigidBody.velocity.y == 0)
+        if (hit && Mathf.Abs(EnemyRigidBody.velocity.x) <= 0.001f && Mathf.Abs(EnemyRigidBody.velocity.y) <= 0.001f)
         {
             //Debug.Log("Hit the ground");
 

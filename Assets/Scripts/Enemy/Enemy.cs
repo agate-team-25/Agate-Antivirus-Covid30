@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 1f;
     // Enemy speed (not used for Enemy A)
     public int speed = 3;
+    // How long until player get damaged when touching enemy
+    public float damageTick = 1f;
 
     [Header("Direction")]
     // status is enemy is facing left, if false then enemy is facing right
@@ -46,6 +48,12 @@ public class Enemy : MonoBehaviour
 
     // Status if enemy is still alive, might be used for something
     private bool isAlive;
+
+    // counter for damage tick
+    private float tickCounter;
+
+    // true if enemy is touching player
+    private bool touchingPlayer;
     #endregion
 
     // Awake is called before Start
@@ -80,6 +88,8 @@ public class Enemy : MonoBehaviour
 
         health = maxHealth;
         isAlive = true;
+        tickCounter = damageTick;
+        touchingPlayer = false;
 
         //check if enemy facing left or right. If facing right then flip horizontally
         if (!facingLeft)
@@ -102,6 +112,17 @@ public class Enemy : MonoBehaviour
     public virtual void Update()
     {
         // checking is the enemy still alive moved to ReduceHealth() method so it wont get called multiple times
+
+        // check if enemy touching player. If true, damage player continuously
+        if (touchingPlayer)
+        {
+            tickCounter -= Time.deltaTime;
+            if (tickCounter <= 0 && player != null && !player.isDead)
+            {
+                player.GetDamage(1, type);
+                tickCounter = damageTick;
+            }
+        }
     }
 
     public void ReduceHealth(float damage)
@@ -235,9 +256,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (!player.isDead)
+            if (player != null && !player.isDead)
             {
                 player.GetDamage(1, type);
+                tickCounter = damageTick;
+                touchingPlayer = true;
             }
             
             // Notes: knockback belum bisa diimplementasikan karena autoreset velocity dari player
@@ -255,6 +278,14 @@ public class Enemy : MonoBehaviour
         //    // Call reduce damage
         //    ReduceHealth(1);
         //}
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            touchingPlayer = false;
+        }
     }
 
     // to draw debug line
