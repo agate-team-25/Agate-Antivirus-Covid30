@@ -63,6 +63,8 @@ public class LevelManager : MonoBehaviour
     public bool timerIsRunning = false;
     public bool enableInput;
 
+    private Button btn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,8 +74,9 @@ public class LevelManager : MonoBehaviour
             UserDataManager.Load();
             //Debug.Log("player telah memiliki progress sampai level :" + UserDataManager.Progress.levelProgress);
         }
-        Button btn = pauseButton.GetComponent<Button>();
-        btn.interactable = false;
+
+        btn = pauseButton.GetComponent<Button>();
+        btn.interactable = true;
         timerIsRunning = true;
         enableInput = true;
         allEnemies = GetEnemyCount();
@@ -192,6 +195,7 @@ public class LevelManager : MonoBehaviour
         timerTextWin.text = timerText.text;
         enemyKilledTextWin.text = enemyKilledText.text;
         enableInput = false;
+        btn.interactable = false;
         Pause.instance.Paused(winUI);
 
         if (UserDataManager.Progress.levelProgress < StageLevel)
@@ -206,6 +210,7 @@ public class LevelManager : MonoBehaviour
         timerTextLose.text = timerText.text;
         enemyKilledTextLose.text = enemyKilledText.text;
         enableInput = false;
+        btn.interactable = false;
         Pause.instance.Paused(loseUI);
     }
 
